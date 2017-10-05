@@ -9,7 +9,7 @@ import pymysql
 import json
 import MySQLdb
 
-from Singleton.Singleton import Singleton
+from Singleton.singleton import Singleton
 from PackageData.DBConfigs import *
 
 from Platform.LogCenter.LogCenter import LogCenter
@@ -82,7 +82,7 @@ class DBModelFactory():
 
 
 # /**
-#  * DBModel.py    基础数据操作类
+#  * db_model.py    基础数据操作类
 #  *
 #  * @copyright            (C) Graig
 #  * @lastmodify            2015-6-6

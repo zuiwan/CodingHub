@@ -1,57 +1,39 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
-
+from singleton import Singleton
+import time
 import traceback
 import os, logging
 import logging
 import logging.config
-
+from Application.app import flask_app
 from logging.handlers import RotatingFileHandler
 import sys
-def get_cur_info_1():
-    """Return the frame object for the caller's stack frame."""
-    try:
-        raise Exception
-    except:
-        f = sys.exc_info()[2].tb_frame.f_back
-    return (f.f_code.co_name, f.f_lineno)
+from Library.log_util import LogCenter
+logger = LogCenter.instance().get_logger('LogUtilLog')
+@Singleton
+class LogCenter(object):
+    def __init__(self):
+        self.logger_map = {}
 
-def get_cur_info():
-    return (sys._getframe().f_code.co_name, sys._getframe().f_lineno)
-output_log_basepath = flask_app.config['UPLOAD_LOG_FOLDER'] + 'rc/'
-# determine output_log_basepath
-# import ConfigParser
-# conf = ConfigParser.ConfigParser()
-# conf_name = os.path.join('Config', 'logger.conf')
-# conf_path = os.path.dirname(os.path.dirname(__file__))
-# conf.read(os.path.join(conf_path,conf_name))
-# import platform
-# plat = platform.platform().lower()
-# home_key = 'HOME'
-# if 'windows' in plat:  # windows
-#     plat = "win"
-#     home_key = 'HOMEPATH'
-# elif 'darwin' in plat:
-#     plat = 'mac'
-# elif 'linux' in plat:
-#     plat = 'linux'
-# output_log_basepath = conf.get(plat, 'output_log_basepath')
-# if conf.getboolean(plat,'log_at_home'):
-#     # 日志目录在家目录而不是/var/log等
-#     home_dir = os.environ[home_key]
-#     project_name = os.path.basename(os.path.dirname(os.getcwd()))
-#     t = os.path.join(home_dir,project_name)
-#     output_log_basepath = ''.join((t,os.sep)) if not t.endswith(os.sep) else t
+    def get_logger(self, name, filename):
+        """ return logger"""
+        logger_name = '_'.join((name, filename))
+        if not logger_name in self.logger_map:
+            self.logger_map[logger_name] = MyLogger(name, filename)
+        return self.logger_map[logger_name]
+# Usage:
+# data_logger = LogCenter.instance().get_logger('DataControlerLog')
+# except Exception,e:
+#   data_logger.error("Data Controler delete data error, msg=[%s]" % ,repr(e)))
+#   result['code'] = ED.err_sys
 
-global_loggers = None
-
+output_log_basepath = flask_app.config['APP_LOG_FOLDER']
 
 class MyLogger():
-    def __init__(self, name):
-        self.logger = self._get_logger(name, name)
+    def __init__(self, name, filename=None):
+        if filename is None:
+            filename = name
+        self.logger = self._get_logger(name, filename)
 
     def debug(self, message):
         global_loggers.debug(message)
@@ -64,9 +46,6 @@ class MyLogger():
     def warning(self, message):
         global_loggers.warning(message)
         self.logger.warning(message)
-
-    def critical(self, message):
-        global_loggers.critical(message)
 
     def error(self, message):
         global_loggers.error(message)
@@ -86,7 +65,7 @@ class MyLogger():
             "[%(asctime)s]: %(filename)s[line:%(lineno)d] [pid:%(process)d] %(levelname)s %(message)s")
         console.setFormatter(formatter)
         logger.addHandler(console)
-        # logging.basicConfig(filename=LOG_FILE_NAME, level=logging.DEBUG, format='%(asctime)s  %(filename)s[line:%(lineno)d] %(levelname)s %(message)s', datefmt='%a, %d %b %Y %H:%M:%S')
+
         # 定义一个RotatingFileHandler，最多备份5个日志文件，每个日志文件最大5M
         Rthandler = RotatingFileHandler('%s/%s.log' % (dir_path, file), maxBytes=5 * 1024 * 1024, backupCount=10)
         Rthandler.setLevel(logging.DEBUG)
@@ -137,3 +116,11 @@ class MyLogger():
 
 
 global_loggers = MyLogger('GlobalLog').logger
+
+
+
+def Celery_Log_Line(log_str, level="INFO"):
+    ISOTIMEFORMAT ='%Y-%m-%d %X'
+    current_time = time.strftime(ISOTIMEFORMAT, time.localtime(time.time()))
+    line = "[{}] [{}] | {}\n".format(current_time, level, log_str)
+    return line
