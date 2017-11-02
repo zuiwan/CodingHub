@@ -38,7 +38,7 @@ class TaskCenter(object):
         # db.session.add(experiment)
         # db.session.commit()
 
-        from Application.celery import run_shell_right_row, gen_run_py_shell
+        from Application.celery_tasks import run_shell_right_row, gen_run_py_shell
         command = ''
         mode = ''
         result = run_shell_right_row(gen_run_py_shell(_id, auto_command=command, mode=mode))

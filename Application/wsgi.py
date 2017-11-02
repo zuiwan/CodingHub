@@ -1,4 +1,6 @@
-from app import flask_app
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+from api import flask_app
 
 
 if __name__ == '__main__':
