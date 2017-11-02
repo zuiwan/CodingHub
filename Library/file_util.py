@@ -121,3 +121,71 @@ def Get_Dir_Filelist(dir_path, ignores=None, only=None):
     else:
         filtered_files = filenames
     return filtered_files
+
+
+# -*- coding: utf-8 -*-
+import os
+import zipfile
+from io import BytesIO
+
+
+class InMemoryZip(object):
+    def __init__(self):
+        # Create the in-memory file-like object
+        # self.in_memory_zip = StringIO()
+        self.in_memory_zip = BytesIO()
+
+    def appendFile(self, file_path, file_name=None):
+        # "从本地磁盘读取文件，并将其添加到压缩文件中"
+
+        if file_name is None:
+            p, fn = os.path.split(file_path)
+        else:
+            fn = file_name
+
+        c = open(file_path, "rb").read()
+        self.append(fn, c)
+
+        return self
+
+    def append(self, filename_in_zip, file_contents):
+        """Appends a file with name filename_in_zip and contents of
+                  file_contents to the in-memory zip."""
+
+        # Get a handle to the in-memory zip in append mode
+        zf = zipfile.ZipFile(self.in_memory_zip, "a", zipfile.ZIP_DEFLATED, False)
+
+        # Write the file to the in-memory zip
+        zf.writestr(filename_in_zip, file_contents)
+
+        # Mark the files as having been created on Windows so that
+        # Unix permissions are not inferred as 0000
+        for zfile in zf.filelist:
+            zfile.create_system = 0
+
+        return self
+
+    def read(self):
+        """Returns a string with the contents of the in-memory zip."""
+
+        self.in_memory_zip.seek(0)
+
+        return self.in_memory_zip.read()
+
+    def read_stream(self):
+        ''''''
+        self.in_memory_zip.seek(0)
+        while True:
+            tmp = self.in_memory_zip.read1(1024)
+            if tmp and tmp != '':
+                yield tmp
+            else:
+                break
+
+    def writetofile(self, filename):
+        """Writes the in-memory zip to a file."""
+
+        f = open(filename, "wb")
+        f.write(self.read())
+        f.close()
+
