@@ -3,7 +3,7 @@
 #Coding-测试服
 echo "从 Windows-bash 部署-Coding-测试服 @Tencent 118.89.27.96"
 ssh root@118.89.27.96 '
-    cd /root/CodingLife
+    cd /root/CodingLife_Server
     echo "-----------强制更新代码-----------"
     git fetch --all
     git reset --hard origin/dev
