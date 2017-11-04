@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+import sys
+sys.path.append("..")
 from Application.api import flask_app
 from Library.extensions import orm
 
