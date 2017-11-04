@@ -10,7 +10,8 @@ migrate = Migrate(flask_app, orm)
 manager = Manager(flask_app)
 manager.add_command('orm', MigrateCommand)
 
-from Library.OrmModel.User import *
+from Library.OrmModel.User import User
+from Library.OrmModel.Project import Project
 
 from flask_sqlalchemy import SQLAlchemy
 
