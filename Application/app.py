@@ -7,7 +7,7 @@ flask_app = Flask(__name__,static_url_path='/assets', static_folder='assets', te
 # import api
 
 # initialization
-flask_app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:zuiwan2017@localhost:3306/zuiwan'
+flask_app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://zuiwan:zuiwan@localhost:3306/zuiwan'
 flask_app.config['KAFKA_BROKER_URI'] = ['']
 
 flask_app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
