@@ -13,8 +13,10 @@ class LogCenter(object):
     def __init__(self):
         self.logger_map = {}
 
-    def get_logger(self, name, filename):
+    def get_logger(self, name, filename=None):
         """ return logger"""
+        if filename is None:
+            filename = name
         logger_name = '_'.join((name, filename))
         if not logger_name in self.logger_map:
             self.logger_map[logger_name] = MyLogger(name, filename)

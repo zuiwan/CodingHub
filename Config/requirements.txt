@@ -12,3 +12,4 @@ marshmallow
 elasticsearch
 MySQL-python
 passlib
+pymysql
