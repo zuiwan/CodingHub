@@ -198,8 +198,6 @@ SQL_LIMIT_HIGH = 18446744073709551615L
 
 
 # text
-CPU_INSTANCE_TYPE = "cpu_high"
-GPU_INSTANCE_TYPE = "gpu_high"
 
 routing_dict = {GPU_INSTANCE_TYPE: 'task.user.compute.gpu', CPU_INSTANCE_TYPE: 'task.user.compute.cpu'}
 queue_dict = {GPU_INSTANCE_TYPE: 'gpu', CPU_INSTANCE_TYPE: 'cpu'}

@@ -9,12 +9,24 @@ import pymysql
 import json
 import MySQLdb
 
-from Singleton.singleton import Singleton
-from PackageData.DBConfigs import *
+from Library.singleton import Singleton
 
-from Platform.LogCenter.LogCenter import LogCenter
+from Library.log_util import LogCenter
 
 logger = LogCenter.instance().get_logger('ExceptionLog')
+
+init_db_config = {}
+init_db_config['host'] = "localhost"
+init_db_config['host_s'] = '[{"localhost", "rate":100}]'
+init_db_config['db'] = "zuiwan"
+
+init_db_config['port'] = 3306
+init_db_config['user'] = "zuiwan"
+init_db_config['passwd'] = "zuiwan"
+# init_db_config['name'] = "init_db_configs"
+init_db_config['name'] = "default"
+init_db_config['init_config_table'] = "t_cc_configs"
+init_db_config['init_config_key'] = "db_configs"
 
 global base_db_models
 if 'base_db_models' not in dir():

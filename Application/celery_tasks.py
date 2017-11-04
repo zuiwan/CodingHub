@@ -4,6 +4,7 @@ from Library.extensions import orm as db
 from Library.extensions import celery_app
 from Library.log_util import LogCenter
 from Library.file_util import *
+from Library.time_util import *
 celery_logger = LogCenter.instance().get_logger('celery', 'tasks')
 
 
@@ -107,13 +108,8 @@ def checkInstance(self, experiment_id, time_limit=None):
 @celery_app.task(bind=True)
 def fork_project_task(self, old_path, new_path, project_id):
     if copy_dir(old_path, new_path):
-        project.status = 'normal'
-        db.session.commit()
         return True
     else:
-        project.status = 'failed'
-        db.session.commit()
-        self.update_state(state='FAILURE', meta={'status': 'Copy Failed, source does not existed.'})
         return False
 
 @celery_app.task(bind=True)
