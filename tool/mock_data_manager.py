@@ -1,3 +1,8 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+import sys
+sys.path.append("..")
+
 from Library.OrmModel.User import User
 from Library.OrmModel.Project import Project
 from Library.extensions import orm

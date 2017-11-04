@@ -26,7 +26,7 @@ def dbdemo():
         new_list.append(user.to_dict())
 
     select_sql = DBModel.sql_select('user',
-                                    keys=['id', 'date_created', 'name'],
+                                    keys=['id', 'date_created', 'username'],
                                     where=DBModel.sql_and({}),
                                     limit='0,%d' % 5, order=[{'key': 'date_created', 'desc': True}])
     records = db_model.GetList(select_sql, options={"table_count": 1})

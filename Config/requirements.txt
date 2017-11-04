@@ -13,3 +13,5 @@ elasticsearch
 MySQL-python
 passlib
 pymysql
+flask_script
+flask_migrate
