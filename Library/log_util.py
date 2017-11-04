@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
-from singleton import Singleton
 import time
 import traceback
-import os, logging
+import os
 import logging
 import logging.config
 from Application.app import flask_app
 from logging.handlers import RotatingFileHandler
+from Library.singleton import Singleton
 import sys
-from Library.log_util import LogCenter
-logger = LogCenter.instance().get_logger('LogUtilLog')
 @Singleton
 class LogCenter(object):
     def __init__(self):
