@@ -11,9 +11,9 @@ from itsdangerous import (TimedJSONWebSignatureSerializer
 SECRET_KEY = 'the quick brown fox jumps over the lazy dog'
 
 class UserSchema(BaseSchema):
-    username = fields.Str()
-    email = fields.Str()
-    type = fields.Int(allow_none=True)
+    username = fields.Str(allow_none=False)
+    email = fields.Str(allow_none=False)
+    level = fields.Int(allow_none=True)
 
     @post_load
     def make_user(self, data):
@@ -22,18 +22,20 @@ class UserSchema(BaseSchema):
 
 class User(BaseModel):
     schema = UserSchema(strict=True)
+    default_level = 0
+
     username = orm.Column(orm.String(32), index=True)
     email = orm.Column(orm.String(64))
-    type = orm.Column(orm.Integer)
+    level = orm.Column(orm.Integer)
     password_hash = orm.Column(orm.String(500))
 
     def __init__(self,
                  username,
-                 email,
-                 type):
+                 email=None,
+                 level=default_level):
         self.username = username
         self.email = email
-        self.type = type
+        self.level = level
 
     def hash_password(self, password):
         self.password_hash = pwd_context.encrypt(password)
