@@ -6,9 +6,10 @@ from Application.app import flask_app
 
 api = Api(flask_app)
 from Application.User.user_views import User_API
+from Application.Favorite.favorite_views import Favorite_API
 
 api.add_resource(User_API, '/api/v1/user', endpoint='user')
-
+api.add_resource(Favorite_API, '/api/v1/favorite', endpoint="favorite")
 @flask_app.route('/', methods=['GET'])
 def index():
     return jsonify(dict(message="Hello World"))

@@ -19,8 +19,8 @@ class BaseModel(orm.Model):
     __abstract__  = True
 
     id = orm.Column(orm.String(32), primary_key=True, default=lambda: uuid.uuid4().hex)
-    date_created = orm.Column(orm.DateTime, default=datetime.datetime.utcnow())
-    date_modified = orm.Column(orm.DateTime, default=datetime.datetime.utcnow(), onupdate=datetime.datetime.utcnow())
+    date_created = orm.Column(orm.DateTime, default=lambda:datetime.datetime.utcnow())
+    date_modified = orm.Column(orm.DateTime, default=lambda:datetime.datetime.utcnow(), onupdate=lambda:datetime.datetime.utcnow())
     is_deleted =  orm.Column(orm.Integer, default=False)
 
 
