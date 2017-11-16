@@ -1,12 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
-
-from flask import request, make_response, jsonify
+import flask
 from functools import wraps
-import Library.log_util as ED
+from Library import ErrorDefine as ED
 import datetime
 import time
 import json
@@ -15,47 +11,46 @@ import pytz
 import uuid
 import traceback
 import os
-from urllib2 import urlopen
-from urllib2 import HTTPError
 
+from .log_util import LogCenter
 
-from net_util import *
-from time_util import *
-from log_util import *
-
-
-from Library.log_util import LogCenter
-logger = LogCenter.instance().get_logger('NetUtilLog')
+logger = LogCenter.instance().get_logger("utils", 'NetUtilLog')
 # MAC ADDRESS
 import traceback
 from functools import wraps
-from urllib2 import urlopen, HTTPError
 import json
 
 from flask import make_response
 from shortuuid import uuid
 
+import requests
 
-def get_mac_address():
+
+def getMacAddress():
     mac = uuid.UUID(int=uuid.getnode()).hex[-12:]
     return ":".join([mac[e:e + 2] for e in range(0, 11, 2)])
+
+
 def getCountryCode(ipAddress):
     try:
-        response = urlopen("http://freegeoip.net/json/"+ipAddress).read().decode('utf-8')
-    except HTTPError:
+        response = requests.get("http://freegeoip.net/json/" + ipAddress).read().decode('utf-8')
+    except requests.exceptions.HTTPError:
         return None
     responseJson = json.loads(response)
     return responseJson.get("country_code")
-def dotip2int(dotip):
+
+
+def dotIp2Int(dotip):
     # import socket,struct
     # return socket.ntohl(struct.unpack("I",socket.inet_aton(str(ip)))[0])
-    return (lambda x:sum([256**j*int(i) for j,i in enumerate(x.split('.')[::-1])]))(dotip)
-
-def int2dotip(ip):
-    return (lambda x: '.'.join([str(x/(256**i)%256) for i in range(3,-1,-1)]))(ip)
+    return (lambda x: sum([256 ** j * int(i) for j, i in enumerate(x.split('.')[::-1])]))(dotip)
 
 
-def add_cross_headers(response):
+def int2DotIp(ip):
+    return (lambda x: '.'.join([str(x / (256 ** i) % 256) for i in range(3, -1, -1)]))(ip)
+
+
+def addCrossHeaders(response):
     response.headers['Access-Control-Allow-Origin'] = '*'
     response.headers['Access-Control-Allow-Methods'] = 'GET'
     response.headers['Access-Control-Allow-Headers'] = "REFERER_URL,Accept,Origin,User-Agent"
@@ -64,18 +59,17 @@ def add_cross_headers(response):
 
 
 # 跨域装饰器
-def allow_cross_domain(method):
+def allowCrossomain(method):
     @wraps(method)
     def _decorator(*args, **kwargs):
         try:
             rst = make_response(method(*args, **kwargs))
-            return add_cross_headers(rst)
-        except Exception,e:
+            return addCrossHeaders(rst)
+        except Exception as e:
             logger.error(repr(traceback.format_exc()))
             return jsonify({'code': ED.err_sys})
 
     return _decorator
-
 
 
 def getHostnameOfUrl(url):
@@ -113,6 +107,8 @@ def getClientRemoteIP(request):
             ret = ip
             break
         return ret
+
+
 # 获取本地IP地址
 def getLocalIP(outside=True):
     import socket, fcntl, struct
@@ -124,12 +120,27 @@ def getLocalIP(outside=True):
         inet = fcntl.ioctl(s.fileno(), 0x8915, struct.pack('256s', "eth0"[:15]))
         return socket.inet_ntoa(inet[20:24])
 
+def getSourceName(request):
+    source = None
+    spec_host = ['qiuye']
+    host_name = request.host
+    host_name = host_name.replace('www.','')
+    host_list = host_name.split('.')
+    if len(host_list) > 0 and host_list[0] in spec_host:
+        source = host_list[0]
+    else:
+        ret_data = request.data
+        if ret_data != None and type(ret_data) == dict and ret_data.has_key('source'):
+            source = ret_data['source']
+    return source
+
 def package_json_request_data(method):
+    request = flask.request
     @wraps(method)
     def _decorator(*args, **kwargs):
         try:
-            if request.method == "POST":
-                request.data = json.loads(request.data)
+            if request.method in ("POST", "PUT"):
+                request.data = json.loads(request.data, encoding="utf-8")
             else:
                 temp_raw_data = request.args.items()
                 temp_raw_map = {}
@@ -137,9 +148,13 @@ def package_json_request_data(method):
                     temp_raw_map[temp_item[0]] = temp_item[1]
                 request.data = temp_raw_map
             request.data['ip'] = getClientRemoteIP(request)
+            request.data['host'] = request.host
+            source = getSourceName(request)
+            if source != None and source != '':
+                request.data["source"] = source
             ret = method(*args, **kwargs)
             return ret
-        except Exception, e:
+        except Exception as e:
             logger.error(repr(traceback.format_exc()))
             return "%s package_json_request_data error" % str(request)
 

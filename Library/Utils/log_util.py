@@ -4,10 +4,50 @@ import traceback
 import os
 import logging
 import logging.config
+from functools import wraps
+
 from Application.app import flask_app
 from logging.handlers import RotatingFileHandler
+
+from Library.func_util import Is_Cls
 from Library.singleton import Singleton
 import sys
+
+
+def check_api_cost_time(method):
+    @wraps(method)
+    def _decorator(*args, **kwargs):
+        try:
+            start = time.time()
+            ret = method(*args, **kwargs)
+            end = time.time()
+            # print(method.__name__ + " api cost time %f s" % (end - start))
+            file_name = method.func_code.co_filename
+            line_num = method.func_code.co_firstlineno
+            if args is not None and len(args) > 0 and Is_Cls(args[0]):
+                # 类（实例）方法
+                name = "Function: {function_name}, @Class: {class_name}, @File: {file_name}, @Line: {line_num}"\
+                    .format(function_name=method.__name__,
+                            class_name=args[0].__class__.__name__,
+                            file_name=file_name,
+                            line_num=line_num)
+            else:
+                name = "Function: {function_name}, @File: {file_name}"\
+                    .format(function_name=method.__name__,
+                            file_name=file_name,
+                            line_num=line_num)
+            global_loggers.debug(name + " api cost time %f s" % (end-start))
+            return ret
+        except Exception as e:
+            global_loggers.error(repr(traceback.format_exc()))
+    return _decorator
+
+def Celery_Log_Line(log_str, level="INFO"):
+    ISOTIMEFORMAT ='%Y-%m-%d %X'
+    current_time = time.strftime(ISOTIMEFORMAT, time.localtime(time.time()))
+    line = "[{}] [{}] | {}\n".format(current_time, level, log_str)
+    return line
+
 @Singleton
 class LogCenter(object):
     def __init__(self):
@@ -21,11 +61,6 @@ class LogCenter(object):
         if not logger_name in self.logger_map:
             self.logger_map[logger_name] = MyLogger(name, filename)
         return self.logger_map[logger_name]
-# Usage:
-# data_logger = LogCenter.instance().get_logger('DataControlerLog')
-# except Exception,e:
-#   data_logger.error("Data Controler delete data error, msg=[%s]" % ,repr(e)))
-#   result['code'] = ED.err_sys
 
 output_log_basepath = flask_app.config['APP_LOG_FOLDER']
 
@@ -117,10 +152,3 @@ class MyLogger():
 
 global_loggers = MyLogger('GlobalLog').logger
 
-
-
-def Celery_Log_Line(log_str, level="INFO"):
-    ISOTIMEFORMAT ='%Y-%m-%d %X'
-    current_time = time.strftime(ISOTIMEFORMAT, time.localtime(time.time()))
-    line = "[{}] [{}] | {}\n".format(current_time, level, log_str)
-    return line

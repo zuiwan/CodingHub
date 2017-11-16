@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#cd /root/CodingLife_Server
+#cd /root/CodingHub
 rm logs/*_supervisor.log
 
 #echo "-----------强制更新代码-----------"

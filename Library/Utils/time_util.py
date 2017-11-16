@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
-
 from flask import request, make_response, jsonify
 from functools import wraps
 import Library.log_util as ED
@@ -15,15 +12,8 @@ import pytz
 import uuid
 import traceback
 import os
-from urllib2 import urlopen
-from urllib2 import HTTPError
-from Library.log_util import LogCenter
-logger = LogCenter.instance().get_logger('TimeUtilLog')
 
 
-##########################################
-# 时间相关 Start
-##########################################
 def convert_int_2_string_single(int_time, onlydate=False, only_m_d=False):
     key_time = time.localtime(int_time)
     if onlydate == True:
@@ -40,7 +30,7 @@ def convert_int_2_string(datas, keys, onlydate=False, only_m_d=False):
         datas = [datas]
     if type(datas) != list:
         return datas
-    if type(keys) == str or type(keys) == unicode:
+    if type(keys) == str or type(keys) == pytz.unicode:
         keys = [keys]
     if type(keys) != list:
         return datas
@@ -70,7 +60,7 @@ def convert_datetime_2_string(datas, keys, onlydate=False, only_m_d=False):
         datas = [datas]
     if type(datas) != list:
         return datas
-    if type(keys) == str or type(keys) == unicode:
+    if type(keys) == str or type(keys) == pytz.unicode:
         keys = [keys]
     if type(keys) != list:
         return datas
@@ -103,45 +93,21 @@ def get_now_time_str_ms():
     return ("%.3f" % (time.time())).decode('utf-8')
 
 
-# api调用耗时
-def check_api_cost_time(method):
-    @wraps(method)
-    def _decorator(*args, **kwargs):
-        try:
-            start = time.time()
-            ret = method(*args, **kwargs)
-            end = time.time()
-            print method.__name__ + " api cost time %f s" % (end - start)
-            # logger.debug(method.__name__ + " api cost time %f s" % (end - start))
-            return ret
-        except Exception, e:
-            logger.error(repr(traceback.format_exc()))
-            # return package_ret_data_from_server({'code': 99999})
-            return {'code': 99999}
-
-    return _decorator
-
-
-# !/usr/bin/env python
-# -*- coding: utf-8 -*-
-from datetime import datetime
-from constants import PST_TIMEZONE
-from pytz import utc
-
-import time
 def pretty_date(time=False):
     """
     Get a datetime object or a int() Epoch timestamp and return a
     pretty string like 'an hour ago', 'Yesterday', '3 months ago',
     'just now', etc
     """
-    now = datetime.now(PST_TIMEZONE)
+    now = datetime.datetime.now()
     if type(time) is int:
-        diff = now - datetime.fromtimestamp(time)
-    elif isinstance(time, datetime):
+        diff = now - datetime.datetime.fromtimestamp(time)
+    elif isinstance(time, datetime.datetime):
         diff = now - time
     elif not time:
         diff = now - now
+    else:
+        diff = 0
     second_diff = diff.seconds
     day_diff = diff.days
 
@@ -171,13 +137,16 @@ def pretty_date(time=False):
         return str(int(day_diff / 30)) + " months ago"
     return str(int(day_diff / 365)) + " years ago"
 
+
 def localize_date(date):
-        if not date.tzinfo:
-            date = utc.localize(date)
-        return date.astimezone(PST_TIMEZONE)
+    if not date.tzinfo:
+        date = utc.localize(date)
+    return date.astimezone(PST_TIMEZONE)
+
 
 def strToTime(str):
     return time.mktime(time.strptime(str, "%Y:%m:%d %H:%M:%S"))
+
 
 def datetime_to_timestamp(datetime_obj):
     """将本地(local) datetime 格式的时间 (含毫秒) 转为毫秒时间戳
@@ -186,6 +155,7 @@ def datetime_to_timestamp(datetime_obj):
     """
     local_timestamp = long(time.mktime(datetime_obj.timetuple()) * 1000.0 + datetime_obj.microsecond / 1000.0)
     return local_timestamp
+
 
 def datetime_to_strtime(datetime_obj):
     """将 datetime 格式的时间 (含毫秒) 转为字符串格式
@@ -207,6 +177,7 @@ def local_timestamp_now_mil():
     # 当前时间：时间戳格式 13位整数
     local_timestamp_now = datetime_to_timestamp(local_datetime_now)
     return local_timestamp_now
+
 
 def local_strtime_now_mil():
     # 当前时间：datetime 格式

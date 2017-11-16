@@ -2,15 +2,13 @@
 # -*- coding: utf-8 -*-
 from marshmallow import Schema, fields, post_load
 
-
-from Library.OrmModel import BaseModel,BaseSchema
+from Library.OrmModel import BaseModel, BaseSchema
 from Library.extensions import orm
 
-from User import UserSchema
+from .User import UserSchema
 
 
 class ModuleSchema(BaseSchema):
-
     name = fields.Str()
     description = fields.Str()
     command = fields.Str()
@@ -46,7 +44,7 @@ class Module(BaseModel):
     mode = orm.Column(orm.String(32))
     module_type = orm.Column(orm.String(32))
     default_env = orm.Column(orm.String(64))
-    family_id = orm.Column(orm.String(64),nullable=True)
+    family_id = orm.Column(orm.String(64), nullable=True)
     project_id = orm.Column(orm.String(64))
     version = orm.Column(orm.Float(32), nullable=True)
     outputs = orm.Column(orm.String(256))
@@ -56,7 +54,6 @@ class Module(BaseModel):
     tags = orm.Column(orm.String(64), nullable=True)
     codehash = orm.Column(orm.String(256))
     permission = orm.Column(orm.Integer)
-
 
     def __init__(self,
                  name,

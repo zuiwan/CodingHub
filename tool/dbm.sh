@@ -1,3 +1,3 @@
 cd /root/CodingLife/Test/data
-python dbm db migrate
-python dbm db upgrate
+python dbm orm migrate
+python dbm orm upgrate

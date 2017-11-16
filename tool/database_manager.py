@@ -17,6 +17,7 @@ manager.add_command('orm', MigrateCommand)
 
 from Library.OrmModel.User import User
 from Library.OrmModel.Project import Project
+from Library.OrmModel.Farovite import Favorite
 
 from flask_sqlalchemy import SQLAlchemy
 

@@ -5,9 +5,20 @@ from flask_restful import Api
 from Application.app import flask_app
 
 api = Api(flask_app)
-from Application.User.user_views import User_API
+from Application.User.User import User_API
+from Application.Favorite.Favorite import Favorite_API
+from Application.Mall.Mall import (
+    MallAPI as MA,
+    UserShoppingCartAPI as USCA,
+    UserShoppingCartItemAPI as USCIA
+)
 
 api.add_resource(User_API, '/api/v1/user', endpoint='user')
+api.add_resource(Favorite_API, '/api/v1/favorite', endpoint="favorite")
+api.add_resource(MA, MA.url, endpoint=MA.endpoint)
+api.add_resource(USCA, USCA.url, endpoint=USCA.endpoint)
+api.add_resource(USCIA, USCIA.url, endpoint=USCIA.endpoint)
+
 
 @flask_app.route('/', methods=['GET'])
 def index():
@@ -31,4 +42,10 @@ def dbdemo():
                                     limit='0,%d' % 5, order=[{'key': 'date_created', 'desc': True}])
     records = db_model.GetList(select_sql, options={"table_count": 1})
 
-    return jsonify({'orm': new_list, 'sql': records})
+    al_recs = orm.session.query(User.date_created, User.email).all()
+    al_rec = []
+    for rec in al_recs:
+        print(rec)
+        al_rec.extend(rec)
+
+    return jsonify({'orm': new_list, 'sql': records, 'alchemy': al_rec})

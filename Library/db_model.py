@@ -1,9 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
-
 import random
 import pymysql
 import json
@@ -11,12 +7,13 @@ import MySQLdb
 
 from Library.singleton import Singleton
 
-from Library.log_util import LogCenter
+from Library.Utils.log_util import LogCenter
 
 logger = LogCenter.instance().get_logger('ExceptionLog')
 
 init_db_config = {}
 init_db_config['host'] = "localhost"
+# init_db_config['host'] = "118.89.27.96"
 init_db_config['host_s'] = '[{"localhost", "rate":100}]'
 init_db_config['db'] = "zuiwan"
 
@@ -294,7 +291,7 @@ class DBModel():
                 self.lastresult = cursor
 
             self._commit_db()
-        except Exception, e:
+        except Exception as e:
             self.lastresult = None
             logger.error("executemanay sql failed sql=[%s],data=[%s],msg=[%s]:" % (repr(sql), repr(data), repr(e)))
         finally:
@@ -320,7 +317,7 @@ class DBModel():
                 self.lastresult = cursor
 
             self._commit_db()
-        except Exception, e:
+        except Exception as e:
             self.lastresult = None
             logger.error("execute sql failed sql=[%s],msg=[%s]:" % (repr(sql), repr(e)))
         finally:
@@ -354,7 +351,7 @@ class DBModel():
                     result_one = self.lastresult.fetchone()
                     if result_one and len(result_one) > 0:
                         break
-        except Exception, e:
+        except Exception as e:
             logger.error("GetOne sql failed sql=[%s],msg=[%s]:" % (repr(sql), repr(e)))
         finally:
             if connected == False:
@@ -397,7 +394,7 @@ class DBModel():
                 # 从次要到主要的顺序来进行排序
                 for item in options['order_by'][::-1]:
                     result_list.sort(key=lambda x: x[item['key']], reverse=item.get('reverse', False))
-        except Exception, e:
+        except Exception as e:
             logger.error("GetList sql failed sql=[%s],msg=[%s]:" % (repr(sql), repr(e)))
         finally:
             if connected == False:

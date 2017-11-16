@@ -10,10 +10,12 @@ from itsdangerous import (TimedJSONWebSignatureSerializer
 
 SECRET_KEY = 'the quick brown fox jumps over the lazy dog'
 
+
+
 class UserSchema(BaseSchema):
-    username = fields.Str(allow_none=False)
-    email = fields.Str(allow_none=False)
-    level = fields.Int(allow_none=True)
+    name = fields.Str()
+    email = fields.Str()
+    level = fields.Int()
 
     @post_load
     def make_user(self, data):
@@ -24,16 +26,16 @@ class User(BaseModel):
     schema = UserSchema(strict=True)
     default_level = 0
 
-    username = orm.Column(orm.String(32), index=True)
+    name = orm.Column(orm.String(32), index=True)
     email = orm.Column(orm.String(64))
     level = orm.Column(orm.Integer)
     password_hash = orm.Column(orm.String(500))
 
     def __init__(self,
-                 username,
+                 name,
                  email=None,
                  level=default_level):
-        self.username = username
+        self.username = name
         self.email = email
         self.level = level
 
@@ -53,8 +55,22 @@ class User(BaseModel):
         try:
             data = s.loads(token)
         except SignatureExpired:
-            return None    # valid token, but expired
+            return None  # valid token, but expired
         except BadSignature:
-            return None    # invalid token
+            raise  # invalid token
         user = User.query.get(data['id'])
         return user
+
+    @staticmethod
+    def verify_admin_temp_token(token):
+        s = Serializer(SECRET_KEY)
+        try:
+            data = s.loads(token)
+        except SignatureExpired:
+            return None  # valid token, but expired
+        except BadSignature:
+            raise  # invalid token
+        user = User.query.get(data['id'])
+        return user
+
+
