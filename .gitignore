@@ -1,1 +1,3 @@
 logs/
+tool/migrations
+*.pyc
