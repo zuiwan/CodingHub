@@ -32,10 +32,39 @@ class FavoriteCenter(object):
 
 
     def query_by_project(self,data):
-        if "project_id" not in data:
-            return "this project does not existed"
-        result=self.dbm.query_by_project(data.get("project_id"))
-        return result
+        results=self.dbm.query_by_project(data)
+        output = self.output_favorite_list(results)
+        return output
+
+    def query_by_tags(self,data):
+        results=self.dbm.query_by_tags(data)
+        output=self.output_favorite_list(results)
+        return output
+
+    # def query_by_unread(self):
+    #     results = self.dbm.get_unread_list()
+    #     if results:
+    #         return "success"
+    #     return "fail"
+
+
+    def output_favorite_list(self,results):
+        new_list = list()
+        for result in results:
+            new_list.append({
+                "owner_id":result.owner_id,
+                "project_id":result.project_id,
+                "url":result.url,
+                "origin":result.origin,
+                "catalog":result.catalog,
+                "name":result.name,
+                "description":result.description,
+                "tags":result.tags,
+                "permission":result.permission,
+                "is_recommended":result.is_recommended,
+                "is_unread": result.is_unread
+            })
+        return new_list
 
 
 

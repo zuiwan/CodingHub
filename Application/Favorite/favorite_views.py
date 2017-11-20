@@ -16,7 +16,22 @@ class Favorite_API(Resource):
 
     @http_basic_auth.login_required
     def get(self):
-        return 0
+        parser=reqparse.RequestParser()
+        parser.add_argument("project_id",type=int,location="args")
+        parser.add_argument("tags",type=str,location="args")
+        # parser.add_argument("is_unread", type=int, location="args")
+        args=parser.parse_args()
+        fc = FavoriteCenter()
+
+        results=''
+        if args["project_id"]:
+            results = fc.query_by_project(args["project_id"])
+        elif args["tags"]:
+            results = fc.query_by_tags(args["tags"])
+        # elif args["is_unread"]:
+        #     return "in_unread"
+
+        return results
 
     @http_basic_auth.login_required
     def put(self):

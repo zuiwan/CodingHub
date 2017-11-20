@@ -40,6 +40,16 @@ class FavoriteDBM():
         records=sql.all()
         return records
 
+    def query_by_tags(self,tags):
+        sql=Favorite.query.filter(Favorite.tags==tags)
+        records=sql.all()
+        return records
+    
+    # def get_unread_list(self):
+    #     sql = Favorite.query.filter(Favorite.is_unread == False)
+    #     records = sql.all()
+    #     return records
+
     def modify(self):
         return 0
 
