@@ -11,19 +11,21 @@ from Library import error_util as ED
 class Favorite_API(Resource):
     @http_basic_auth.login_required
     def post(self):
-        '''
-        login
-        :return:
-        '''
+        return 0
 
-        # type = {0: 'test', 1: 'default'}
-        # result = {'code': ED.no_err}
-        # result['data'] = {'uid': str(g.user.id),
-        #                   'username': g.user.username,
-        #
-        #                   'email': g.user.email,
-        #                   }
 
+    @http_basic_auth.login_required
+    def get(self):
+        return 0
+
+    @http_basic_auth.login_required
+    def put(self):
         fc = FavoriteCenter()
         result = fc.add(json.loads(request.data))
+        return result
+
+    @http_basic_auth.login_required
+    def delete(self):
+        fc=FavoriteCenter()
+        result = fc.delete(json.loads(request.data))
         return result

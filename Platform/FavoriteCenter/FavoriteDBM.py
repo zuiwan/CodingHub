@@ -24,9 +24,33 @@ class FavoriteDBM():
         records = sql.all()
         Favorite.query.filter_by(id=data.get('id')).first()
 
-    def delete(self):
-        return 0
+    def delete(self,url,project_id):
+        sql = Favorite.query.filter(
+            and_(
+                Favorite.url == url,
+                Favorite.project_id == project_id
+            )
+        )
+        record = sql.first()
+        orm.session.delete(record)
+        orm.session.commit()
+
+    def query_by_project(self,project_id):
+        sql=Favorite.query.filter(Favorite.project_id==project_id)
+        records=sql.all()
+        return records
 
     def modify(self):
         return 0
+
+    def Is_Url_Existed(self, url, project_id):
+        sql = Favorite.query.filter(
+            and_(
+                Favorite.url ==  url,
+                Favorite.project_id == project_id
+            )
+        )
+        records = sql.all()
+        return records
+
 
