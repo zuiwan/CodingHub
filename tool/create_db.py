@@ -9,4 +9,5 @@ from Library.extensions import orm
 
 from Library.OrmModel.User import User
 from Library.OrmModel.Project import Project
+from Library.OrmModel.Farovite import Favorite
 orm.create_all()

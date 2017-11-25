@@ -1,40 +1,73 @@
-from sqlalchemy import and_
+from sqlalchemy import or_, and_, extract, in_
+from sqlalchemy.orm.exc import MultipleResultsFound, NoResultFound
 
+
+import traceback
+from Library.log_util import LogCenter
+from Library.singleton import Singleton
 from Library.extensions import orm
 from Library.OrmModel.User import User
 from Library.OrmModel.Farovite import Favorite
 
+@Singleton
 class FavoriteDBM():
     def __init__(self):
-        pass
+        self.logger = LogCenter.instance().get_logger("center", "favorite")
+        self.db = orm
+
     def Create_Favorite(self,
                         owner_id,
                         url,
                         project_id,
                         origin,
+                        source,
                         catalog,
                         name,
                         description,
                         tags,
-                        permission,
                         is_recommended,
                         is_unread):
-        # data = {'url': 'url'}
         fav = Favorite(owner_id=owner_id,
                        url=url,
                        project_id=project_id,
                        origin=origin,
                        catalog=catalog,
                        name=name,
+                       source=source,
                        description=description,
                        tags=tags,
-                       permission=permission,
                        is_recommended=is_recommended,
                        is_unread=is_unread)
-        # fav = Favorite(owner_id='')
-        orm.session.add(fav)
-        orm.session.commit()
+        self.db.session.add(fav)
+        self.db.session.commit()
         return fav
+
+    def Update_Favorite(self,
+                        id,
+                        owner_id=None,
+                        catalog=None,
+                        tags=None,
+                        is_recommended=None,
+                        is_unread=None,
+                        source=None,
+                        description=None,
+                        ):
+        fav = self._Get_Favorite_By_Id(id)
+        if owner_id is not None:
+            fav.owner_id = owner_id
+        if tags is not None:
+            fav.tags = tags
+        if is_unread is not None:
+            fav.is_unread = is_unread
+        if catalog is not None:
+            fav.catalog = catalog
+        if source is not None:
+            fav.source = source
+        self.db.session.commit()
+        return True
+
+    def _Get_Favorite_By_Id(self, id):
+        return Favorite.query.get(id)
 
     def query(self, data):
         sql = Favorite.query.filter(
@@ -58,24 +91,30 @@ class FavoriteDBM():
         orm.session.commit()
 
     def Get_Favorite_By_ProjectId(self,project_id):
-        sql=Favorite.query.filter(Favorite.project_id==project_id)
-        records=sql.all()
+        sql = Favorite.query.filter(and_(Favorite.project_id == project_id,
+                                         Favorite.is_deleted == 0))
+        try:
+            records = sql.all()
+        except Exception as e:
+            self.logger.error(traceback.format_exc())
+            records = []
         return records
 
-    def Get_Favorite_By_Tags(self,tags):
-        sql=Favorite.query.filter(Favorite.tags==tags)
-        records=sql.all()
+    def Get_Favorite_By_Tags(self, tag):
+        sql = Favorite.query.filter(and_(in_(tag, Favorite.tags),
+                                       Favorite.is_deleted == 0))
+        try:
+            records = sql.all()
+        except Exception as e:
+            self.logger.error(traceback.format_exc())
+            records = []
         return records
     
-    # def get_unread_list(self):
-    #     sql = Favorite.query.filter(Favorite.is_unread == False)
-    #     records = sql.all()
-    #     return records
+    def Get_Unread_List(self, unread=True):
+        sql = Favorite.query.filter(Favorite.is_unread == unread)
+        records = sql.all()
+        return records
 
-
-
-    def Update_Favorite_Settings(self):
-        return 0
 
     def Is_Url_Existed(self, url, project_id):
         sql = Favorite.query.filter(

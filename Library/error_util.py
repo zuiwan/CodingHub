@@ -70,7 +70,7 @@ Message[err_timeout] = {'en': 'err_timeout', 'cn': u'超时'}
 # * 9.当输入的邮箱验证码不正确时，提示“邮箱验证码出错”
 
 
-
+KEYS = ('code', 'data')
 
 def Respond_Err(err_code, err_msg=None):
     return {'code':err_code, 'data': '%s' % err_msg if err_msg else Message.get(err_code).get('cn') or Message.get(err_code).get('en')}

@@ -1,42 +1,61 @@
 
 from FavoriteDBM import FavoriteDBM
 from Library import error_util as ED
+from Library.log_util import LogCenter
+from Library.singleton import Singleton
 
+@Singleton
 class FavoriteCenter(object):
+    '''
+    所有功能函数的返回值为二元元组(性能考虑），第一个值是在error_util找那个定义的错误码，第二个值是【可json序列化】的python对象。
+    '''
     def __init__(self):
-        self.dbm = FavoriteDBM()
+        self.dbm = FavoriteDBM.instance()
+        self.logger = LogCenter.instance().get_logger("center", "favorite")
 
     def Create_Favorite(self, data):
-        if 'owner_id' not in data:
-            return "owner_id is needed"
-        if "project_id" not in data:
-            return "projec_id is needed"
-        if "url" not in data:
-            return "url is needed"
-        if self.dbm.Is_Url_Existed(data.get("url"),data.get("project_id")):
-            return "this url has existed"
-        if data.get("name") is not None and self.dbm.Is_Favorite_Name_Duplicate(data.get("name"),data.get("project_id")):
-            return "this name has existed"
-        fav=self.dbm.Create_Favorite(data.get("owner_id"),
-                                 data.get("url"),
-                                 data.get("project_id"),
-                                 data.get("origin"),
-                                 data.get("catalog"),
-                                 data.get("name"),
-                                 data.get("descrption"),
-                                 data.get("tags"),
-                                 data.get("permission"),
-                                 data.get("is_recommended"),
-                                 data.get("is_unread"))
-        results={'code':ED.no_err}
+        if not len(data.get('owner_id', '')) > 0:
+            return (ED.err_req_data,)
+
+        if self.dbm.Is_Url_Existed(data.get("url"), data.get("project_id")):
+            return (ED.err_duplicate,)
+
+        fav = self.dbm.Create_Favorite(owner_id=data.get("owner_id"),
+                                 url=data.get("url"),
+                                 project_id=data.get("project_id"),
+                                 origin=data.get("origin"),
+                                 source=data.get('source'),
+                                 catalog=data.get("catalog"),
+                                 name=data.get("name"),
+                                 description=data.get("description"),
+                                 tags=data.get("tags"),
+                                 is_private=data.get("is_private"),
+                                 is_recommended=data.get("is_recommended"),
+                                 is_unread=data.get("is_unread"))
         if fav:
-            results['data']=fav.to_dict()
+            out_data = fav.to_dict()
         else:
-            results=ED.Respond_Err(ED.err_sys)
-        return results
+            return ED.err_sys,
 
+        return (ED.no_err, out_data)
 
-    def Delete_Favorite(self,data):
+    def Update_Favorite(self, data):
+        fav_id = data.get('id')
+        if not fav_id:
+            return (ED.err_req_data,)
+        fav = self._Get_Favorite_By_Id(fav_id)
+        if not fav:
+            return (ED.err_not_found,)
+        flag = self.dbm.Update_Favorite(id=fav_id,
+                                       tags=data.get('tags'),
+                                       catalog=data.get('catalog'),
+                                       )
+        if not flag:
+            return (ED.err_sys,)
+        else:
+            return (ED.no_err,)
+
+    def Delete_Favorite(self, data):
         results={'code':ED.no_err,'data':''}
         if 'owner_id' not in data:
             return "owner_id is needed"
@@ -50,16 +69,10 @@ class FavoriteCenter(object):
         return results
 
 
-    def Query_Favorite_By_ProjectId(self,data):
-        # results = self.dbm.Get_Favorite_By_ProjectId(data)
-        # output = self.output_favorite_list(results)
-        # return output
-        # return output
-        result={'code':ED.no_err,'data':''}
+    def Query_Favorite_By_ProjectId(self, data):
         favorites = self.dbm.Get_Favorite_By_ProjectId(data)
-        output = self.output_favorite_list(favorites)
-        result['data']=output
-        return result
+        out_data = self.output_favorite_list(favorites)
+        return (ED.no_err, out_data)
 
     def Query_Favorite_By_Tags(self,data):
         result = {'code': ED.no_err, 'data': ''}
@@ -69,7 +82,7 @@ class FavoriteCenter(object):
         return result
 
     # def query_by_unread(self):
-    #     results = self.dbm.get_unread_list()
+    #     results = self.dbm.Get_Unread_List()
     #     if results:
     #         return "success"
     #     return "fail"
@@ -83,6 +96,7 @@ class FavoriteCenter(object):
                 "project_id":result.project_id,
                 "url":result.url,
                 "origin":result.origin,
+                'source': result.source,
                 "catalog":result.catalog,
                 "name":result.name,
                 "description":result.description,
