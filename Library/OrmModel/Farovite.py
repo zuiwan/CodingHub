@@ -14,6 +14,11 @@ class FavoriteSchema(BaseSchema):
     permission = fields.Int()
     origin=fields.Str()
     is_recommended = fields.Boolean()
+    is_unread = fields.Boolean()
+    catalog=fields.Str()
+    origin=fields.Str()
+    url=fields.Str()
+    project_id=fields.Int()
     @post_load
     def make_project(self, data):
         return Favorite(**data)
@@ -27,24 +32,39 @@ class Favorite(BaseModel):
     1 private
     '''
     default_permission = 0
-
+    default_catalog="myCatalog"
     name = orm.Column(orm.String(64), index=True)
     owner_id = orm.Column(orm.String(32))
     description = orm.Column(orm.String(64), default='')
     tags = orm.Column(orm.String(64), default='')
     permission = orm.Column(orm.Integer, default=default_permission)
     is_recommended = orm.Column(orm.Boolean, default=False)
+    is_unread = orm.Column(orm.Boolean, default=False)
+    origin=orm.Column(orm.String(64),default='')
+    catalog=orm.Column(orm.String(64),default=default_catalog)
+    url=orm.Column(orm.String(64))
+    project_id=orm.Column(orm.Integer)
 
     def __init__(self,
                  owner_id,
+                 url,
+                 project_id,
+                 origin=None,
+                 catalog=default_catalog,
                  name=None,
                  description=None,
                  tags=None,
                  permission=default_permission,
-                 is_recommended=None):
+                 is_recommended=None,
+                 is_unread = None):
         self.name = name
         self.owner_id = owner_id
         self.description = description
         self.tags = tags
         self.permission = permission
         self.is_recommended = is_recommended
+        self.is_unread = is_unread
+        self.catalog=catalog
+        self.url=url
+        self.project_id=project_id
+        self.origin=origin
