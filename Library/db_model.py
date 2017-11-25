@@ -17,6 +17,7 @@ logger = LogCenter.instance().get_logger('ExceptionLog')
 
 init_db_config = {}
 init_db_config['host'] = "localhost"
+init_db_config['host'] = "118.89.27.96"
 init_db_config['host_s'] = '[{"localhost", "rate":100}]'
 init_db_config['db'] = "zuiwan"
 

@@ -32,4 +32,10 @@ def dbdemo():
                                     limit='0,%d' % 5, order=[{'key': 'date_created', 'desc': True}])
     records = db_model.GetList(select_sql, options={"table_count": 1})
 
-    return jsonify({'orm': new_list, 'sql': records})
+    al_recs = orm.session.query(User.date_created, User.email).all()
+    al_rec = []
+    for rec in al_recs:
+        print rec
+        al_rec.extend(rec)
+    
+    return jsonify({'orm': new_list, 'sql': records, 'alchemy': al_rec})
