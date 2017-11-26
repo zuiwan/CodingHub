@@ -19,8 +19,11 @@ from werkzeug.datastructures import Authorization
 
 from Library.extensions import orm
 from Library.OrmModel.User import User
+from Library.singleton import Singleton
 
-class User_Center(object):
+
+@Singleton
+class UserCenter(object):
     http_basic_auth=HTTPBasicAuth()
 
     def __init__(self,owner_id):
@@ -70,7 +73,7 @@ class User_Center(object):
         else:
             return None
 
-http_basic_auth = User_Center.http_basic_auth
+http_basic_auth = UserCenter.http_basic_auth
 @ED.auth_error_handler(http_basic_auth)
 def Unauthorized_Handler():
     return jsonify(ED.Respond_Err(ED.err_no_auth, "账号或密码错误，请重试"))
@@ -82,7 +85,7 @@ def Verify_Password(username_or_token, password):
     user = Verify_Auth_Token(username_or_token)
     if not user:
         # try to authenticate with username/password
-        user = User_Center.Get_User(username=username_or_token)
+        user = UserCenter.Get_User(username=username_or_token)
         if not user or not user.verify_password(password):
             return False
     g.user = user

@@ -1,19 +1,22 @@
 # -*- coding:utf-8 -*-
 import traceback
-
 from flask_restful import Resource, reqparse
 from flask import request, g, jsonify, Response, stream_with_context, render_template, send_file, Response
 
 from Library.log_util import LogCenter
 from Platform.FavoriteCenter.FavoriteCenter import FavoriteCenter
-from Platform.UserCenter.UserCenter import User_Center
+from Platform.UserCenter.UserCenter import UserCenter
 
-http_basic_auth = User_Center.http_basic_auth
+
 from Library.data_util import *
 from Library import error_util as ED
 
 FC_IST = FavoriteCenter.instance()
+UC_IST = UserCenter.instance()
 favorite_view_logger = LogCenter.instance().get_logger("view", "favorite")
+
+http_basic_auth = UC_IST.http_basic_auth
+
 class Favorite_API(Resource):
     @http_basic_auth.login_required
     def get(self):

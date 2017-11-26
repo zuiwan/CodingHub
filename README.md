@@ -1,4 +1,4 @@
-# CodingLife_Server
+# CodingHub
 Your all-round manager of coding life.
 
 ## Features
@@ -11,7 +11,7 @@ Your all-round manager of coding life.
 
 ## Deploy
 ```bash
-cd /root/CodingLife_Server
+cd /root/CodingHub
 git pull
 sh tool/restart.sh
 ```

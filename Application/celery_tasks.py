@@ -12,31 +12,10 @@ celery_logger = LogCenter.instance().get_logger('celery', 'tasks')
 @check_api_cost_time
 def checkInstance(self, experiment_id, time_limit=None):
     # step 2 celery任务开始执行 #
-    Write_Celery_Log(experiment_id, k_log_output_2)
 
+    # step2 初始化experiment任务
     experiment = Get_Experiment_By_Id(experiment_id)
-    if not experiment:
-        Write_Celery_Log(experiment_id, "Experiment not found", "ERROR")
-        return
-
-    module = Get_Module_By_Id(experiment.module_id)
-    if not module:
-        Write_Celery_Log(experiment_id, "Module not found", "ERROR")
-        return
-
-    if experiment.data_id:
-        if not Get_Dataset_By_Id(experiment.data_id):
-            Write_Celery_Log(experiment.id, "Dataset not found", "ERROR")
-            return
-
-    #### Copy files from archive to experiment environment ###
-    Import_Module_To_Experiment(experiment_id=experiment_id, module_id=module.id)
-
-    #### Get Configs ####
     configs = Get_Configs(experiment, module)
-    if configs is None:
-        Write_Celery_Log(experiment_id, "Get Configurations failed", "ERROR")
-        return
     _application = configs.get('_application')
     work_nfs_opts = configs.get('work_nfs_opts')
     data_nfs_opts = configs.get('data_nfs_opts')
@@ -45,20 +24,26 @@ def checkInstance(self, experiment_id, time_limit=None):
     name = configs.get('name')
     content = configs.get('content')
     docker_image = configs.get('docker_image')
-    #### Get Configs ####
 
-    #### Make output dir and generate run.sh
+    ## 从module导入代码
+    module = Get_Module_By_Id(experiment.module_id)
+    #### Copy files from archive to experiment environment ###
+    Import_Module_To_Experiment(experiment_id=experiment_id, module_id=module.id)
+
+    ## 创建输出文件夹和程序入口脚本
     flag = Mk_Output_Dir(experiment_id=experiment_id, module_command=module.command, module_mode=module.mode)
     if not flag:
         return False
 
-    flag = Create_Work_Volume(experiment_id=experiment_id,
+    ## 创建工作卷
+    Create_Work_Volume(experiment_id=experiment_id,
                        work_name=work_name,
                        work_nfs_opts=work_nfs_opts,
                        _application=_application)
-    if not flag:
-        return False
 
+    ## 如果有文件依赖，从data导入文件并挂载
+    if experiment.data_id:
+        data_module = Get_Dataset_By_Id(experiment.data_id)
     if data_name != "":
         flag = Mount_Dataset(experiment_id=experiment_id,
                       data_name=data_name,
@@ -67,9 +52,9 @@ def checkInstance(self, experiment_id, time_limit=None):
         if not flag:
             return False
 
-    state = "waiting"
 
     ### 创建任务实例
+    state = "waiting"
     instance = Create_TaskInstance(container=docker_image,
                                    log_id=experiment_id,
                                    owner_id=experiment.owner_id,
@@ -83,19 +68,15 @@ def checkInstance(self, experiment_id, time_limit=None):
     ### 更新experiment表的实例
     Update_Experiment(experiment_id, task_instance_ids=instance.id)
 
-    # step 7 任务创建成功或失败
+    # step 7 任务创建
     application_result, application_content = _application.app_create(name, template=content)
-    if application_result:
-        Write_Celery_Log(experiment_id, k_log_output_7, "VERBOSE")
-    else:
-        Write_Celery_Log(experiment_id, "Task create failed" + application_content, "ERROR")
-        return
 
     try:
         current_state, created, updated = _application.get_application_info(name)
         datetime_to_stop = string_toDatetime(created) + datetime.timedelta(seconds=time_limit or 0)
     except:
         datetime_to_stop = None
+
     ###### 轮询 ######
     PollingState(experiment=experiment,
                  instance=instance,

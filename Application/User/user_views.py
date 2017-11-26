@@ -1,9 +1,9 @@
 # -*- coding:utf-8 -*-
 from flask_restful import Resource, reqparse
 from flask import request, g, jsonify, Response, stream_with_context, render_template, send_file, Response
-from Platform.UserCenter.UserCenter import Regist_With_Code, User_Center
+from Platform.UserCenter.UserCenter import Regist_With_Code, UserCenter
 
-http_basic_auth = User_Center.http_basic_auth
+http_basic_auth = UserCenter.http_basic_auth
 from Application.User.user_manager import *
 
 
@@ -45,7 +45,7 @@ class User_API(Resource):
             username = request.form.get('username')
             if not Is_Username_Validate(username):
                 return ED.Respond_Err(ED.err_user_register_error, "用户名格式出错，只支持字母和符号")
-            if User_Center.Is_User_Existed(username):
+            if UserCenter.Is_User_Existed(username):
                 return ED.Respond_Err(ED.err_user_id_existed, "该名称已被使用")
 
             # check password
@@ -57,7 +57,7 @@ class User_API(Resource):
             email = request.form.get('email')
             if not Is_Email_Validate(email):
                 return ED.Respond_Err(ED.err_req_data, '邮箱格式出错')
-            if User_Center.Is_Email_Existed(email):
+            if UserCenter.Is_Email_Existed(email):
                 return ED.Respond_Err(ED.err_user_id_existed, '该邮箱已注册')
             # check invite code
             # invite_code = request.form.get('code')
@@ -93,8 +93,8 @@ class User_API(Resource):
         username = request.form.get('username')
         password = request.form.get('password')
         email = request.form.get('email')
-        user = User_Center.Get_User(username=username)
-        user = User_Center.Update_User_Setting(id=user.id, username=username, email=email, password=password)
+        user = UserCenter.Get_User(username=username)
+        user = UserCenter.Update_User_Setting(id=user.id, username=username, email=email, password=password)
         if not user:
             return ED.Respond_Err(ED.err_sys)
         result['data'] = user.to_dict()
