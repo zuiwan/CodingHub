@@ -1,0 +1,17 @@
+Flask==0.12.2
+Flask-gzip==0.1
+itsdangerous==0.24
+oauth==1.0.1
+prettytable==0.7.2
+requests==2.2.1
+ssh-import-id==3.21
+urllib3==1.7.1
+wheel==0.24.0
+six==1.10.0
+marshmallow
+elasticsearch
+MySQL-python
+passlib
+pymysql
+flask_script
+flask_migrate
