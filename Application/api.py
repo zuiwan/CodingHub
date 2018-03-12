@@ -3,6 +3,10 @@
 from flask import jsonify
 from flask_restful import Api
 from Application.app import flask_app
+from Library.db_model import DBModelFactory, DBModel
+from Library.extensions import orm
+from Library.OrmModel.User import User
+db_model = DBModelFactory.instance().get_db_model()
 
 api = Api(flask_app)
 from Application.User.User import User_API
@@ -27,10 +31,6 @@ def index():
 
 @flask_app.route('/api/v1/db/demo', methods=['GET'])
 def dbdemo():
-    from Library.db_model import DBModelFactory, DBModel
-    from Library.extensions import orm
-    from Library.OrmModel.User import User
-    db_model = DBModelFactory.instance().get_db_model()
     users = User.query.all()
     new_list = []
     for user in users:

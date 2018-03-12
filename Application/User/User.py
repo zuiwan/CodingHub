@@ -45,6 +45,7 @@ class User_API(Resource):
         user.update(data)
         return result
 
+    @package_json_request_data
     def post(self):
         '''
         注册

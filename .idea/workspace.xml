@@ -2,40 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91b646db-fea0-40ee-861b-d4b6001e9e3b" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Application/Contacts/Contacts.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Application/Contacts/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Config/Dockerfile" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Config/supervisord.conf" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Library/OrmModel/Contacts.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Application/Favorite/Favorite.py" afterPath="$PROJECT_DIR$/Application/Favorite/Favorite.py" />
-      <change beforePath="$PROJECT_DIR$/Application/Mall/Mall.py" afterPath="$PROJECT_DIR$/Application/Mall/Mall.py" />
-      <change beforePath="$PROJECT_DIR$/Application/Project/Project.py" afterPath="$PROJECT_DIR$/Application/Project/Project.py" />
       <change beforePath="$PROJECT_DIR$/Application/User/User.py" afterPath="$PROJECT_DIR$/Application/User/User.py" />
-      <change beforePath="$PROJECT_DIR$/Application/app.py" afterPath="$PROJECT_DIR$/Application/app.py" />
-      <change beforePath="$PROJECT_DIR$/Application/celery_tasks.py" afterPath="$PROJECT_DIR$/Application/celery_tasks.py" />
-      <change beforePath="$PROJECT_DIR$/Application/wsgi.py" afterPath="$PROJECT_DIR$/Application/wsgi.py" />
-      <change beforePath="$PROJECT_DIR$/Config/nginx.conf" afterPath="$PROJECT_DIR$/Config/nginx.conf" />
-      <change beforePath="$PROJECT_DIR$/Config/requirements.txt" afterPath="$PROJECT_DIR$/Config/requirements.txt" />
-      <change beforePath="$PROJECT_DIR$/Config/uwsgi_supervisor.conf" afterPath="$PROJECT_DIR$/Config/uwsgi_supervisor.conf" />
-      <change beforePath="$PROJECT_DIR$/Library/ErrorDefine.py" afterPath="$PROJECT_DIR$/Library/ErrorDefine.py" />
-      <change beforePath="$PROJECT_DIR$/Library/OrmModel/Farovite.py" afterPath="$PROJECT_DIR$/Library/OrmModel/Farovite.py" />
-      <change beforePath="$PROJECT_DIR$/Library/Utils/__init__.py" afterPath="$PROJECT_DIR$/Library/Utils/__init__.py" />
-      <change beforePath="$PROJECT_DIR$/Library/Utils/log_util.py" afterPath="$PROJECT_DIR$/Library/Utils/log_util.py" />
-      <change beforePath="$PROJECT_DIR$/Library/Utils/net_util.py" afterPath="$PROJECT_DIR$/Library/Utils/net_util.py" />
-      <change beforePath="$PROJECT_DIR$/Library/Utils/time_util.py" afterPath="$PROJECT_DIR$/Library/Utils/time_util.py" />
+      <change beforePath="$PROJECT_DIR$/Application/api.py" afterPath="$PROJECT_DIR$/Application/api.py" />
+      <change beforePath="$PROJECT_DIR$/Config/Dockerfile" afterPath="$PROJECT_DIR$/Config/Dockerfile" />
+      <change beforePath="$PROJECT_DIR$/Config/uwsgi.ini" afterPath="$PROJECT_DIR$/Config/uwsgi.ini" />
+      <change beforePath="$PROJECT_DIR$/Library/OrmModel/Product.py" afterPath="$PROJECT_DIR$/Library/OrmModel/Product.py" />
       <change beforePath="$PROJECT_DIR$/Library/db_model.py" afterPath="$PROJECT_DIR$/Library/db_model.py" />
-      <change beforePath="$PROJECT_DIR$/Platform/FavoriteCenter/FavoriteCenter.py" afterPath="$PROJECT_DIR$/Platform/FavoriteCenter/FavoriteCenter.py" />
-      <change beforePath="$PROJECT_DIR$/Platform/FavoriteCenter/FavoriteDBM.py" afterPath="$PROJECT_DIR$/Platform/FavoriteCenter/FavoriteDBM.py" />
-      <change beforePath="$PROJECT_DIR$/Platform/MallCenter/MallCenter.py" afterPath="$PROJECT_DIR$/Platform/MallCenter/MallCenter.py" />
-      <change beforePath="$PROJECT_DIR$/Platform/TaskCenter/TaskCenter.py" afterPath="$PROJECT_DIR$/Platform/TaskCenter/TaskCenter.py" />
-      <change beforePath="$PROJECT_DIR$/Platform/TaskCenter/TaskDBM.py" afterPath="$PROJECT_DIR$/Platform/TaskCenter/TaskDBM.py" />
-      <change beforePath="$PROJECT_DIR$/Platform/TextCenter/TextCenter.py" afterPath="$PROJECT_DIR$/Platform/TextCenter/TextCenter.py" />
-      <change beforePath="$PROJECT_DIR$/Platform/UserCenter/UserCenter.py" afterPath="$PROJECT_DIR$/Platform/UserCenter/UserCenter.py" />
-      <change beforePath="$PROJECT_DIR$/Platform/UserCenter/UserDBM.py" afterPath="$PROJECT_DIR$/Platform/UserCenter/UserDBM.py" />
-      <change beforePath="$PROJECT_DIR$/tool/create_db.py" afterPath="$PROJECT_DIR$/tool/create_db.py" />
-      <change beforePath="$PROJECT_DIR$/tool/restart.sh" afterPath="$PROJECT_DIR$/tool/restart.sh" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -49,77 +23,63 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Farovite.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Library/OrmModel/Farovite.py">
+      <file leaf-file-name="Mall.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Mall/Mall.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+            <state relative-caret-position="-328">
+              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding>
-                <element signature="e#46#95#0" expanded="true" />
+                <element signature="e#379#423#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Module.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Library/OrmModel/Module.py">
+      <file leaf-file-name="UserCenter.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Platform/UserCenter/UserCenter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="26" column="10" lean-forward="false" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
+            <state relative-caret-position="312">
+              <caret line="105" column="28" lean-forward="false" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Product.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Library/OrmModel/Product.py">
+      <file leaf-file-name="Dockerfile" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Config/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-              <folding>
-                <element signature="e#455#504#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Project.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Library/OrmModel/Project.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="13" column="28" lean-forward="false" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
+            <state relative-caret-position="340">
+              <caret line="16" column="24" lean-forward="false" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Task.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Library/OrmModel/Task.py">
+      <file leaf-file-name="uwsgi.ini" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Config/uwsgi.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="12" column="23" lean-forward="false" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+            <state relative-caret-position="198">
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="log_util.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Library/Utils/log_util.py">
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2046">
-              <caret line="93" column="35" lean-forward="false" selection-start-line="93" selection-start-column="35" selection-end-line="93" selection-end-column="35" />
-              <folding>
-                <element signature="e#24#35#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="165">
+              <caret line="15" column="10" lean-forward="false" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TaskInstance.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Library/OrmModel/TaskInstance.py">
+      <file leaf-file-name="supervisord.conf" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Config/supervisord.conf">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+            <state relative-caret-position="594">
+              <caret line="27" column="37" lean-forward="false" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -138,25 +98,37 @@
       <file leaf-file-name="api.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/api.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="38" column="21" lean-forward="false" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
+            <state relative-caret-position="243">
+              <caret line="19" column="20" lean-forward="true" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+              <folding>
+                <element signature="e#46#71#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Application/User/User.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="328">
+              <caret line="45" column="17" lean-forward="true" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="db_model.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="db_model.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Library/db_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="468" column="50" lean-forward="true" selection-start-line="468" selection-start-column="50" selection-end-line="468" selection-end-column="50" />
+            <state relative-caret-position="-1322">
+              <caret line="73" column="43" lean-forward="true" selection-start-line="73" selection-start-column="43" selection-end-line="73" selection-end-column="43" />
               <folding>
                 <element signature="e#46#59#0" expanded="true" />
-                <marker date="1520878874061" expanded="true" signature="3903:3934" ph="insert into `missing_value`... " />
-                <marker date="1520878874061" expanded="true" signature="4408:4424" ph="update `missing_value`... " />
-                <marker date="1520878874061" expanded="true" signature="6234:6253" ph="select missi... missing_value" />
-                <marker date="1520878874061" expanded="true" signature="6438:6454" ph="delete from `missing_value`... " />
-                <marker date="1520878874061" expanded="true" signature="11627:11669" ph="select count... missing_value" />
+                <marker date="1520881068818" expanded="true" signature="3896:3927" ph="insert into `missing_value`... " />
+                <marker date="1520881068818" expanded="true" signature="4401:4417" ph="update `missing_value`... " />
+                <marker date="1520881068818" expanded="true" signature="6227:6246" ph="select missi... missing_value" />
+                <marker date="1520881068818" expanded="true" signature="6431:6447" ph="delete from `missing_value`... " />
+                <marker date="1520881068818" expanded="true" signature="11673:11715" ph="select count... missing_value" />
               </folding>
             </state>
           </provider>
@@ -197,7 +169,6 @@
       <list>
         <option value="$PROJECT_DIR$/Config/celery_supervisor.conf" />
         <option value="$PROJECT_DIR$/Config/nginx_uwsgi.conf" />
-        <option value="$PROJECT_DIR$/Config/uwsgi.ini" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/tool/cd_hack.sh" />
         <option value="$PROJECT_DIR$/tool/deploy_test_server.sh" />
@@ -205,12 +176,10 @@
         <option value="$PROJECT_DIR$/Library/Utils/error_util.py" />
         <option value="$PROJECT_DIR$/Application/Favorite/favorite_views.py" />
         <option value="$PROJECT_DIR$/Library/OrmModel/Module.py" />
-        <option value="$PROJECT_DIR$/Library/OrmModel/Product.py" />
         <option value="$PROJECT_DIR$/Library/extensions.py" />
         <option value="$PROJECT_DIR$/Library/OrmModel/User.py" />
         <option value="$PROJECT_DIR$/Library/OrmModel/UserProfile.py" />
         <option value="$PROJECT_DIR$/Library/OrmModel/__init__.py" />
-        <option value="$PROJECT_DIR$/Application/api.py" />
         <option value="$PROJECT_DIR$/Library/OrmModel/ShoppingCart.py" />
         <option value="$PROJECT_DIR$/Platform/UserCenter/ShoppingCart.py" />
         <option value="$PROJECT_DIR$/Platform/UserCenter/UserControler.py" />
@@ -220,7 +189,6 @@
         <option value="$PROJECT_DIR$/Config/supervisord.conf" />
         <option value="$PROJECT_DIR$/Config/nginx.conf" />
         <option value="$PROJECT_DIR$/Application/wsgi.py" />
-        <option value="$PROJECT_DIR$/Config/Dockerfile" />
         <option value="$PROJECT_DIR$/Library/Utils/__init__.py" />
         <option value="$PROJECT_DIR$/Library/Utils/time_util.py" />
         <option value="$PROJECT_DIR$/Application/celery_tasks.py" />
@@ -230,7 +198,6 @@
         <option value="$PROJECT_DIR$/Platform/UserCenter/UserDBM.py" />
         <option value="$PROJECT_DIR$/Config/requirements.txt" />
         <option value="$PROJECT_DIR$/Platform/UserCenter/UserCenter.py" />
-        <option value="$PROJECT_DIR$/Application/User/User.py" />
         <option value="$PROJECT_DIR$/Platform/FavoriteCenter/FavoriteCenter.py" />
         <option value="$PROJECT_DIR$/Platform/FavoriteCenter/FavoriteDBM.py" />
         <option value="$PROJECT_DIR$/Platform/MallCenter/MallCenter.py" />
@@ -245,7 +212,12 @@
         <option value="$PROJECT_DIR$/Library/OrmModel/Farovite.py" />
         <option value="$PROJECT_DIR$/tool/restart.sh" />
         <option value="$PROJECT_DIR$/Library/Utils/log_util.py" />
+        <option value="$PROJECT_DIR$/Config/Dockerfile" />
+        <option value="$PROJECT_DIR$/Config/uwsgi.ini" />
+        <option value="$PROJECT_DIR$/Application/api.py" />
+        <option value="$PROJECT_DIR$/Library/OrmModel/Product.py" />
         <option value="$PROJECT_DIR$/Library/db_model.py" />
+        <option value="$PROJECT_DIR$/Application/User/User.py" />
       </list>
     </option>
   </component>
@@ -288,54 +260,6 @@
               <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
               <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
               <item name="Application" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
-              <item name="Application" type="462c0819:PsiDirectoryNode" />
-              <item name="Blog" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
-              <item name="Application" type="462c0819:PsiDirectoryNode" />
-              <item name="Contacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
-              <item name="Application" type="462c0819:PsiDirectoryNode" />
-              <item name="Favorite" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
-              <item name="Application" type="462c0819:PsiDirectoryNode" />
-              <item name="Mall" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
-              <item name="Application" type="462c0819:PsiDirectoryNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
-              <item name="Application" type="462c0819:PsiDirectoryNode" />
-              <item name="Task" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
-              <item name="Application" type="462c0819:PsiDirectoryNode" />
-              <item name="User" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
-              <item name="Application" type="462c0819:PsiDirectoryNode" />
-              <item name="Wiki" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
@@ -629,16 +553,22 @@
       <option name="project" value="LOCAL" />
       <updated>1520183558626</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="[DEV] deployed successfully by uwsgi+supervisor+nginx+mysql+mongodb+redis">
+      <created>1520878963648</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1520878963648</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25644028" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -698,7 +628,8 @@
     <MESSAGE value="[DEV] favorites" />
     <MESSAGE value="[DEV] rename" />
     <MESSAGE value="[DEV] shopping mall demo" />
-    <option name="LAST_COMMIT_MESSAGE" value="[DEV] shopping mall demo" />
+    <MESSAGE value="[DEV] deployed successfully by uwsgi+supervisor+nginx+mysql+mongodb+redis" />
+    <option name="LAST_COMMIT_MESSAGE" value="[DEV] deployed successfully by uwsgi+supervisor+nginx+mysql+mongodb+redis" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -739,34 +670,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Config/supervisord.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="27" column="37" lean-forward="false" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Config/uwsgi.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="15" lean-forward="true" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Config/uwsgi_supervisor.conf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
           <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Config/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="24" />
           <folding />
         </state>
       </provider>
@@ -943,42 +850,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/UserCenter/UserCenter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3454">
-          <caret line="157" column="40" lean-forward="true" selection-start-line="157" selection-start-column="40" selection-end-line="157" selection-end-column="40" />
-          <folding>
-            <element signature="e#47#59#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/User/User.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1020">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="22" />
-          <folding>
-            <element signature="e#23#67#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Project/Project.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="8" column="12" lean-forward="true" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
           <folding>
             <element signature="e#23#67#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Mall/Mall.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="47" column="11" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
-          <folding>
-            <element signature="e#379#423#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1045,14 +922,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="17" column="65" lean-forward="false" selection-start-line="17" selection-start-column="65" selection-end-line="17" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tool/create_db.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -1079,16 +948,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Library/OrmModel/Product.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding>
-            <element signature="e#455#504#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Library/OrmModel/Project.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="191">
@@ -1110,16 +969,8 @@
         <state relative-caret-position="231">
           <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding>
-            <element signature="e#46#95#0" expanded="true" />
+            <element signature="e#46#95#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="38" column="21" lean-forward="false" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1128,7 +979,7 @@
         <state relative-caret-position="2046">
           <caret line="93" column="35" lean-forward="false" selection-start-line="93" selection-start-column="35" selection-end-line="93" selection-end-column="35" />
           <folding>
-            <element signature="e#24#35#0" expanded="true" />
+            <element signature="e#24#35#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1149,18 +1000,96 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Config/supervisord.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="27" column="37" lean-forward="false" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="15" column="10" lean-forward="false" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Config/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="16" column="24" lean-forward="false" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Config/uwsgi.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Mall/Mall.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-328">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding>
+            <element signature="e#379#423#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/OrmModel/Product.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="e#455#504#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Library/db_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="468" column="50" lean-forward="true" selection-start-line="468" selection-start-column="50" selection-end-line="468" selection-end-column="50" />
+        <state relative-caret-position="-1322">
+          <caret line="73" column="43" lean-forward="true" selection-start-line="73" selection-start-column="43" selection-end-line="73" selection-end-column="43" />
           <folding>
             <element signature="e#46#59#0" expanded="true" />
-            <marker date="1520878874061" expanded="true" signature="3903:3934" ph="insert into `missing_value`... " />
-            <marker date="1520878874061" expanded="true" signature="4408:4424" ph="update `missing_value`... " />
-            <marker date="1520878874061" expanded="true" signature="6234:6253" ph="select missi... missing_value" />
-            <marker date="1520878874061" expanded="true" signature="6438:6454" ph="delete from `missing_value`... " />
-            <marker date="1520878874061" expanded="true" signature="11627:11669" ph="select count... missing_value" />
+            <marker date="1520881068818" expanded="true" signature="3896:3927" ph="insert into `missing_value`... " />
+            <marker date="1520881068818" expanded="true" signature="4401:4417" ph="update `missing_value`... " />
+            <marker date="1520881068818" expanded="true" signature="6227:6246" ph="select missi... missing_value" />
+            <marker date="1520881068818" expanded="true" signature="6431:6447" ph="delete from `missing_value`... " />
+            <marker date="1520881068818" expanded="true" signature="11673:11715" ph="select count... missing_value" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/UserCenter/UserCenter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="105" column="28" lean-forward="false" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/api.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="19" column="20" lean-forward="true" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+          <folding>
+            <element signature="e#46#71#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/User/User.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="45" column="17" lean-forward="true" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>

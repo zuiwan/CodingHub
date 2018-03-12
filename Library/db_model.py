@@ -69,7 +69,7 @@ class DBModelFactory():
     def create_db_model(self, db_config):
         global base_db_models
         db_name = db_config.get('name', 'default')
-        if not base_db_models.has_key(db_name):
+        if not db_name in base_db_models:
             # 这个数据操作模型未创建
             base_db_models[db_name] = db_config
 
@@ -80,7 +80,6 @@ class DBModelFactory():
     def get_db_model(self, name='default', readonly=False):
         global base_db_models
         model = base_db_models.get(name, base_db_models.get('default', None))
-
         if model is None:
             return None
         db_type = 'db_object' + (readonly and "_r" or "")
@@ -224,7 +223,9 @@ class DBModel():
     #  *    @return  string
     # **/
     @staticmethod
-    def sql_or(where, conmap={}, keys=None, clearblank=False):
+    def sql_or(where, conmap=None, keys=None, clearblank=False):
+        if conmap is None:
+            conmap = {}
         condition = ''
         if keys != None:
             for key in keys:
@@ -404,7 +405,9 @@ class DBModel():
 
     # 获取分页数据
     # TODO:暂不支持多表操作
-    def GetPage(self, sql, params={}):
+    def GetPage(self, sql, params=None):
+        if params is None:
+            params = {}
         page = int(params.get('page', 1))
         num = int(params.get('num', 20))
         sql = sql.split('LIMIT')[0].split('limit')[0].strip()

@@ -14,8 +14,9 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF505
 RUN service mongod start
 
 RUN mkdir -p /root/CodingHub/logs
+    && mkdir -p /var/log
     && mv /etc/nginx.conf /etc/nginx.conf.bck
     && ln -s /root/CodingHub/Config/nginx.conf /etc/nginx.conf
     && mkdir -p /etc/supervisor/conf.d
     && ln -s /root/CodingHub/Config/supervisord.conf /etc/supervisor/conf.d
-RUN apt install
+RUN "CREATE USER 'zuiwan'@'%' IDENTIFIED BY 'zuiwan2018'; GRANT ALL ON *.* TO 'zuiwan'@'%';" > mysql -uroot -proot

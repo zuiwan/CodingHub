@@ -25,15 +25,16 @@ from Library.extensions import orm
 
 from .User import UserSchema
 
+
 class ProductSchema(BaseSchema):
-    name = fields.Str() #名称
-    spec = fields.Str()#规格
-    img_url = fields.Str()#图片
-    price = fields.Int()#价格，单位分
-    boughts = fields.Int() #购买次数
-    credit = fields.Float() #好评度，0.0~1.0
-    intro = fields.Str() #商品介绍
-    remark = fields.Str() #备注
+    name = fields.Str()  # 名称
+    spec = fields.Str()  # 规格
+    img_url = fields.Str()  # 图片
+    price = fields.Int()  # 价格，单位分
+    boughts = fields.Int()  # 购买次数
+    credit = fields.Float()  # 好评度，0.0~1.0
+    intro = fields.Str()  # 商品介绍
+    remark = fields.Str()  # 备注
 
     @post_load
     def make_product(self, data):
