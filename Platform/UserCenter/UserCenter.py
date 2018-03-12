@@ -112,7 +112,6 @@ class RegistCenter(object):
         return user
 
     def Fill_Tables(self, owner_id):
-        self.db.session.add(ShoppingCart(owner_id=owner_id))
         self.db.session.add(UserProfile(owner_id=owner_id))
         ShoppingCart(owner_id).save()
 
