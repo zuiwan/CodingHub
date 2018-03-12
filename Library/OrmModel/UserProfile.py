@@ -68,3 +68,14 @@ class UserProfile(BaseModel):
             except Exception as e:
                 self._name = None
         return self._name
+
+    def to_dict(self):
+        # return self.schema.dump(self).data
+        try:
+            # python3
+            res = super().to_dict()
+        except TypeError:
+            res = super(UserProfile, self).to_dict()
+        res.update({"name": self.name,
+                    "address_list": self.address_list})
+        return res

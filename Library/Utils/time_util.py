@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import sys
+
 from flask import request, make_response, jsonify
 from functools import wraps
 import datetime
@@ -14,6 +15,8 @@ import os
 from Library.Utils import log_util as ED
 
 PST_TIMEZONE = "Chongqing/Shanghai"
+
+
 def convert_int_2_string_single(int_time, onlydate=False, only_m_d=False):
     key_time = time.localtime(int_time)
     if onlydate == True:
@@ -54,25 +57,33 @@ def convert_string_2_int(timestring):
     return time.mktime(time.strptime(timestring, '%Y-%m-%d %H:%M:%S'))
 
 
+def datetime_to_strtime(datetime_obj, format="%Y-%m-%d %H:%M:%S.%f"):
+    """将 datetime 格式的时间 (含毫秒) 转为字符串格式
+    :param datetime_obj: {datetime}2016-02-25 20:21:04.242000
+    :return: {str}'2016-02-25 20:21:04.242'
+    """
+    return datetime_obj.strftime(format)
+
+
 # 将Datetime类型转成字符串
 def convert_datetime_2_string(datas, keys, onlydate=False, only_m_d=False):
-    if type(datas) == dict:
+    if isinstance(datas, dict):
         datas = [datas]
-    if type(datas) != list:
+    if not isinstance(datas, list):
         return datas
-    if type(keys) == str or type(keys) == pytz.unicode:
+    if isinstance(keys, str) or isinstance(keys, pytz.unicode):
         keys = [keys]
-    if type(keys) != list:
+    if not isinstance(keys, list):
         return datas
     for data in datas:
         for key in keys:
-            if data.has_key(key) and type(data[key]) == datetime.datetime:
+            if key in data and isinstance(data[key], datetime.datetime):
                 if onlydate == True:
-                    data[key] = data[key].strftime('%Y-%m-%d')
+                    data[key] = datetime_to_strtime(data[key], '%Y-%m-%d')
                 elif only_m_d == True:
-                    data[key] = data[key].strftime('%m-%d')
+                    data[key] = datetime_to_strtime(data[key], '%m-%d')
                 else:
-                    data[key] = data[key].strftime('%Y-%m-%d %H:%M:%S')
+                    data[key] = datetime_to_strtime(data[key], '%Y-%m-%d %H:%M:%S')
     return datas
 
 
@@ -155,15 +166,6 @@ def datetime_to_timestamp(datetime_obj):
     """
     local_timestamp = long(time.mktime(datetime_obj.timetuple()) * 1000.0 + datetime_obj.microsecond / 1000.0)
     return local_timestamp
-
-
-def datetime_to_strtime(datetime_obj):
-    """将 datetime 格式的时间 (含毫秒) 转为字符串格式
-    :param datetime_obj: {datetime}2016-02-25 20:21:04.242000
-    :return: {str}'2016-02-25 20:21:04.242'
-    """
-    local_str_time = datetime_obj.strftime("%Y-%m-%d %H:%M:%S.%f")
-    return local_str_time
 
 
 def local_timestamp_now_mil():

@@ -35,6 +35,12 @@ class UserController(object):
         return self._owner_id
 
     @property
+    def owner_name(self):
+        if getattr(self, "_owner_name", None) is None:
+            self._owner_name = self.user.name
+        return self._owner_name
+
+    @property
     def sc(self):
         if getattr(self, "_sc", None) is None:
             self._sc = ShoppingCart(self.owner_id)
@@ -64,7 +70,7 @@ class UserController(object):
                 UserProfile.is_deleted == 0)).first()
             if self.__profile:
                 self._profile = self.__profile.to_dict()
-                # del self._profile["id"]
+                del self._profile["id"], self._profile["is_deleted"]
         return self._profile
 
     def add_one_to_shopping_cart(self, product_id, count, address, unit_price):

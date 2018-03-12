@@ -11,20 +11,35 @@
                    2018/3/4:
 -------------------------------------------------
 """
-import typing
 
 __author__ = 'huangzhen'
 
-# !/usr/bin/env python
-# -*- coding: utf-8 -*-
-from marshmallow import Schema, fields, post_load
-from Library.extensions import orm, mongo
-from Library.OrmModel import BaseModel, BaseSchema
 import json
-
+import typing
+from functools import wraps
+from Library.extensions import orm, mongo
+import pymongo
+from bson.objectid import ObjectId
+from Library.Utils.log_util import LogCenter
+from Library.Utils.time_util import convert_datetime_2_string, datetime_to_strtime
+sc_logger = LogCenter.instance().get_logger("UserCenter", "shoping-cart")
 '''
 客户id、姓名、联系方式、地址、购物车
 '''
+
+
+def serialize_wrapper_mongo(method):
+    @wraps(method)
+    def _decorator(*args, **kwargs):
+        try:
+            ret = method(*args, **kwargs)
+            if isinstance(ret.get("_id"), ObjectId):
+                ret["_id"] = datetime_to_strtime(ret["_id"].generation_time)
+            return ret
+        except Exception as e:
+            sc_logger.warning(str(e))
+
+    return _decorator
 
 
 class Item(object):
@@ -76,6 +91,7 @@ class ShoppingCart(object):
     def __str__(self):
         return json.dumps(self.as_dict)
 
+    @serialize_wrapper_mongo
     def save(self):
         doc = self.db.find_one_and_update(
             filter={"owner_id": self.owner_id},
@@ -125,6 +141,7 @@ class ShoppingCart(object):
     def total_price(self):
         return self.as_dict["total_price"]
 
+    @serialize_wrapper_mongo
     def remove_many_from_shopping_cart(self, product_ids):
         doc = self.db.find_one_and_update(filter={"owner_id": self.owner_id},
                                           update={"$unset": {"product.{}".format(product_id): 1 for product_id in
@@ -135,10 +152,16 @@ class ShoppingCart(object):
     def clear_shopping_carts(self):
         self.db.delete_one({"owner_id": self.owner_id})
 
+    @serialize_wrapper_mongo
     def find_shopping_carts(self):
-        return self.db.find_one_or_404({'owner_id': self.owner_id})
+        res = self.db.find_one_or_404({'owner_id': self.owner_id})
+        sc_logger.info(str(type(res)))
+        sc_logger.info(str(res))
+        return res
 
+    @serialize_wrapper_mongo
     def update_item(self, product_id, data):
+        # by "owner_id" or by _id = ObjectId.from_datetime(datetime.datetime class object)
         doc = self.db.find_one_and_update(filter={"owner_id": self.owner_id},
                                           update={"$set": {"product.{}".format(product_id): data}},
                                           return_document=True)
