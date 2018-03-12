@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 from flask import Flask
 
-flask_app = Flask(__name__,static_url_path='/assets', static_folder='assets', template_folder='templates')
+flask_app = Flask(__name__, static_url_path='/assets', static_folder='assets', template_folder='templates')
 
 # import api
 
 # initialization
 # flask_app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://zuiwan:zuiwan@localhost:3306/zuiwan'
-flask_app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://zuiwan:zuiwan@118.89.27.96:3306/zuiwan'
+flask_app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://zuiwan:zuiwan2018@localhost:3306/zuiwan'
 flask_app.config['KAFKA_BROKER_URI'] = ['']
 
 flask_app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
@@ -24,8 +24,8 @@ flask_app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024
 flask_app.config.update(
     MONGO_HOST='localhost',
     MONGO_PORT=27017,
-    MONGO_USERNAME='zuiwan',
-    MONGO_PASSWORD='zuiwan',
+    # MONGO_USERNAME='zuiwan',
+    # MONGO_PASSWORD='zuiwan',
     MONGO_DBNAME='CodingHub'
 )
 
@@ -38,6 +38,3 @@ flask_app.config.update(
     CELERY_RESULT_BACKEND='redis://localhost:6379',
 )
 flask_app.secret_key = 'i-like-python-nmba'
-
-
-

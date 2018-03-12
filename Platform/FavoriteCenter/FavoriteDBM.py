@@ -1,13 +1,14 @@
-from sqlalchemy import or_, and_, extract, in_
+# -*- coding:utf-8 -*-
+from sqlalchemy import or_, and_, extract, any_
 from sqlalchemy.orm.exc import MultipleResultsFound, NoResultFound
 
-
 import traceback
-from Library.log_util import LogCenter
+from Library.Utils.log_util import LogCenter
 from Library.singleton import Singleton
 from Library.extensions import orm
 from Library.OrmModel.User import User
 from Library.OrmModel.Farovite import Favorite
+
 
 @Singleton
 class FavoriteDBM():
@@ -79,7 +80,7 @@ class FavoriteDBM():
         records = sql.all()
         Favorite.query.filter_by(id=data.get('id')).first()
 
-    def Delete_Favorite(self,url,project_id):
+    def Delete_Favorite(self, url, project_id):
         sql = Favorite.query.filter(
             and_(
                 Favorite.url == url,
@@ -90,7 +91,7 @@ class FavoriteDBM():
         orm.session.delete(record)
         orm.session.commit()
 
-    def Get_Favorite_By_ProjectId(self,project_id):
+    def Get_Favorite_By_ProjectId(self, project_id):
         sql = Favorite.query.filter(and_(Favorite.project_id == project_id,
                                          Favorite.is_deleted == 0))
         try:
@@ -101,32 +102,31 @@ class FavoriteDBM():
         return records
 
     def Get_Favorite_By_Tags(self, tag):
-        sql = Favorite.query.filter(and_(in_(tag, Favorite.tags),
-                                       Favorite.is_deleted == 0))
+        sql = Favorite.query.filter(and_(any_(tag, Favorite.tags),
+                                         Favorite.is_deleted == 0))
         try:
             records = sql.all()
         except Exception as e:
             self.logger.error(traceback.format_exc())
             records = []
         return records
-    
+
     def Get_Unread_List(self, unread=True):
         sql = Favorite.query.filter(Favorite.is_unread == unread)
         records = sql.all()
         return records
 
-
     def Is_Url_Existed(self, url, project_id):
         sql = Favorite.query.filter(
             and_(
-                Favorite.url ==  url,
+                Favorite.url == url,
                 Favorite.project_id == project_id
             )
         )
         records = sql.first()
         return records
 
-    def Is_Favorite_Name_Duplicate(self,name,project_id):
+    def Is_Favorite_Name_Duplicate(self, name, project_id):
         sql = Favorite.query.filter(
             and_(
                 Favorite.name == name,
@@ -135,5 +135,3 @@ class FavoriteDBM():
         )
         records = sql.first()
         return records
-
-

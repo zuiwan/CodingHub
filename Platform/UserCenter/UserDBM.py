@@ -10,7 +10,7 @@ from Library.db_model import (
     DBModel,
     DBModelFactory
 )
-from Library.Utils import LogCenter
+from Library.Utils.log_util import LogCenter
 
 
 @Singleton

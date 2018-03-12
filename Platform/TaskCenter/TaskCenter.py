@@ -1,6 +1,7 @@
-from TaskDBM import TaskDBM
+# -*- coding:utf-8 -*-
 from Library.singleton import Singleton
-from Library.log_util import LogCenter
+from Library.Utils.log_util import LogCenter
+from .TaskDBM import TaskDBM
 
 @Singleton
 class TaskCenter(object):
@@ -38,9 +39,9 @@ class TaskCenter(object):
         # db.session.add(experiment)
         # db.session.commit()
 
-        from Application.celery_tasks import run_shell_right_row, gen_run_py_shell
+        # from Application.celery_tasks import run_shell_right_row, gen_run_py_shell
         command = ''
         mode = ''
-        result = run_shell_right_row(gen_run_py_shell(_id, auto_command=command, mode=mode))
-
+        # result = run_shell_right_row(gen_run_py_shell(_id, auto_command=command, mode=mode))
+        result = "TODO"
         return result

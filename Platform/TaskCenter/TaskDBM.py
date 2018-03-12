@@ -1,15 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
 
 import json
 
 from Library.singleton import Singleton
 import datetime
 import time
-import Library.error_util as ED
+import Library.ErrorDefine as _ED
 
 from Library.Utils import *
 from Library.db_model import *

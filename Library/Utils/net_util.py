@@ -1,29 +1,21 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import flask
-from functools import wraps
-from Library import ErrorDefine as ED
 import datetime
 import time
-import json
 import re
 import pytz
 import uuid
 import traceback
-import os
+from functools import wraps
+import json
+from shortuuid import uuid
+import requests
 
+from Library import ErrorDefine as ED
 from .log_util import LogCenter
 
 logger = LogCenter.instance().get_logger("utils", 'NetUtilLog')
-# MAC ADDRESS
-import traceback
-from functools import wraps
-import json
-
-from flask import make_response
-from shortuuid import uuid
-
-import requests
 
 
 def getMacAddress():
@@ -33,10 +25,12 @@ def getMacAddress():
 
 def getCountryCode(ipAddress):
     try:
-        response = requests.get("http://freegeoip.net/json/" + ipAddress).read().decode('utf-8')
+        response = requests.get("http://freegeoip.net/json/" + ipAddress)
+        responseJson = response.json()
     except requests.exceptions.HTTPError:
         return None
-    responseJson = json.loads(response)
+    except Exception:
+        return None
     return responseJson.get("country_code")
 
 
@@ -63,11 +57,11 @@ def allowCrossomain(method):
     @wraps(method)
     def _decorator(*args, **kwargs):
         try:
-            rst = make_response(method(*args, **kwargs))
+            rst = flask.make_response(method(*args, **kwargs))
             return addCrossHeaders(rst)
-        except Exception as e:
+        except Exception:
             logger.error(repr(traceback.format_exc()))
-            return jsonify({'code': ED.err_sys})
+            return flask.jsonify({'code': ED.err_sys})
 
     return _decorator
 
@@ -120,11 +114,12 @@ def getLocalIP(outside=True):
         inet = fcntl.ioctl(s.fileno(), 0x8915, struct.pack('256s', "eth0"[:15]))
         return socket.inet_ntoa(inet[20:24])
 
+
 def getSourceName(request):
     source = None
     spec_host = ['qiuye']
     host_name = request.host
-    host_name = host_name.replace('www.','')
+    host_name = host_name.replace('www.', '')
     host_list = host_name.split('.')
     if len(host_list) > 0 and host_list[0] in spec_host:
         source = host_list[0]
@@ -134,8 +129,10 @@ def getSourceName(request):
             source = ret_data['source']
     return source
 
+
 def package_json_request_data(method):
     request = flask.request
+
     @wraps(method)
     def _decorator(*args, **kwargs):
         try:
@@ -157,5 +154,30 @@ def package_json_request_data(method):
         except Exception as e:
             logger.error(repr(traceback.format_exc()))
             return "%s package_json_request_data error" % str(request)
+
+    return _decorator
+
+
+def add_cross_headers(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = '*'
+    response.headers['Access-Control-Allow-Headers'] = "*"
+    response.headers['Access-Control-Expose-Headers'] = "*"
+    response.headers['Access-Control-Allow-Credentials'] = 'true'
+    return response
+
+
+# 跨域装饰器
+def allow_cross_domain(method):
+    @wraps(method)
+    def _decorator(*args, **kwargs):
+        try:
+            response = method(*args, **kwargs)
+            if not isinstance(response, flask.make_response("")):
+                response = flask.make_response(response)
+            return add_cross_headers(response)
+        except Exception:
+            logger.error(repr(traceback.format_exc()))
+            return flask.jsonify({'code': ED.err_sys})
 
     return _decorator

@@ -28,6 +28,7 @@ no_err = 200
 # 505 HTTP Version Not Supported	服务器不支持请求中指明的HTTP协议版本。
 
 err_sys = 503
+err_not_found = 404
 
 err_user_not_login = 510
 err_user_login_expired = 511

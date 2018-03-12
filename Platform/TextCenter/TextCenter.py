@@ -1,14 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
-
-from FileUtils import *
 import os
 import json
 
-from Libraries.Singleton.Singleton import Singleton
+from Library.singleton import Singleton
+
+def GetFileList(p, includes):
+    return []
 
 @Singleton
 class TextCenter():
@@ -25,7 +23,7 @@ class TextCenter():
         key = str(key)
         lan = str(lan).replace("-", "_")
 
-        if not self.texts.has_key(lan):
+        if not lan in self.texts:
             lan = self.default_lan
 
         texts_map = self.texts[lan]
@@ -43,7 +41,7 @@ class TextCenter():
 
     def set_default_lan(self, lan):
         lan = str(lan)
-        if self.texts.has_key(lan):
+        if lan in self.texts:
             self.default_lan = lan
 
     def _load_text_map(self, lan):

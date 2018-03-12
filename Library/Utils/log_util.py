@@ -9,8 +9,11 @@ from functools import wraps
 from Application.app import flask_app
 from logging.handlers import RotatingFileHandler
 
-from Library.func_util import Is_Cls
-from Library.singleton import Singleton
+from Library.Utils.func_util import Is_Cls
+from Library.singleton import (
+    ThreadSafeSingleton,
+    Singleton
+)
 import sys
 
 
@@ -26,29 +29,32 @@ def check_api_cost_time(method):
             line_num = method.func_code.co_firstlineno
             if args is not None and len(args) > 0 and Is_Cls(args[0]):
                 # 类（实例）方法
-                name = "Function: {function_name}, @Class: {class_name}, @File: {file_name}, @Line: {line_num}"\
+                name = "Function: {function_name}, @Class: {class_name}, @File: {file_name}, @Line: {line_num}" \
                     .format(function_name=method.__name__,
                             class_name=args[0].__class__.__name__,
                             file_name=file_name,
                             line_num=line_num)
             else:
-                name = "Function: {function_name}, @File: {file_name}"\
+                name = "Function: {function_name}, @File: {file_name}" \
                     .format(function_name=method.__name__,
                             file_name=file_name,
                             line_num=line_num)
-            global_loggers.debug(name + " api cost time %f s" % (end-start))
+            global_loggers.debug(name + " api cost time %f s" % (end - start))
             return ret
         except Exception as e:
             global_loggers.error(repr(traceback.format_exc()))
+
     return _decorator
 
+
 def Celery_Log_Line(log_str, level="INFO"):
-    ISOTIMEFORMAT ='%Y-%m-%d %X'
+    ISOTIMEFORMAT = '%Y-%m-%d %X'
     current_time = time.strftime(ISOTIMEFORMAT, time.localtime(time.time()))
     line = "[{}] [{}] | {}\n".format(current_time, level, log_str)
     return line
 
-@Singleton
+
+@ThreadSafeSingleton
 class LogCenter(object):
     def __init__(self):
         self.logger_map = {}
@@ -62,7 +68,9 @@ class LogCenter(object):
             self.logger_map[logger_name] = MyLogger(name, filename)
         return self.logger_map[logger_name]
 
+
 output_log_basepath = flask_app.config['APP_LOG_FOLDER']
+
 
 class MyLogger():
     def __init__(self, name, filename=None):
@@ -151,4 +159,3 @@ class MyLogger():
 
 
 global_loggers = MyLogger('GlobalLog').logger
-

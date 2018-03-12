@@ -3,7 +3,6 @@
 import sys
 from flask import request, make_response, jsonify
 from functools import wraps
-import Library.log_util as ED
 import datetime
 import time
 import json
@@ -12,8 +11,9 @@ import pytz
 import uuid
 import traceback
 import os
+from Library.Utils import log_util as ED
 
-
+PST_TIMEZONE = "Chongqing/Shanghai"
 def convert_int_2_string_single(int_time, onlydate=False, only_m_d=False):
     key_time = time.localtime(int_time)
     if onlydate == True:
@@ -140,7 +140,7 @@ def pretty_date(time=False):
 
 def localize_date(date):
     if not date.tzinfo:
-        date = utc.localize(date)
+        date = pytz.utc.localize(date)
     return date.astimezone(PST_TIMEZONE)
 
 
@@ -171,7 +171,7 @@ def local_timestamp_now_mil():
     :return: 13位int
     """
     # 当前时间：datetime 格式
-    local_datetime_now = datetime.now()
+    local_datetime_now = datetime.datetime.now()
     # 当前时间：字符串格式
     # local_strtime_now = datetime_to_strtime(local_datetime_now)
     # 当前时间：时间戳格式 13位整数
@@ -181,7 +181,7 @@ def local_timestamp_now_mil():
 
 def local_strtime_now_mil():
     # 当前时间：datetime 格式
-    local_datetime_now = datetime.now()
+    local_datetime_now = datetime.datetime.now()
     # 当前时间：字符串格式
     local_strtime_now = datetime_to_strtime(local_datetime_now)
     return local_strtime_now

@@ -1,3 +1,9 @@
+shortuuid
+celery
+typing
+flask_restful
+supervisor
+uwsgi
 flask_pymongo
 flask_httpauth
 flask_sqlalchemy

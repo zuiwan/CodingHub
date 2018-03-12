@@ -30,9 +30,9 @@ from werkzeug.datastructures import Authorization
 
 from Library.extensions import orm
 from Library.OrmModel.User import User
-from Library.OrmModel.ShoppingCart import ShoppingCart
 from Library.OrmModel.UserProfile import UserProfile
 from Library.singleton import Singleton
+from Platform.UserCenter.ShoppingCart import ShoppingCart
 
 
 @Singleton

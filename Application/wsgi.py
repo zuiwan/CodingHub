@@ -1,7 +1,5 @@
 #!/usr/in/env python
 # -*- coding: utf-8 -*-
-from importlib import reload
-
 import sys
 import os
 

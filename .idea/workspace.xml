@@ -2,30 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91b646db-fea0-40ee-861b-d4b6001e9e3b" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/Library/ErrorDefine.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Library/OrmModel/Product.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Platform/UserCenter/ShoppingCart.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Platform/UserCenter/UserControler.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/docs/Mall_API.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Application/Contacts/Contacts.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Application/Contacts/__init__.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Config/Dockerfile" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Config/supervisord.conf" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Library/OrmModel/Contacts.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Application/Favorite/favorite_views.py" afterPath="$PROJECT_DIR$/Application/Favorite/Favorite.py" />
+      <change beforePath="$PROJECT_DIR$/Application/Favorite/Favorite.py" afterPath="$PROJECT_DIR$/Application/Favorite/Favorite.py" />
       <change beforePath="$PROJECT_DIR$/Application/Mall/Mall.py" afterPath="$PROJECT_DIR$/Application/Mall/Mall.py" />
+      <change beforePath="$PROJECT_DIR$/Application/Project/Project.py" afterPath="$PROJECT_DIR$/Application/Project/Project.py" />
       <change beforePath="$PROJECT_DIR$/Application/User/User.py" afterPath="$PROJECT_DIR$/Application/User/User.py" />
-      <change beforePath="$PROJECT_DIR$/Application/api.py" afterPath="$PROJECT_DIR$/Application/api.py" />
       <change beforePath="$PROJECT_DIR$/Application/app.py" afterPath="$PROJECT_DIR$/Application/app.py" />
+      <change beforePath="$PROJECT_DIR$/Application/celery_tasks.py" afterPath="$PROJECT_DIR$/Application/celery_tasks.py" />
       <change beforePath="$PROJECT_DIR$/Application/wsgi.py" afterPath="$PROJECT_DIR$/Application/wsgi.py" />
+      <change beforePath="$PROJECT_DIR$/Config/nginx.conf" afterPath="$PROJECT_DIR$/Config/nginx.conf" />
       <change beforePath="$PROJECT_DIR$/Config/requirements.txt" afterPath="$PROJECT_DIR$/Config/requirements.txt" />
-      <change beforePath="$PROJECT_DIR$/Library/OrmModel/Module.py" afterPath="$PROJECT_DIR$/Library/OrmModel/Module.py" />
-      <change beforePath="$PROJECT_DIR$/Library/OrmModel/User.py" afterPath="$PROJECT_DIR$/Library/OrmModel/User.py" />
-      <change beforePath="$PROJECT_DIR$/Library/OrmModel/UserProfile.py" afterPath="$PROJECT_DIR$/Library/OrmModel/UserProfile.py" />
-      <change beforePath="$PROJECT_DIR$/Library/OrmModel/__init__.py" afterPath="$PROJECT_DIR$/Library/OrmModel/__init__.py" />
-      <change beforePath="$PROJECT_DIR$/Library/Utils/error_util.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Config/uwsgi_supervisor.conf" afterPath="$PROJECT_DIR$/Config/uwsgi_supervisor.conf" />
+      <change beforePath="$PROJECT_DIR$/Library/ErrorDefine.py" afterPath="$PROJECT_DIR$/Library/ErrorDefine.py" />
+      <change beforePath="$PROJECT_DIR$/Library/OrmModel/Farovite.py" afterPath="$PROJECT_DIR$/Library/OrmModel/Farovite.py" />
+      <change beforePath="$PROJECT_DIR$/Library/Utils/__init__.py" afterPath="$PROJECT_DIR$/Library/Utils/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/Library/Utils/log_util.py" afterPath="$PROJECT_DIR$/Library/Utils/log_util.py" />
       <change beforePath="$PROJECT_DIR$/Library/Utils/net_util.py" afterPath="$PROJECT_DIR$/Library/Utils/net_util.py" />
+      <change beforePath="$PROJECT_DIR$/Library/Utils/time_util.py" afterPath="$PROJECT_DIR$/Library/Utils/time_util.py" />
       <change beforePath="$PROJECT_DIR$/Library/db_model.py" afterPath="$PROJECT_DIR$/Library/db_model.py" />
-      <change beforePath="$PROJECT_DIR$/Library/extensions.py" afterPath="$PROJECT_DIR$/Library/extensions.py" />
+      <change beforePath="$PROJECT_DIR$/Platform/FavoriteCenter/FavoriteCenter.py" afterPath="$PROJECT_DIR$/Platform/FavoriteCenter/FavoriteCenter.py" />
+      <change beforePath="$PROJECT_DIR$/Platform/FavoriteCenter/FavoriteDBM.py" afterPath="$PROJECT_DIR$/Platform/FavoriteCenter/FavoriteDBM.py" />
       <change beforePath="$PROJECT_DIR$/Platform/MallCenter/MallCenter.py" afterPath="$PROJECT_DIR$/Platform/MallCenter/MallCenter.py" />
+      <change beforePath="$PROJECT_DIR$/Platform/TaskCenter/TaskCenter.py" afterPath="$PROJECT_DIR$/Platform/TaskCenter/TaskCenter.py" />
+      <change beforePath="$PROJECT_DIR$/Platform/TaskCenter/TaskDBM.py" afterPath="$PROJECT_DIR$/Platform/TaskCenter/TaskDBM.py" />
+      <change beforePath="$PROJECT_DIR$/Platform/TextCenter/TextCenter.py" afterPath="$PROJECT_DIR$/Platform/TextCenter/TextCenter.py" />
       <change beforePath="$PROJECT_DIR$/Platform/UserCenter/UserCenter.py" afterPath="$PROJECT_DIR$/Platform/UserCenter/UserCenter.py" />
       <change beforePath="$PROJECT_DIR$/Platform/UserCenter/UserDBM.py" afterPath="$PROJECT_DIR$/Platform/UserCenter/UserDBM.py" />
+      <change beforePath="$PROJECT_DIR$/tool/create_db.py" afterPath="$PROJECT_DIR$/tool/create_db.py" />
+      <change beforePath="$PROJECT_DIR$/tool/restart.sh" afterPath="$PROJECT_DIR$/tool/restart.sh" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -39,22 +49,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Mall.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Mall/Mall.py">
+      <file leaf-file-name="Farovite.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Library/OrmModel/Farovite.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="17" column="27" lean-forward="true" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserCenter.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Platform/UserCenter/UserCenter.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4">
-              <caret line="20" column="37" lean-forward="false" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
-              <folding />
+            <state relative-caret-position="231">
+              <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+              <folding>
+                <element signature="e#46#95#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -62,8 +64,8 @@
       <file leaf-file-name="Module.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Library/OrmModel/Module.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="29" column="26" lean-forward="true" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
+            <state relative-caret-position="163">
+              <caret line="26" column="10" lean-forward="false" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -72,70 +74,43 @@
       <file leaf-file-name="Product.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Library/OrmModel/Product.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="575">
-              <caret line="57" column="25" lean-forward="false" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="25" />
+            <state relative-caret-position="258">
+              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding>
+                <element signature="e#455#504#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Project.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Library/OrmModel/Project.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="191">
+              <caret line="13" column="28" lean-forward="false" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Library/OrmModel/User.py">
+      <file leaf-file-name="Task.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Library/OrmModel/Task.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding>
-                <element signature="e#46#95#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserControler.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Platform/UserCenter/UserControler.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="36" />
-              <folding>
-                <element signature="e#424#465#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Mall_API.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/docs/Mall_API.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="308">
-                <caret line="14" column="50" lean-forward="true" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
-                <folding />
-              </first_editor>
-              <second_editor>
-                <js_state />
-              </second_editor>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserProfile.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Library/OrmModel/UserProfile.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1144">
-              <caret line="52" column="22" lean-forward="true" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
-              <folding>
-                <element signature="e#46#95#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ShoppingCart.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Platform/UserCenter/ShoppingCart.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="5" column="15" lean-forward="true" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+            <state relative-caret-position="125">
+              <caret line="12" column="23" lean-forward="false" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="log_util.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Library/Utils/log_util.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2046">
+              <caret line="93" column="35" lean-forward="false" selection-start-line="93" selection-start-column="35" selection-end-line="93" selection-end-column="35" />
+              <folding>
+                <element signature="e#24#35#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -143,9 +118,46 @@
       <file leaf-file-name="TaskInstance.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Library/OrmModel/TaskInstance.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="169">
+              <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="restart.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/restart.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="12" column="29" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="api.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/api.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="38" column="21" lean-forward="false" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="db_model.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Library/db_model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="468" column="50" lean-forward="true" selection-start-line="468" selection-start-column="50" selection-end-line="468" selection-end-column="50" />
+              <folding>
+                <element signature="e#46#59#0" expanded="true" />
+                <marker date="1520878874061" expanded="true" signature="3903:3934" ph="insert into `missing_value`... " />
+                <marker date="1520878874061" expanded="true" signature="4408:4424" ph="update `missing_value`... " />
+                <marker date="1520878874061" expanded="true" signature="6234:6253" ph="select missi... missing_value" />
+                <marker date="1520878874061" expanded="true" signature="6438:6454" ph="delete from `missing_value`... " />
+                <marker date="1520878874061" expanded="true" signature="11627:11669" ph="select count... missing_value" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -165,6 +177,8 @@
       <find>Iterable</find>
       <find>to_dic</find>
       <find>to_dict</find>
+      <find>unread</find>
+      <find>is_unread</find>
     </findStrings>
     <replaceStrings>
       <replace>CodingHub</replace>
@@ -181,48 +195,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Library/OrmModel/Farovite.py" />
-        <option value="$PROJECT_DIR$/docs/Favorite_API.md" />
-        <option value="$PROJECT_DIR$/Platform/FavoriteCenter/FavoriteCenter.py" />
-        <option value="$PROJECT_DIR$/Platform/FavoriteCenter/FavoriteDBM.py" />
-        <option value="$PROJECT_DIR$/Library/error_util.py" />
-        <option value="$PROJECT_DIR$/tool/database_manager.py" />
-        <option value="$PROJECT_DIR$/tool/create_db.py" />
-        <option value="$PROJECT_DIR$/Application/celery_tasks.py" />
         <option value="$PROJECT_DIR$/Config/celery_supervisor.conf" />
         <option value="$PROJECT_DIR$/Config/nginx_uwsgi.conf" />
         <option value="$PROJECT_DIR$/Config/uwsgi.ini" />
-        <option value="$PROJECT_DIR$/Config/uwsgi_supervisor.conf" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/tool/cd_hack.sh" />
         <option value="$PROJECT_DIR$/tool/deploy_test_server.sh" />
         <option value="$PROJECT_DIR$/tool/just_uwsgi.sh" />
-        <option value="$PROJECT_DIR$/tool/restart.sh" />
         <option value="$PROJECT_DIR$/Library/Utils/error_util.py" />
-        <option value="$PROJECT_DIR$/Library/ErrorDefine.py" />
         <option value="$PROJECT_DIR$/Application/Favorite/favorite_views.py" />
         <option value="$PROJECT_DIR$/Library/OrmModel/Module.py" />
         <option value="$PROJECT_DIR$/Library/OrmModel/Product.py" />
-        <option value="$PROJECT_DIR$/Application/app.py" />
         <option value="$PROJECT_DIR$/Library/extensions.py" />
-        <option value="$PROJECT_DIR$/Config/requirements.txt" />
-        <option value="$PROJECT_DIR$/Library/Utils/net_util.py" />
-        <option value="$PROJECT_DIR$/Application/User/User.py" />
-        <option value="$PROJECT_DIR$/Platform/MallCenter/MallCenter.py" />
         <option value="$PROJECT_DIR$/Library/OrmModel/User.py" />
         <option value="$PROJECT_DIR$/Library/OrmModel/UserProfile.py" />
         <option value="$PROJECT_DIR$/Library/OrmModel/__init__.py" />
-        <option value="$PROJECT_DIR$/Application/Favorite/Favorite.py" />
         <option value="$PROJECT_DIR$/Application/api.py" />
-        <option value="$PROJECT_DIR$/Application/Mall/Mall.py" />
-        <option value="$PROJECT_DIR$/Application/wsgi.py" />
-        <option value="$PROJECT_DIR$/Library/db_model.py" />
-        <option value="$PROJECT_DIR$/Platform/UserCenter/UserDBM.py" />
         <option value="$PROJECT_DIR$/Library/OrmModel/ShoppingCart.py" />
         <option value="$PROJECT_DIR$/Platform/UserCenter/ShoppingCart.py" />
-        <option value="$PROJECT_DIR$/Platform/UserCenter/UserCenter.py" />
         <option value="$PROJECT_DIR$/Platform/UserCenter/UserControler.py" />
         <option value="$PROJECT_DIR$/docs/Mall_API.md" />
+        <option value="$PROJECT_DIR$/Library/Utils/net_util.py" />
+        <option value="$PROJECT_DIR$/Config/uwsgi_supervisor.conf" />
+        <option value="$PROJECT_DIR$/Config/supervisord.conf" />
+        <option value="$PROJECT_DIR$/Config/nginx.conf" />
+        <option value="$PROJECT_DIR$/Application/wsgi.py" />
+        <option value="$PROJECT_DIR$/Config/Dockerfile" />
+        <option value="$PROJECT_DIR$/Library/Utils/__init__.py" />
+        <option value="$PROJECT_DIR$/Library/Utils/time_util.py" />
+        <option value="$PROJECT_DIR$/Application/celery_tasks.py" />
+        <option value="$PROJECT_DIR$/Application/Project/Project.py" />
+        <option value="$PROJECT_DIR$/Library/ErrorDefine.py" />
+        <option value="$PROJECT_DIR$/Platform/TextCenter/TextCenter.py" />
+        <option value="$PROJECT_DIR$/Platform/UserCenter/UserDBM.py" />
+        <option value="$PROJECT_DIR$/Config/requirements.txt" />
+        <option value="$PROJECT_DIR$/Platform/UserCenter/UserCenter.py" />
+        <option value="$PROJECT_DIR$/Application/User/User.py" />
+        <option value="$PROJECT_DIR$/Platform/FavoriteCenter/FavoriteCenter.py" />
+        <option value="$PROJECT_DIR$/Platform/FavoriteCenter/FavoriteDBM.py" />
+        <option value="$PROJECT_DIR$/Platform/MallCenter/MallCenter.py" />
+        <option value="$PROJECT_DIR$/Platform/TaskCenter/TaskCenter.py" />
+        <option value="$PROJECT_DIR$/Platform/TaskCenter/TaskDBM.py" />
+        <option value="$PROJECT_DIR$/Application/Mall/Mall.py" />
+        <option value="$PROJECT_DIR$/Application/Favorite/Favorite.py" />
+        <option value="$PROJECT_DIR$/Application/Contacts/Contacts.py" />
+        <option value="$PROJECT_DIR$/tool/create_db.py" />
+        <option value="$PROJECT_DIR$/Application/app.py" />
+        <option value="$PROJECT_DIR$/Library/OrmModel/Contacts.py" />
+        <option value="$PROJECT_DIR$/Library/OrmModel/Farovite.py" />
+        <option value="$PROJECT_DIR$/tool/restart.sh" />
+        <option value="$PROJECT_DIR$/Library/Utils/log_util.py" />
+        <option value="$PROJECT_DIR$/Library/db_model.py" />
       </list>
     </option>
   </component>
@@ -233,9 +256,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="812" />
+    <option name="width" value="1680" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -255,7 +277,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -267,6 +288,18 @@
               <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
               <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
               <item name="Application" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Blog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Contacts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
@@ -284,7 +317,25 @@
               <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
               <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
               <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Task" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
               <item name="User" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Wiki" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
@@ -322,7 +373,25 @@
               <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
               <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
               <item name="Platform" type="462c0819:PsiDirectoryNode" />
+              <item name="FavoriteCenter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
+              <item name="Platform" type="462c0819:PsiDirectoryNode" />
               <item name="MallCenter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
+              <item name="Platform" type="462c0819:PsiDirectoryNode" />
+              <item name="TaskCenter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
+              <item name="Platform" type="462c0819:PsiDirectoryNode" />
+              <item name="TextCenter" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
@@ -330,10 +399,16 @@
               <item name="Platform" type="462c0819:PsiDirectoryNode" />
               <item name="UserCenter" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
+              <item name="tool" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -547,7 +622,14 @@
       <option name="project" value="LOCAL" />
       <updated>1511697593767</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="[DEV] shopping mall demo">
+      <created>1520183558626</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1520183558626</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -556,18 +638,19 @@
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25644028" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25644028" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23882353" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.162" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21805556" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21736111" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug Logs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -614,7 +697,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="[DEV] favorites" />
     <MESSAGE value="[DEV] rename" />
-    <option name="LAST_COMMIT_MESSAGE" value="[DEV] rename" />
+    <MESSAGE value="[DEV] shopping mall demo" />
+    <option name="LAST_COMMIT_MESSAGE" value="[DEV] shopping mall demo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -623,339 +707,303 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tool/dbm.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/error_util.py" />
-    <entry file="file://$PROJECT_DIR$/Library/OrmModel/Farovite.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-73">
-          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Config/celery.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Config/db_configs.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Config/logger.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Config/nginx.conf">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="322">
+          <caret line="129" column="21" lean-forward="true" selection-start-line="129" selection-start-column="21" selection-end-line="129" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/UserCenter/__init__.py">
+    <entry file="file://$PROJECT_DIR$/Config/nginx_flower.conf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/FavoriteCenter/FavoriteCenter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="8" lean-forward="false" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/celery_tasks.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="48" lean-forward="false" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Config/celery_supervisor.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Config/nginx_uwsgi.conf">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="48" column="19" lean-forward="false" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
+        <state relative-caret-position="748">
+          <caret line="34" column="33" lean-forward="false" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Config/pylint.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Config/supervisord.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="27" column="37" lean-forward="false" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Config/uwsgi.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="19" lean-forward="false" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+        <state relative-caret-position="352">
+          <caret line="16" column="15" lean-forward="true" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Config/uwsgi_supervisor.conf">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="35" lean-forward="false" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
+        <state relative-caret-position="242">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
-            <folding />
-          </first_editor>
-          <second_editor>
-            <js_state />
-          </second_editor>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/cd_hack.sh">
+    <entry file="file://$PROJECT_DIR$/Config/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="3" lean-forward="false" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+        <state relative-caret-position="286">
+          <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tool/deploy_test_server.sh">
+    <entry file="file://$PROJECT_DIR$/Application/wsgi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        <state relative-caret-position="220">
+          <caret line="10" column="11" lean-forward="false" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+          <folding>
+            <element signature="e#45#55#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tool/just_uwsgi.sh">
+    <entry file="file://$PROJECT_DIR$/Library/Utils/func_util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        <state relative-caret-position="330">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding>
+            <element signature="e#384#398#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tool/restart.sh">
+    <entry file="file://$PROJECT_DIR$/Library/Utils/file_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/Utils/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/Utils/time_util.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
-          <caret line="9" column="24" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/ErrorDefine.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1034">
-          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding>
-            <element signature="e#386#413#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/Utils/error_util.py" />
-    <entry file="file://$PROJECT_DIR$/Application/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+          <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/dev/miniconda3/envs/py36/lib/python3.6/site-packages/flask_pymongo/__init__.py">
+    <entry file="file://$PROJECT_DIR$/Application/celery_tasks.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1512">
-          <caret line="297" column="0" lean-forward="true" selection-start-line="297" selection-start-column="0" selection-end-line="297" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/extensions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="e#46#89#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/dev/miniconda3/envs/py36/lib/python3.6/site-packages/werkzeug/wrappers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="453" column="8" lean-forward="false" selection-start-line="453" selection-start-column="8" selection-end-line="453" selection-end-column="8" />
+        <state relative-caret-position="220">
+          <caret line="10" column="37" lean-forward="true" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Library/Utils/net_util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="146" column="42" lean-forward="true" selection-start-line="146" selection-start-column="42" selection-end-line="146" selection-end-column="42" />
+        <state relative-caret-position="146">
+          <caret line="172" column="25" lean-forward="false" selection-start-line="172" selection-start-column="25" selection-end-line="172" selection-end-column="25" />
           <folding>
             <element signature="e#46#58#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Config/requirements.txt">
+    <entry file="file://$PROJECT_DIR$/Application/Wiki/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="14" lean-forward="false" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/dev/miniconda3/envs/py36/lib/python3.6/site-packages/pymongo/results.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="90" column="27" lean-forward="false" selection-start-line="90" selection-start-column="27" selection-end-line="90" selection-end-column="27" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/dev/miniconda3/envs/py36/lib/python3.6/site-packages/pymongo/bulk.py">
+    <entry file="file://$PROJECT_DIR$/Library/ErrorDefine.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="452" column="35" lean-forward="false" selection-start-line="452" selection-start-column="35" selection-end-line="452" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/dev/miniconda3/envs/py36/lib/python3.6/abc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5126">
-          <caret line="233" column="6" lean-forward="true" selection-start-line="233" selection-start-column="6" selection-end-line="233" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/dev/miniconda3/envs/py36/lib/python3.6/site-packages/pymongo/collection.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="2790" column="8" lean-forward="false" selection-start-line="2790" selection-start-column="8" selection-end-line="2790" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/typing.pyi">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="106" column="14" lean-forward="false" selection-start-line="106" selection-start-column="6" selection-end-line="106" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/OrmModel/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state relative-caret-position="174">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
-            <element signature="e#46#57#0" expanded="true" />
+            <element signature="e#386#413#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Favorite/Favorite.py">
+    <entry file="file://$USER_HOME$/dev/miniconda3/envs/py36/lib/python3.6/site-packages/sqlalchemy/sql/expression.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="188">
+          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/UserCenter/UserDBM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="37" lean-forward="true" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Config/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="6" lean-forward="false" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/FavoriteCenter/FavoriteCenter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding>
-            <element signature="e#23#39#0" expanded="true" />
+            <element signature="e#23#59#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/FavoriteCenter/FavoriteDBM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <element signature="e#23#70#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/MallCenter/MallCenter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#385#397#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/TaskCenter/TaskCenter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <element signature="e#23#62#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/TaskCenter/TaskDBM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="21" lean-forward="true" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
+          <folding>
+            <element signature="e#47#58#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/TextCenter/TextCenter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="19" lean-forward="true" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+          <folding>
+            <element signature="e#46#55#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/UserCenter/ShoppingCart.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="28" lean-forward="true" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/UserCenter/UserCenter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3454">
+          <caret line="157" column="40" lean-forward="true" selection-start-line="157" selection-start-column="40" selection-end-line="157" selection-end-column="40" />
+          <folding>
+            <element signature="e#47#59#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/User/User.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="54" column="26" lean-forward="true" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
+        <state relative-caret-position="-1020">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="22" />
           <folding>
-            <element signature="e#23#67#0" expanded="true" />
+            <element signature="e#23#67#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/api.py">
+    <entry file="file://$PROJECT_DIR$/Application/Project/Project.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-349">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="176">
+          <caret line="8" column="12" lean-forward="true" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
           <folding>
-            <element signature="e#46#71#0" expanded="true" />
+            <element signature="e#23#67#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/wsgi.py">
+    <entry file="file://$PROJECT_DIR$/Application/Mall/Mall.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="44" lean-forward="false" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
+        <state relative-caret-position="242">
+          <caret line="47" column="11" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
           <folding>
-            <element signature="e#45#73#0" expanded="true" />
+            <element signature="e#379#423#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Library/db_model.py">
+    <entry file="file://$PROJECT_DIR$/Application/Favorite/Favorite.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="22" column="32" lean-forward="false" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+        <state relative-caret-position="218">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="34" selection-end-column="34" />
           <folding>
-            <element signature="e#46#59#0" expanded="true" />
-            <marker date="1520183221424" expanded="true" signature="3905:3936" ph="insert into `missing_value`... " />
-            <marker date="1520183221424" expanded="true" signature="4410:4426" ph="update `missing_value`... " />
-            <marker date="1520183221424" expanded="true" signature="6236:6255" ph="select missi... missing_value" />
-            <marker date="1520183221424" expanded="true" signature="6440:6456" ph="delete from `missing_value`... " />
-            <marker date="1520183221424" expanded="true" signature="11621:11663" ph="select count... missing_value" />
+            <element signature="e#23#39#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/UserCenter/UserDBM.py">
+    <entry file="file://$PROJECT_DIR$/Platform/UserCenter/UserControler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="9" column="12" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
-          <folding />
+        <state relative-caret-position="180">
+          <caret line="24" column="8" lean-forward="false" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+          <folding>
+            <element signature="e#424#465#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/MallCenter/MallCenter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="26" column="2" lean-forward="false" selection-start-line="26" selection-start-column="2" selection-end-line="26" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/OrmModel/Module.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="29" column="26" lean-forward="true" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/OrmModel/Product.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="57" column="25" lean-forward="false" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/OrmModel/TaskInstance.py">
+    <entry file="file://$PROJECT_DIR$/Library/OrmModel/Dataset.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -965,76 +1013,154 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Library/OrmModel/User.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="e#46#95#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/UserCenter/ShoppingCart.py">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
-          <caret line="5" column="15" lean-forward="true" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Library/OrmModel/ShoppingCart.py">
+    <entry file="file://$PROJECT_DIR$/tool/database_manager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="58">
+          <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Library/OrmModel/UserProfile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1144">
-          <caret line="52" column="22" lean-forward="true" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
+        <state relative-caret-position="242">
+          <caret line="14" column="27" lean-forward="true" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Contacts/Contacts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="47">
+          <caret line="36" column="39" lean-forward="true" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
+          <folding>
+            <element signature="e#385#429#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="17" column="65" lean-forward="false" selection-start-line="17" selection-start-column="65" selection-end-line="17" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/create_db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="33" lean-forward="false" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/OrmModel/Contacts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="41" column="36" lean-forward="false" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
+          <folding>
+            <element signature="e#385#434#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/OrmModel/Module.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="26" column="10" lean-forward="false" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/OrmModel/Product.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <element signature="e#455#504#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/OrmModel/Project.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="13" column="28" lean-forward="false" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/OrmModel/Task.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="12" column="23" lean-forward="false" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/OrmModel/Farovite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding>
             <element signature="e#46#95#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Mall/Mall.py">
+    <entry file="file://$PROJECT_DIR$/Application/api.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="17" column="27" lean-forward="true" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+        <state relative-caret-position="102">
+          <caret line="38" column="21" lean-forward="false" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/UserCenter/UserCenter.py">
+    <entry file="file://$PROJECT_DIR$/Library/Utils/log_util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4">
-          <caret line="20" column="37" lean-forward="false" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/UserCenter/UserControler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="36" />
+        <state relative-caret-position="2046">
+          <caret line="93" column="35" lean-forward="false" selection-start-line="93" selection-start-column="35" selection-end-line="93" selection-end-column="35" />
           <folding>
-            <element signature="e#424#465#0" expanded="true" />
+            <element signature="e#24#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/Mall_API.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="308">
-            <caret line="14" column="50" lean-forward="true" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
-            <folding />
-          </first_editor>
-          <second_editor>
-            <js_state />
-          </second_editor>
+    <entry file="file://$PROJECT_DIR$/Library/OrmModel/TaskInstance.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/restart.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="12" column="29" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/db_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="468" column="50" lean-forward="true" selection-start-line="468" selection-start-column="50" selection-end-line="468" selection-end-column="50" />
+          <folding>
+            <element signature="e#46#59#0" expanded="true" />
+            <marker date="1520878874061" expanded="true" signature="3903:3934" ph="insert into `missing_value`... " />
+            <marker date="1520878874061" expanded="true" signature="4408:4424" ph="update `missing_value`... " />
+            <marker date="1520878874061" expanded="true" signature="6234:6253" ph="select missi... missing_value" />
+            <marker date="1520878874061" expanded="true" signature="6438:6454" ph="delete from `missing_value`... " />
+            <marker date="1520878874061" expanded="true" signature="11627:11669" ph="select count... missing_value" />
+          </folding>
         </state>
       </provider>
     </entry>

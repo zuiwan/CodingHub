@@ -1,10 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from Library.extensions import orm as db
-from Library.extensions import celery_app
-from Library.log_util import LogCenter
-from Library.file_util import *
-from Library.time_util import *
+from Library.extensions import (
+    celery_app,
+    orm as db
+)
+from Library.Utils.log_util import (
+    LogCenter,
+    check_api_cost_time
+)
+from Library.Utils.file_util import *
+from Library.Utils.time_util import *
 
 celery_logger = LogCenter.instance().get_logger('celery', 'tasks')
 

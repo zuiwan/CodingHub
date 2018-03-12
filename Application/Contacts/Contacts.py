@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 """
 -------------------------------------------------
-   File Name:       Mall
+   File Name:       Contacts
    Description:
    Author:          huangzhen
-   date:            2018/3/4
+   date:            2018/3/13
 -------------------------------------------------
    Change Activity:
-                   2018/3/4:
+                   2018/3/13:
 -------------------------------------------------
 """
 __author__ = 'huangzhen'
@@ -29,27 +29,26 @@ from Library.Utils.net_util import (
 
 from Library import ErrorDefine as ED
 
-
-class MallAPI(Resource):
-    url = "/api/v1/mall"
-    endpoint = "mall-api"
-    pass
-
-
-class UserShoppingCartAPI(Resource):
+class ContactsAPI(Resource):
     '''
     购物车相关的批量操作
     '''
-    url = "/api/v1/user/<string:name>/shopping_cart"
+    url = "/api/v1/contacts/<string:namespace>"
     endpoint = "user-shopping-cart-api"
 
-    @LoginCenter_Ist.http_basic_auth.login_required
-    def get(self, name):
+    # @LoginCenter_Ist.http_basic_auth.login_required
+    def get(self, namespace):
         '''
         获取购物车列表
         :return:
         '''
         result = ED.Respond_Err(ED.no_err)
+        parser = reqparse.RequestParser()
+        parser.add_argument("token", type=str, location="args")
+        parser.add_argument("query_name", type=str, location="args")
+        parser.add_argument("query_nickname", type=str, location="args")
+        args = parser.parse_args()
+
         uc = UserController(flask.g.user)
         result["data"] = uc.sc.find_shopping_carts()
 

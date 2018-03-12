@@ -19,7 +19,7 @@ init_db_config['db'] = "zuiwan"
 
 init_db_config['port'] = 3306
 init_db_config['user'] = "zuiwan"
-init_db_config['passwd'] = "zuiwan"
+init_db_config['passwd'] = "zuiwan2018"
 # init_db_config['name'] = "init_db_configs"
 init_db_config['name'] = "default"
 init_db_config['init_config_table'] = "t_cc_configs"
@@ -84,7 +84,7 @@ class DBModelFactory():
         if model is None:
             return None
         db_type = 'db_object' + (readonly and "_r" or "")
-        if not model.has_key(db_type):
+        if not db_type in model:
             model[db_type] = DBModel(model, readonly)
 
         return model[db_type]
@@ -208,7 +208,7 @@ class DBModel():
                     if clearblank == True and len(str(where[key])) == 0:
                         continue
                     condition = "%s`%s`%s'%s' and " % (
-                    condition, key, conmap.get(key, '='), convert_2_string(where[key]))
+                        condition, key, conmap.get(key, '='), convert_2_string(where[key]))
         else:
             for key in where:
                 if where[key] == None or (clearblank == True and len(str(where[key])) == 0):
@@ -232,7 +232,7 @@ class DBModel():
                     if clearblank == True and len(str(where[key])) == 0:
                         continue
                     condition = "%s`%s`%s'%s' or " % (
-                    condition, key, conmap.get(key, '='), convert_2_string(where[key]))
+                        condition, key, conmap.get(key, '='), convert_2_string(where[key]))
         else:
             for key in where:
                 if where[key] == None or (clearblank == True and len(str(where[key])) == 0):
@@ -384,7 +384,7 @@ class DBModel():
                     group_by_key = ""
                     for key in options['group_by']:
                         group_by_key += record[key] + "_"
-                    if group_by_filter_map.has_key(group_by_key):
+                    if group_by_key in group_by_filter_map:
                         continue
                     group_by_filter_map[group_by_key] = True
                     temp_result_list.append(record)

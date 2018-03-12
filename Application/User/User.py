@@ -6,7 +6,7 @@ from Platform.UserCenter.UserCenter import (
     LoginCenter_Ist,
     RegistCenter_Ist
 )
-from Library.Utils import (
+from Library.Utils.net_util import (
     package_json_request_data,
 )
 
@@ -57,7 +57,7 @@ class User_API(Resource):
                                 data["email"])
         return result
 
-    @UserCenter_Ist.http_basic_auth.login_required
+    @LoginCenter_Ist.http_basic_auth.login_required
     def delete(self, name):
         result = ED.Respond_Err(ED.no_err)
         flask.g.user.delete()

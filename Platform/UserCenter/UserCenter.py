@@ -158,6 +158,6 @@ class LoginCenter(object):
 LoginCenter_Ist = LoginCenter.instance()
 
 
-@ED.auth_error_handler(UserCenter_Ist.http_basic_auth)
+@ED.auth_error_handler(LoginCenter_Ist.http_basic_auth)
 def Unauthorized_Handler():
     return flask.jsonify(ED.Respond_Err(ED.err_user_login_expired, "登录过期，请重新登录"))

@@ -5,22 +5,22 @@ from marshmallow import Schema, fields, post_load
 from Library.OrmModel import BaseModel, BaseSchema
 from Library.extensions import orm
 
-class FavoriteSchema(BaseSchema):
 
+class FavoriteSchema(BaseSchema):
     name = fields.Str()
     description = fields.Str(allow_none=True)
     owner_id = fields.Str()
-    tags = fields.Str() #标签
-    origin = fields.Str()   #出处，暂时不用
-    source = fields.Str()   #出处
-    is_private= fields.Boolean()   #是否私有
-    is_recommended = fields.Boolean()   #是否推荐（is_private=False）
-    is_unread = fields.Boolean()    #是否未读
-    catalog = fields.Str()  #目录
-    url = fields.Str()  #url类收藏
+    tags = fields.Str()  # 标签
+    origin = fields.Str()  # 出处，暂时不用
+    source = fields.Str()  # 出处
+    is_private = fields.Boolean()  # 是否私有
+    is_recommended = fields.Boolean()  # 是否推荐（is_private=False）
+    is_unread = fields.Boolean()  # 是否未读
+    catalog = fields.Str()  # 目录
+    url = fields.Str()  # url类收藏
 
-    content_id = fields.Str()#爬虫爬取到的网页内容（mongodb那边的id）
-    project_id=fields.Int()#所属项目id
+    content_id = fields.Str()  # 爬虫爬取到的网页内容（mongodb那边的id）
+    project_id = fields.Int()  # 所属项目id
 
     @post_load
     def make_favorite(self, data):
@@ -40,10 +40,10 @@ class Favorite(BaseModel):
     is_recommended = orm.Column(orm.Boolean, default=False)
     is_private = orm.Column(orm.Boolean, default=False)
     is_unread = orm.Column(orm.Boolean, default=False)
-    origin=orm.Column(orm.String(64), default='')
+    origin = orm.Column(orm.String(64), default='')
     catalog = orm.Column(orm.String(64), default=default_catalog)
-    url=orm.Column(orm.String(64))
-    project_id=orm.Column(orm.Integer)
+    url = orm.Column(orm.String(64))
+    project_id = orm.Column(orm.Integer)
 
     def __init__(self,
                  owner_id,
