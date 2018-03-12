@@ -129,6 +129,29 @@ def getSourceName(request):
             source = ret_data['source']
     return source
 
+def require_field_in_data(*fields):
+    '''
+    Attention, In Order like this !!!
+        @package_json_request_data
+        @require_field_in_data
+    :param method:
+    :return:
+    '''
+    def decorator(method):
+        @wraps(method)
+        def _decorator(*args, **kwargs):
+            try:
+                for field in fields:
+                    if field not in flask.request.data:
+                        return ED.Respond_Err(ED.err_req_data, "{} required !!!".format(field))
+                ret = method(*args, **kwargs)
+                return ret
+            except Exception as e:
+                logger.error(repr(traceback.format_exc()))
+                return "%s package_json_request_data error" % str(flask.request)
+
+        return _decorator
+    return decorator
 
 def package_json_request_data(method):
     request = flask.request
