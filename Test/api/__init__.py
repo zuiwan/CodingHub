@@ -14,10 +14,6 @@ from flask import Response, current_app
 import time
 import traceback
 import logging
-from test.test_log_util import LogCenter
-from test.DBHelper import Test_Data_Manager
-test_logger = LogCenter.instance().get_logger(name="test")
-
 
 default_access_token = {"username": "huangzhen",
                 "token": "ZXlKaGJHY2lPaUpJVXpJMU5pSXNJbVY0Y0NJNk1UVXdOak0wTVRBeE15d2lhV0YwSWpveE5UQTJNekExTURFemZRLmV5SnBaQ0k2SWpNMVl6YzVORGMxTTJVNU5qUXdORGM0TXpaak1qWmlPV1V6WTJNME9XVTBJbjAuam1DaTN2bVFYZmxDdzJ2eDRUSk9Nc3JlOEx3em5Hc19EQTBfVGhNRmxiczo=",

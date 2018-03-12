@@ -3,9 +3,7 @@
 import sys
 import random
 import os
-from test.api import REST_API_Test, access_tokens
-from test.test_log_util import LogCenter
-project_test_logger = LogCenter.instance().get_logger(name="project")
+from Test.api import REST_API_Test, access_tokens
 
 # flask_app.add_url_rule('/<string:user_name>/project/<string:project_name>/<string:version>/<path:relative_path>/', view_func=Project_File_View.as_view('project_file_view'))
 # flask_app.add_url_rule('/<string:user_name>/project/<string:project_name>/<string:version>/', view_func=Project_File_View.as_view('project_root_file_view'))
