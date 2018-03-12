@@ -38,33 +38,7 @@ class UserCenter(object):
             return item.owner_id == flask.g.user.id
         return False
 
-    def Is_User_Logined(self):
-        request = flask.request
-        if isinstance(getattr(flask.g, 'user', None), User):
-            return True
 
-        flask_auth = request.authorization
-        if flask_auth is None and 'Authorization' in request.headers:
-            # Flask/Werkzeug do not recognize any authentication types
-            # other than Basic or Digest, so here we parse the header by
-            # hand
-            try:
-                auth_type, token = flask.request.headers['Authorization'].split(
-                    None, 1)
-                flask_auth = Authorization(auth_type, {'token': token})
-            except ValueError:
-                # The Authorization header is either empty or has no token
-                pass
-        if flask_auth and flask_auth.username:
-            password = self.http_basic_auth.get_password_callback(flask_auth.username)
-        else:
-            password = None
-        if not self.http_basic_auth.authenticate(flask_auth, password):
-            # Clear TCP receive buffer of any pending data
-            request.data
-            return False
-        else:
-            return True
 
     def Is_User_Existed(self, user_id_or_name):
         flag = False
@@ -153,7 +127,33 @@ class LoginCenter(object):
         flask.g.user = user
         return True
 
+    def Is_User_Logined(self):
+        request = flask.request
+        if isinstance(getattr(flask.g, 'user', None), User):
+            return True
 
+        flask_auth = request.authorization
+        if flask_auth is None and 'Authorization' in request.headers:
+            # Flask/Werkzeug do not recognize any authentication types
+            # other than Basic or Digest, so here we parse the header by
+            # hand
+            try:
+                auth_type, token = flask.request.headers['Authorization'].split(
+                    None, 1)
+                flask_auth = Authorization(auth_type, {'token': token})
+            except ValueError:
+                # The Authorization header is either empty or has no token
+                pass
+        if flask_auth and flask_auth.username:
+            password = self.http_basic_auth.get_password_callback(flask_auth.username)
+        else:
+            password = None
+        if not self.http_basic_auth.authenticate(flask_auth, password):
+            # Clear TCP receive buffer of any pending data
+            request.data
+            return False
+        else:
+            return True
 LoginCenter_Ist = LoginCenter.instance()
 
 

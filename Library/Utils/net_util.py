@@ -133,7 +133,7 @@ def require_field_in_data(*fields):
     '''
     Attention, In Order like this !!!
         @package_json_request_data
-        @require_field_in_data
+        @require_field_in_data("field1", "field2")
     :param method:
     :return:
     '''
@@ -141,6 +141,7 @@ def require_field_in_data(*fields):
         @wraps(method)
         def _decorator(*args, **kwargs):
             try:
+                logger.info("type of request" + str(type(flask.request.data)))
                 for field in fields:
                     if field not in flask.request.data:
                         return ED.Respond_Err(ED.err_req_data, "{} required !!!".format(field))
@@ -148,20 +149,19 @@ def require_field_in_data(*fields):
                 return ret
             except Exception as e:
                 logger.error(repr(traceback.format_exc()))
-                return "%s package_json_request_data error" % str(flask.request)
-
+                return "%s package_json_request_data error" % str(fields)
         return _decorator
     return decorator
 
 def package_json_request_data(method):
     request = flask.request
-
     @wraps(method)
     def _decorator(*args, **kwargs):
         try:
             if request.method in ("POST", "PUT"):
                 request.data = json.loads(request.data, encoding="utf-8")
             else:
+                logger.info("not post or put")
                 temp_raw_data = request.args.items()
                 temp_raw_map = {}
                 for temp_item in temp_raw_data:
@@ -176,7 +176,7 @@ def package_json_request_data(method):
             return ret
         except Exception as e:
             logger.error(repr(traceback.format_exc()))
-            return "%s package_json_request_data error" % str(request)
+            return "fields %s required, package_json_request_data error" % str(request)
 
     return _decorator
 
