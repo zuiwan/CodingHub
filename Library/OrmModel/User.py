@@ -35,7 +35,7 @@ class User(BaseModel):
                  name,
                  email=None,
                  level=default_level):
-        self.username = name
+        self.name = name
         self.email = email
         self.level = level
 
