@@ -23,6 +23,8 @@ from .UserDBM import UserDBM
 
 class UserController(object):
     def __init__(self, user):
+        if not isinstance(user, User):
+            raise NotImplementedError
         self.user = user
         self.userDBManager = UserDBM.instance()
 
@@ -62,6 +64,7 @@ class UserController(object):
                 UserProfile.is_deleted == 0)).first()
             if self.__profile:
                 self._profile = self.__profile.to_dict()
+                # del self._profile["id"]
         return self._profile
 
     def add_one_to_shopping_cart(self, product_id, count, address, unit_price):

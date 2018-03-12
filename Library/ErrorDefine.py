@@ -29,6 +29,8 @@ no_err = 200
 
 err_sys = 503
 err_not_found = 404
+err_bad_request = 400
+
 
 err_user_not_login = 510
 err_user_login_expired = 511
@@ -46,7 +48,7 @@ Message[no_err] = {'en': 'no error', 'cn': u'成功'}
 Message[err_sys] = {'en': 'system error', 'cn': u'系统错误'}
 Message[err_user_id_existed] = {'en': 'user id existed', 'cn': u'用户已存在'}
 Message[err_req_data] = {'en': 'incorrect request data', 'cn': u'请求数据出错'}
-
+Message[err_not_found] = {"en": "Not found", "cn": "未找到"}
 #
 # * 1.当输入的用户名不符合格式要求时，提示“用户名格式出错，只支持字母和符号”。
 # * 2.用户名输入超出时不显示超出内容，提示“用户名限制20个字符”
@@ -61,10 +63,9 @@ Message[err_req_data] = {'en': 'incorrect request data', 'cn': u'请求数据出
 
 KEYS = ('code', 'data')
 
-
 def Respond_Err(err_code, err_msg=None):
-    return {'code': err_code,
-            'data': '%s' % err_msg if err_msg else Message.get(err_code).get('cn') or Message.get(err_code).get('en')}
+    return {'code': err_code, 'data': '%s' % err_msg if err_msg
+            else Message.get(err_code).get('cn') or Message.get(err_code).get('en') if Message.get(err_code) else u'未知'}
 
 
 def auth_error_handler(auth):

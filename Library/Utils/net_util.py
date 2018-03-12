@@ -129,6 +129,7 @@ def getSourceName(request):
             source = ret_data['source']
     return source
 
+
 def require_field_in_data(*fields):
     '''
     Attention, In Order like this !!!
@@ -137,6 +138,7 @@ def require_field_in_data(*fields):
     :param method:
     :return:
     '''
+
     def decorator(method):
         @wraps(method)
         def _decorator(*args, **kwargs):
@@ -144,16 +146,24 @@ def require_field_in_data(*fields):
                 for field in fields:
                     if field not in flask.request.data:
                         return ED.Respond_Err(ED.err_req_data, "{} required !!!".format(field))
-                ret = method(*args, **kwargs)
+                try:
+                    ret = method(*args, **kwargs)
+                except (AttributeError, NotImplementedError):
+                    # 假定数据库查询等均返回非空对象，因此如果返回空继续执行则会报此错误，在此捕捉
+                    return ED.Respond_Err(ED.err_not_found)
                 return ret
             except Exception as e:
                 logger.error(repr(traceback.format_exc()))
                 return "%s package_json_request_data error" % str(fields)
+
         return _decorator
+
     return decorator
+
 
 def package_json_request_data(method):
     request = flask.request
+
     @wraps(method)
     def _decorator(*args, **kwargs):
         try:

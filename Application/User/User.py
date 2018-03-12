@@ -50,7 +50,7 @@ class User_API(Resource):
         '''
         result = ED.Respond_Err(ED.no_err)
         data = flask.request.data
-        user = UserCenter_Ist.Get_User(name=flask.g.user.name)
+        user = UserController(UserCenter_Ist.Get_User(name=flask.g.user.name))
         user.update(data)
         return result
 

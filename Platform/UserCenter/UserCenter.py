@@ -79,8 +79,7 @@ class RegistCenter(object):
         user = User(name=name, email=email, level=level)
         user.hash_password(password)
         self.db.session.add(user)
-
-        self.logger.info("$$$$$$$$$ {}".format(user.id))
+        self.db.session.flush()
         self.Fill_Tables(owner_id=user.id)
         # 提交事务
         self.db.session.commit()
@@ -96,26 +95,40 @@ RegistCenter_Ist = RegistCenter.instance()
 UserCenter_Ist = UserCenter.instance()
 
 
-#####################    ####################
-def Verify_Password_Callback(self, username_or_token, password):
-    user = self.Verify_Auth_Token(username_or_token)
-    if not user:
-        # try to authenticate with username/password
-        user = UserCenter_Ist.Get_User(name=username_or_token)
-        if not user or not user.verify_password(password):
-            return False
-    flask.g.user = user
-    return True
+
 
 
 @Singleton
 class LoginCenter(object):
     http_basic_auth = HTTPBasicAuth()
-    http_basic_auth.verify_password = Verify_Password_Callback
+
 
     def __init__(self):
+        self.http_basic_auth.verify_password(self.Verify_Password_Callback)
         self.db = orm
         self.logger = LogCenter.instance().get_logger("UserCenter", "login-center")
+
+    #####################    ####################
+    def Verify_Password_Callback(self, username_or_token, password):
+        # TODO: 区分登录失败的不同情况
+        self.logger.info("username:"+str(username_or_token))
+        self.logger.info("password:"+str(password))
+        if password is None:
+            user = self.Verify_Auth_Token(username_or_token)
+            if user:
+                # token校验成功，提前返回
+                return True
+            else:
+                # token校验失败
+                return False
+        # try to authenticate with username/password
+        user = UserCenter_Ist.Get_User(name=username_or_token)
+        if not user:
+            return False
+        if not user.verify_password(password):
+            return False
+        flask.g.user = user
+        return True
 
     def Verify_Auth_Token(self, token):
         s = Serializer(SECRET_KEY)
@@ -124,7 +137,8 @@ class LoginCenter(object):
         except SignatureExpired:
             return None  # valid token, but expired
         except BadSignature:
-            raise Exception("BadSignature")  # invalid token
+            # raise Exception("BadSignature")  # invalid token
+            return None
         user = User.query.get(data['id'])
         return user
 

@@ -27,9 +27,9 @@ class User(BaseModel):
     default_level = 0
 
     name = orm.Column(orm.String(32), index=True)
-    email = orm.Column(orm.String(64))
+    email = orm.Column(orm.String(64), default="")
     level = orm.Column(orm.Integer, default=default_level)
-    password_hash = orm.Column(orm.String(500))
+    password_hash = orm.Column(orm.String(500), default="")
 
     def __init__(self,
                  name,
