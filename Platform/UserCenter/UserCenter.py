@@ -38,8 +38,6 @@ class UserCenter(object):
             return item.owner_id == flask.g.user.id
         return False
 
-
-
     def Is_User_Existed(self, user_id_or_name):
         flag = False
         if User.query.filter(and_(or_(
@@ -56,20 +54,21 @@ class UserCenter(object):
         else:
             return False
 
-    def Get_User(**find_by):
+    def Get_User(self, **find_by):
         _id = find_by.get('id') or find_by.get('user_id')
         _name = find_by.get('name') or find_by.get('user_name') or find_by.get('username')
         _email = find_by.get('email')
         return User.query.filter(and_(or_(User.id == _id,
-                                          User.username == _name,
+                                          User.name == _name,
                                           User.email == _email),
                                       User.is_deleted == 0)).first()
+
 
 @Singleton
 class RegistCenter(object):
     def __init__(self):
         self.db = orm
-        self.logger = LogCenter.instance().get_logger("UserCenter", "regist-center")
+        self.logger = LogCenter.instance().get_logger("UserCenter", "register-center")
 
     def Regist(self, name, password, email, level=None):
         if name is None \
@@ -80,10 +79,12 @@ class RegistCenter(object):
         user = User(name=name, email=email, level=level)
         user.hash_password(password)
         self.db.session.add(user)
+
+        self.logger.info("$$$$$$$$$ {}".format(user.id))
         self.Fill_Tables(owner_id=user.id)
         # 提交事务
         self.db.session.commit()
-        return user
+        return True
 
     def Fill_Tables(self, owner_id):
         self.db.session.add(UserProfile(owner_id=owner_id))
@@ -96,10 +97,21 @@ UserCenter_Ist = UserCenter.instance()
 
 
 #####################    ####################
+def Verify_Password_Callback(self, username_or_token, password):
+    user = self.Verify_Auth_Token(username_or_token)
+    if not user:
+        # try to authenticate with username/password
+        user = UserCenter_Ist.Get_User(name=username_or_token)
+        if not user or not user.verify_password(password):
+            return False
+    flask.g.user = user
+    return True
+
 
 @Singleton
 class LoginCenter(object):
     http_basic_auth = HTTPBasicAuth()
+    http_basic_auth.verify_password = Verify_Password_Callback
 
     def __init__(self):
         self.db = orm
@@ -115,17 +127,6 @@ class LoginCenter(object):
             raise Exception("BadSignature")  # invalid token
         user = User.query.get(data['id'])
         return user
-
-    @http_basic_auth.verify_password
-    def Verify_Password(self, username_or_token, password):
-        user = self.Verify_Auth_Token(username_or_token)
-        if not user:
-            # try to authenticate with username/password
-            user = UserCenter.Get_User(username=username_or_token)
-            if not user or not user.verify_password(password):
-                return False
-        flask.g.user = user
-        return True
 
     def Is_User_Logined(self):
         request = flask.request
@@ -154,6 +155,8 @@ class LoginCenter(object):
             return False
         else:
             return True
+
+
 LoginCenter_Ist = LoginCenter.instance()
 
 

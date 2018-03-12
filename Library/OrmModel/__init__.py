@@ -9,8 +9,8 @@ import datetime
 class BaseSchema(Schema):
     __abstract__ = True
     id = fields.Str()
-    date_created = fields.DateTime(allow_none=True)
-    date_modified = fields.DateTime(allow_none=True)
+    date_created = fields.DateTime()
+    date_modified = fields.DateTime()
     is_deleted = fields.Boolean()
 
 

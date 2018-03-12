@@ -28,7 +28,7 @@ class UserController(object):
 
     @property
     def owner_id(self):
-        if getattr(self, "owner_id", None) is None:
+        if getattr(self, "_owner_id", None) is None:
             self._owner_id = self.user.id
         return self._owner_id
 
@@ -54,10 +54,14 @@ class UserController(object):
 
     @property
     def profile(self):
-        if not getattr(self, "_profile", None) is None:
-            self.__profile = UserProfile.query.filter(and_(or_(UserProfile.owner_id == self.owner_id),
-                                                           UserProfile.is_deleted == 0)).first()
-            self._profile = self.__profile.to_dict()
+        if getattr(self, "_profile", None) is None:
+            self.__profile = UserProfile.query.filter(and_(
+                or_(
+                    UserProfile.owner_id == self.owner_id
+                ),
+                UserProfile.is_deleted == 0)).first()
+            if self.__profile:
+                self._profile = self.__profile.to_dict()
         return self._profile
 
     def add_one_to_shopping_cart(self, product_id, count, address, unit_price):

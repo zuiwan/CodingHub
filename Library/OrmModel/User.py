@@ -28,13 +28,13 @@ class User(BaseModel):
 
     name = orm.Column(orm.String(32), index=True)
     email = orm.Column(orm.String(64))
-    level = orm.Column(orm.Integer)
+    level = orm.Column(orm.Integer, default=default_level)
     password_hash = orm.Column(orm.String(500))
 
     def __init__(self,
                  name,
                  email=None,
-                 level=default_level):
+                 level=None):
         self.name = name
         self.email = email
         self.level = level

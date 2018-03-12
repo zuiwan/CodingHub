@@ -28,7 +28,7 @@ class UserProfileSchema(BaseSchema):
 class UserProfile(BaseModel):
     schema = UserProfileSchema(strict=True)
 
-    owner_id = orm.Column(orm.String(32), index=True)
+    owner_id = orm.Column(orm.String(32), default="", index=True)
     nickname = orm.Column(orm.String(32), default="")
     org = orm.Column(orm.String(32), default="")
     bio = orm.Column(orm.String(64), default="")

@@ -141,7 +141,6 @@ def require_field_in_data(*fields):
         @wraps(method)
         def _decorator(*args, **kwargs):
             try:
-                logger.info("type of request" + str(type(flask.request.data)))
                 for field in fields:
                     if field not in flask.request.data:
                         return ED.Respond_Err(ED.err_req_data, "{} required !!!".format(field))
@@ -161,7 +160,6 @@ def package_json_request_data(method):
             if request.method in ("POST", "PUT"):
                 request.data = json.loads(request.data, encoding="utf-8")
             else:
-                logger.info("not post or put")
                 temp_raw_data = request.args.items()
                 temp_raw_map = {}
                 for temp_item in temp_raw_data:

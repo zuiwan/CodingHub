@@ -4,7 +4,10 @@ import flask
 from Platform.UserCenter.UserCenter import (
     UserCenter_Ist,
     LoginCenter_Ist,
-    RegistCenter_Ist
+    RegistCenter_Ist,
+)
+from Platform.UserCenter.UserControler import (
+    UserController
 )
 from Library.Utils.net_util import (
     package_json_request_data,
@@ -33,7 +36,8 @@ class User_API(Resource):
             result["data"] = flask.g.user.to_dict()
         else:
             tu = UserCenter_Ist.Get_User(name=data["name"])
-            result["data"] = tu.profile
+            uc = UserController(tu)
+            result["data"] = uc.profile
 
         return result
 
