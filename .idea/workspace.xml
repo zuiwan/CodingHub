@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91b646db-fea0-40ee-861b-d4b6001e9e3b" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/Config/nginx_uwsgi_ssl.conf" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/Config/Dockerfile" afterPath="$PROJECT_DIR$/Config/Dockerfile" />
-      <change beforePath="$PROJECT_DIR$/Config/nginx_uwsgi.conf" afterPath="$PROJECT_DIR$/Config/nginx_uwsgi.conf" />
+      <change beforePath="$PROJECT_DIR$/Config/celery_supervisor.conf" afterPath="$PROJECT_DIR$/Config/supervisor_celery.conf" />
+      <change beforePath="$PROJECT_DIR$/Config/uwsgi_supervisor.conf" afterPath="$PROJECT_DIR$/Config/supervisor_uwsgi.conf" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,11 +31,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Dockerfile" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Dockerfile" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Config/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="13" column="45" lean-forward="true" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="supervisor_celery.conf" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Config/supervisor_celery.conf">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="198">
-              <caret line="9" column="12" lean-forward="false" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -91,7 +101,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nginx_uwsgi_ssl.conf" pinned="false" current-in-tab="true">
+      <file leaf-file-name="nginx_uwsgi_ssl.conf" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Config/nginx_uwsgi_ssl.conf">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="286">
@@ -106,16 +116,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserProfile.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Library/OrmModel/UserProfile.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1452">
-              <caret line="69" column="25" lean-forward="false" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -204,9 +204,9 @@
         <option value="$PROJECT_DIR$/Platform/UserCenter/ShoppingCart.py" />
         <option value="$PROJECT_DIR$/Library/Utils/time_util.py" />
         <option value="$PROJECT_DIR$/Platform/ERACenter/__init__.py" />
-        <option value="$PROJECT_DIR$/Config/Dockerfile" />
         <option value="$PROJECT_DIR$/Config/nginx_uwsgi.conf" />
         <option value="$PROJECT_DIR$/Config/nginx_uwsgi_ssl.conf" />
+        <option value="$PROJECT_DIR$/Config/Dockerfile" />
       </list>
     </option>
   </component>
@@ -631,7 +631,14 @@
       <option name="project" value="LOCAL" />
       <updated>1520924708142</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="[DEV] add ssl cert">
+      <created>1520927083420</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1520927083420</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -715,16 +722,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Library/OrmModel/Farovite.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding>
-            <element signature="e#46#95#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Library/Utils/log_util.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2046">
@@ -1123,14 +1120,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Config/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="12" lean-forward="false" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Config/logger.conf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1159,6 +1148,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
           <caret line="13" column="11" lean-forward="false" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Config/supervisor_celery.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Config/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="45" lean-forward="true" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
           <folding />
         </state>
       </provider>

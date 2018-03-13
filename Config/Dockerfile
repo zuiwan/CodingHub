@@ -15,13 +15,15 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF505
 
 RUN service mongod start
 
-RUN mkdir -p /root/CodingHub/logs
-    && mkdir -p /var/log/supervisor/
-    && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bck
-    && ln -s /root/CodingHub/Config/nginx.conf /etc/nginx/nginx.conf
-    && mkdir -p /etc/supervisor/conf.d
-    && ln -s /root/CodingHub/Config/supervisord.conf /etc/supervisor/
-    && ln -s /root/CodingHub/Config/nginx_uwsgi.conf /etc/nginx/conf.d/
+RUN mkdir -p /root/CodingHub/logs   \
+    && mkdir -p /var/log/supervisor/    \
+    && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bck   \
+    && ln -s /root/CodingHub/Config/nginx.conf /etc/nginx/    \
+    && ln -s /root/CodingHub/Config/supervisord.conf /etc/supervisor/   \
+    && mkdir -p /etc/supervisor/conf.d  \
+    && ln -s /root/CodingHub/Config/supervisor_*.conf /etc/supervisor/conf.d    \
+    && ln -s /root/CodingHub/Config/nginx_*.conf /etc/nginx/conf.d/ \
+    && echo "success"
 RUN mysql -uroot -proot -e"CREATE DATABASE zuiwan; CREATE USER 'zuiwan'@'%' IDENTIFIED BY 'zuiwan2018'; GRANT ALL ON *.* TO
  'zuiwan'@'%';"
 
