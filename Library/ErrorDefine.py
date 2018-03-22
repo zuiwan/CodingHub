@@ -39,7 +39,7 @@ err_user_id_not_exist = 513
 err_user_id_existed = 514
 err_user_register_error = 515
 
-err_req_data = 520
+err_req_data = err_bad_request
 
 
 Message = {}

@@ -11,6 +11,7 @@
                    2018/3/13:
 -------------------------------------------------
 """
+from Platform.UserCenter.ContactsControler import ContactsControler
 
 __author__ = 'huangzhen'
 
@@ -50,16 +51,17 @@ ContactsView = Blueprint("Contacts", __name__, template_folder="{}/Contacts/temp
 @ContactsView.route("ContactsView/<string:namespace>", methods=["GET"])
 def contactsView(namespace):
     contacts_info = {}
-    # html_text = Environment(loader=BaseLoader).from_string(
-    #     Get_Template("Contacts/index.html").decode("utf-8")).render(
-    #     contacts_info=contacts_info
-    # )
     # return html_text[
     #     [{
     #       name:'banana',
     #       badge: 'http://www.freeiconspng.com/uploads/pikachu-png-icon-7.png'
     #     },]
-    return render_template("index.html")
+    return render_template("index.html", namespace=namespace)
+
+
+@ContactsView.route("ContactsView/registerView", methods=["GET"])
+def contactsRegisterView():
+    return render_template("register.html")
 
 
 class ContactsAPI(Resource):
@@ -68,25 +70,25 @@ class ContactsAPI(Resource):
     '''
     url = "/api/v1/contacts/<string:namespace>"
     endpoint = "contacts-api"
-    decorators = [auth_field_in_data(token=str("SECRET_KEY")),
-                  package_json_request_data,
+    decorators = [package_json_request_data,
                   check_api_cost_time]
 
     def get(self, namespace):
         '''
+        免登陆
         :return:
         '''
         result = ED.Respond_Err(ED.no_err)
-        # parser.add_argument("token", type=str, location="args")
-        # parser.add_argument("query_name", type=str, location="args")
-        # parser.add_argument("query_nickname", type=str, location="args")
-
-        # uc = UserController(T_G.user)
+        cc = ContactsControler(namespace)
+        _ls = cc.Get_All()
+        for l in _ls:
+            l = l.to_dict()
+            l.update({"badge": 'http://www.freeiconspng.com/uploads/pikachu-png-icon-7.png'})
+        result["data"] = _ls
 
         return result
 
     @LoginCenter_Ist.http_basic_auth.login_required
-    @package_json_request_data
     def put(self, namespace):
         '''
         修改
@@ -105,7 +107,12 @@ class ContactsAPI(Resource):
         '''
         result = ED.Respond_Err(ED.no_err)
         data = request.data
-
+        cc = ContactsControler(namespace)
+        if data.get("address2"):
+            data["addresses"] = data["address"] + ',' + data["address2"]
+        if not cc.Create(data):
+            return ED.Respond_Err(ED.unknown_err)
+        result["data"] = namespace
         return result
 
     @LoginCenter_Ist.http_basic_auth.login_required
@@ -113,36 +120,4 @@ class ContactsAPI(Resource):
         result = ED.Respond_Err(ED.no_err)
         uc = UserController(T_G.user)
         uc.sc.clear_shopping_carts()
-        return result
-
-
-class UserShoppingCartItemAPI(Resource):
-    url = "/api/v1/user/<string:name>/shopping_cart/<string:product_id>"
-    endpoint = "user-shopping-cart-item-api"
-
-    @LoginCenter_Ist.http_basic_auth.login_required
-    @package_json_request_data
-    def put(self, name, product_id):
-        result = ED.Respond_Err(ED.no_err)
-        data = request.data
-        uc = UserController(T_G.user)
-        uc.add_one_to_shopping_cart(product_id=product_id,
-                                    unit_price=data["unit_price"],
-                                    count=data["count"],
-                                    address=data["address"])
-        return result
-
-    @LoginCenter_Ist.http_basic_auth.login_required
-    @package_json_request_data
-    def post(self, name, product_id):
-        '''
-        修改购物车中商品（商品数量，收货地址等）
-        :param name:
-        :param product_id:
-        :return:
-        '''
-        result = ED.Respond_Err(ED.no_err)
-        data = request.data
-        uc = UserController(T_G.user)
-        uc.sc.update_item(product_id, data[product_id])
         return result

@@ -43,18 +43,17 @@ $('document').ready(function () {
         var data = $("#register-form").serialize();
 
         $.ajax({
-
                 type: 'POST',
-                url: '/api/v1/user',
+                url: '/api/v1/contacts/' + data.namespace,
                 data: data,
                 beforeSend: function () {
                     $("#error").fadeOut();
-                    $("#btn-submit").html('<span class="glyphicon glyphicon-transfer"></span> &nbsp; sending ...');
+                    $("#btn-submit").html('<span class="glyphicon glyphicon-transfer"></span> &nbsp; 发送 ...');
                 },
                 success: function (data) {
                     if (data.code == 200) {
                         $("#btn-submit").html('Signing Up');
-                        setTimeout('$(".form-signin").fadeOut(500, function(){ $(".signin-form").load("successreg.php"); }); ', 5000);
+                        setTimeout('$(".form-signin").fadeOut(500, function(){ $(".signin-form").load("/api/v1/contacts/"+data.data); }); ', 5000);
                     }
                     else if (data.code == 400) {
                         $("#error").fadeIn(1000, function () {
@@ -64,16 +63,6 @@ $('document').ready(function () {
                             $("#btn-submit").html('<span class="glyphicon glyphicon-log-in"></span> &nbsp; Create Account');
 
                         });
-                    }
-                    else if (data.code == 514) {
-                        $("#error").fadeIn(1000, function () {
-                            $("#error").html('<div class="alert alert-danger"> <span class="glyphicon' +
-                                ' glyphicon-info-sign"></span> &nbsp; 账号已注册，请试试其他的用户名和手机号。</div>');
-
-                            $("#btn-submit").html('<span class="glyphicon glyphicon-log-in"></span> &nbsp; Create Account');
-
-                        });
-
                     }
 
                 }

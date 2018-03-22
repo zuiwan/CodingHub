@@ -29,11 +29,11 @@ UserView = Blueprint("UserView", __name__, template_folder="{}/User/templates".f
                      static_folder="{}/static/User/static".format(G_Folder))
 
 
-@UserView.route("UserView/register", methods=["GET"])
+@UserView.route("UserView/register", methods=["GET", "POST"])
 def registerView():
     return render_template("register.html")
 
-@UserView.route("UserView/login", methods=["GET"])
+@UserView.route("UserView/login", methods=["GET", "POST"])
 def loginView():
     return render_template("login.html")
 
@@ -42,7 +42,7 @@ class User_API(Resource):
     url = "/api/v1/user"
     endpoint = "user-api"
 
-    # @LoginCenter_Ist.http_basic_auth.login_required
+    @LoginCenter_Ist.http_basic_auth.login_required
     @package_json_request_data
     @auth_field_in_data("name")
     def get(self):
@@ -75,8 +75,8 @@ class User_API(Resource):
         user.update(data)
         return result
 
-    @auth_field_in_data("name", "password", "phone")
     @package_json_request_data
+    @auth_field_in_data("name", "password", "phone")
     def post(self):
         '''
         注册

@@ -71,6 +71,10 @@ class RegistCenter(object):
         self.logger = LogCenter.instance().get_logger("UserCenter", "register-center")
 
     def Regist(self, name, password, phone, level=None):
+        _ = self.Regist_And_Return_Id(name, password, phone, level)
+        return True
+
+    def Regist_And_Return_Id(self, name, password, phone, level=None):
         if name is None \
                 or password is None \
                 or User.query.filter_by(name=name).first() is not None:
@@ -80,13 +84,13 @@ class RegistCenter(object):
         user.hash_password(password)
         self.db.session.add(user)
         self.db.session.flush()
-        self.Fill_Tables(owner_id=user.id)
+        self.Fill_Tables(owner_id=user.id, phone=phone)
         # 提交事务
         self.db.session.commit()
-        return True
+        return user.id
 
-    def Fill_Tables(self, owner_id):
-        self.db.session.add(UserProfile(owner_id=owner_id))
+    def Fill_Tables(self, owner_id, phone):
+        self.db.session.add(UserProfile(owner_id=owner_id, phone=phone))
         ShoppingCart(owner_id).save()
 
 
@@ -95,13 +99,9 @@ RegistCenter_Ist = RegistCenter.instance()
 UserCenter_Ist = UserCenter.instance()
 
 
-
-
-
 @Singleton
 class LoginCenter(object):
     http_basic_auth = HTTPBasicAuth()
-
 
     def __init__(self):
         self.http_basic_auth.verify_password(self.Verify_Password_Callback)
@@ -111,8 +111,8 @@ class LoginCenter(object):
     #####################    ####################
     def Verify_Password_Callback(self, username_or_token, password):
         # TODO: 区分登录失败的不同情况
-        self.logger.info("username:"+str(username_or_token))
-        self.logger.info("password:"+str(password))
+        self.logger.info("username:" + str(username_or_token))
+        self.logger.info("password:" + str(password))
         if password is None:
             user = self.Verify_Auth_Token(username_or_token)
             if user:

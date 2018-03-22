@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>名片注册</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js">
+    </script>
+    <link href="/static/User/static/css/style.css" rel="stylesheet" type="text/css" media="screen">
+    <script type="text/javascript" src="/static/Contacts/static/js/script.js"></script>
+</head>
+<body>s
+<div class="signin-form">
+    <div class="container">
+        <form class="form-signin" method="post" id="register-form">
+            <h2 class="form-signin-heading">注册</h2>
+            <hr/>
+            <div id="error">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="真实姓名" name="name" id="name"/>
+            </div>
+            <div class="form-group">
+                <select id="namespace">
+                    <option value="216">金兰中学216班</option>
+                    <option value="51">金兰小学五(1)班</option>
+                    <option value="1112">衡阳县一中高一1112班</option>
+                    <option value="1120">衡阳县一中高二1120班</option>
+                    <option value="1117">衡阳县一中高三1117班</option>
+                    <option value="microelectronics">华中科技大学微电子科学与工程201401班</option>
+                    <option value="seedclass">华中科技大学电信种子201401班</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="就职单位（就读学校）" name="orgnization" id="org"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="现居城市" name="city" id="city"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="外号" name="nickname" id="nickname"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="手机" name="phone" id="phone"/>
+                <span id="check-f"></span>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="手机（备用）" name="phone" id="phone2"/>
+                <span id="check-g"></span>
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="邮箱" name="email" id="email"/>
+                <span id="check-e"></span>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="地址" name="email" id="address"/>
+                <span id="check-h"></span>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="地址（备用）" name="email" id="address2"/>
+                <span id="check-"></span>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="密码" name="password" id="password"/>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="重复密码" name="cpassword"
+                       id="cpassword"/>
+            </div>
+            <hr/>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default" name="btn-save" id="btn-submit">
+                    <span class="glyphicon glyphicon-log-in"></span> &nbsp; 注册名片
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+</html>

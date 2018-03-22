@@ -11,20 +11,26 @@
                    2018/3/22:
 -------------------------------------------------
 """
-from sqlalchemy import and_
 
 __author__ = 'huangzhen'
-
+from sqlalchemy import and_
+from sqlalchemy import distinct
 from Library.OrmModel.Contacts import Contacts
+from Library.OrmModel.User import User
+from Library.extensions import orm
+from .UserCenter import RegistCenter_Ist
 
 
 class ContactsControler(object):
-    def __init__(self, namespaces, user_id):
+    def __init__(self, namespaces, user_id=None):
         if isinstance(namespaces, str) or isinstance(namespaces, basestring):
             namespaces = (namespaces,)
         assert isinstance(namespaces, tuple)
+        if "all" in namespaces:
+            namespaces = orm.session.query(distinct(Contacts.namespace)).all()
         self.namespaces = namespaces
         self.user_id = user_id
+        self.db = orm
 
     def Get_All(self):
         _r = {}
@@ -47,3 +53,17 @@ class ContactsControler(object):
         except Exception as e:
             _r, _n = [], 0
         return _r, _n
+
+    def Create(self, info):
+        uid = RegistCenter_Ist.Regist_And_Return_Id(name=info["name"],
+                                                    phone=info["phone"],
+                                                    password=info.get("password", "666666"))
+        c = Contacts(namespace=info["namespace"],
+                     owner_id=uid,
+                     nickname=info["nickname"],
+                     org=info["org"],
+                     addresses=info["addresses"],
+                     phone=info["phone"],
+                     city=info["city"])
+        self.db.session.add(c)
+        return True

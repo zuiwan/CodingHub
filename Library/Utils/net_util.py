@@ -142,7 +142,6 @@ def auth_field_in_data(*required_keys, **equals):
     :param method:
     :return:
     '''
-    print(required_keys, equals)
     def decorator(method):
         @wraps(method)
         def _decorator(*args, **kwargs):
@@ -163,9 +162,14 @@ def auth_field_in_data(*required_keys, **equals):
 def package_json_request_data(method):
     @wraps(method)
     def _decorator(*args, **kwargs):
+        print("debug", request.method, request.data, request.form)
         try:
             if request.method in ("POST", "PUT"):
-                request.data = json.loads(request.data, encoding="utf-8")
+                if request.data != "":
+                    request.data = json.loads(request.data, encoding="utf-8")
+                else:
+                    # try to parse form
+                    request.data = dict(request.form.to_dict(flat=True))
             else:
                 temp_raw_data = request.args.items()
                 temp_raw_map = {}
@@ -181,7 +185,7 @@ def package_json_request_data(method):
             return ret
         except Exception as e:
             logger.error(repr(traceback.format_exc()))
-            return "fields %s required, package_json_request_data error" % str(request.data)
+            return "package_json_request_data error: {}".format(str(request.data))
 
     return _decorator
 

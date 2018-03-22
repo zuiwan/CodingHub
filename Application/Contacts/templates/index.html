@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <meta name=”viewport” content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-    <title>Contacts</title>
+    <title>联系人</title>
     <link rel="stylesheet" href="/static/Contacts/static/css/contacts.css">
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="/static/Contacts/static/js/contacts.js"></script>
     <style>
@@ -23,18 +22,36 @@
 <body>
 <div class="page"></div>
 <script>
-    jQuery.getJSON("/api/v1/contacts/216",
-        {},
-        function (resp) {
-            contacts_list = resp.data;
-            console.info("CodingHub returned: ", contacts_list);
-            Contacts({
-                appendTo: '.page',
-                generateListItem: null,
-                data: contacts_list
-            });
-        });
+    $.ajax({
+            type: 'GET',
+            url: '/api/v1/contacts/' + '{{ namespace }}',
+            data: data,
+            beforeSend: function () {
+                $("#error").fadeOut();
+                $("#btn-submit").html('<span class="glyphicon glyphicon-transfer"></span> &nbsp; sending ...');
+            },
+            success: function (data) {
+                if (data.code == 200) {
+                    contacts_list = data.data;
+                    console.log("#####", contacts_list, "#####");
+                    Contacts({
+                        appendTo: '.page',
+                        generateListItem: null,
+                        data: contacts_list
+                    });
+                }
+                else if (data.code == 400) {
+                    $("#error").fadeIn(1000, function () {
+                        $("#error").html('<div class="alert alert-danger"> <span class="glyphicon' +
+                            ' glyphicon-info-sign"></span> &nbsp; 请联系danceiny@gmail.com。</div>');
 
+                        $("#btn-submit").html('<span class="glyphicon glyphicon-log-in"></span> &nbsp; Create Account');
+
+                    });
+                }
+            }
+        }
+    );
 </script>
 </body>
 </html>
