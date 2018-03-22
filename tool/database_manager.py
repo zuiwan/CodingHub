@@ -1,11 +1,10 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 import sys
-
 sys.path.append(".")
 sys.path.append("..")
-from Application.api import flask_app
 from Library.extensions import orm
+from Application.api import flask_app
 
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
