@@ -24,7 +24,7 @@ RUN mkdir -p /root/CodingHub/logs   \
     && ln -s /root/CodingHub/Config/supervisor_*.conf /etc/supervisor/conf.d    \
     && ln -s /root/CodingHub/Config/nginx_*.conf /etc/nginx/conf.d/ \
     && echo "success"
-RUN mysql -uroot -proot -e"CREATE DATABASE zuiwan; CREATE USER 'zuiwan'@'%' IDENTIFIED BY 'zuiwan2018'; GRANT ALL ON *.* TO
- 'zuiwan'@'%';"
+RUN mysql -uroot -proot -e "CREATE DATABASE zuiwan; CREATE USER 'zuiwan'@'%' IDENTIFIED BY 'zuiwan2018'; GRANT ALL ON
+ *.* TO 'zuiwan'@'%';"
 
 RUN supervisor

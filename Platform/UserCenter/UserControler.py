@@ -19,7 +19,7 @@ from Library.OrmModel.UserProfile import UserProfile
 from .ShoppingCart import ShoppingCart, Item
 from Library.extensions import orm, mongo
 from .UserDBM import UserDBM
-
+from .ContactsControler import ContactsControler
 
 class UserController(object):
     def __init__(self, user):
@@ -93,3 +93,10 @@ class UserController(object):
                                product["unit_price"]) for product in products])
         doc = self.sc.save()
         return doc
+
+
+    def add_profile_to_namespace(self, namespace):
+        info = {"namespace": namespace}
+        info.update(self.profile)
+        r = self.userDBManager.Add_Contact(info)
+        return r

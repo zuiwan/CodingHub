@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import flask
+from flask import (
+    request,
+    make_response,
+    jsonify
+)
 import datetime
 import time
 import re
@@ -57,11 +61,11 @@ def allowCrossomain(method):
     @wraps(method)
     def _decorator(*args, **kwargs):
         try:
-            rst = flask.make_response(method(*args, **kwargs))
+            rst = make_response(method(*args, **kwargs))
             return addCrossHeaders(rst)
         except Exception:
             logger.error(repr(traceback.format_exc()))
-            return flask.jsonify({'code': ED.err_sys})
+            return jsonify({'code': ED.err_sys})
 
     return _decorator
 
@@ -130,31 +134,26 @@ def getSourceName(request):
     return source
 
 
-def require_field_in_data(*fields):
+def auth_field_in_data(*required_keys, **equals):
     '''
     Attention, In Order like this !!!
         @package_json_request_data
-        @require_field_in_data("field1", "field2")
+        @auth_field_in_data("token", token='i-like-python-nmba')
     :param method:
     :return:
     '''
-
+    print(required_keys, equals)
     def decorator(method):
         @wraps(method)
         def _decorator(*args, **kwargs):
-            try:
-                for field in fields:
-                    if field not in flask.request.data:
-                        return ED.Respond_Err(ED.err_req_data, "{} required !!!".format(field))
-                try:
-                    ret = method(*args, **kwargs)
-                except (AttributeError, NotImplementedError):
-                    # 假定数据库查询等均返回非空对象，因此如果返回空继续执行则会报此错误，在此捕捉
-                    return ED.Respond_Err(ED.err_not_found)
-                return ret
-            except Exception as e:
-                logger.error(repr(traceback.format_exc()))
-                return "%s package_json_request_data error" % str(fields)
+            for required_key in required_keys:
+                if required_key not in request.data:
+                    return ED.Respond_Err(ED.err_req_data, "{} required !!!".format(required_key))
+            for key, value in equals.items():
+                if request.data.get(key) != value:
+                    return ED.Respond_Err(ED.err_bad_request)
+            ret = method(*args, **kwargs)
+            return ret
 
         return _decorator
 
@@ -162,8 +161,6 @@ def require_field_in_data(*fields):
 
 
 def package_json_request_data(method):
-    request = flask.request
-
     @wraps(method)
     def _decorator(*args, **kwargs):
         try:
@@ -184,7 +181,7 @@ def package_json_request_data(method):
             return ret
         except Exception as e:
             logger.error(repr(traceback.format_exc()))
-            return "fields %s required, package_json_request_data error" % str(request)
+            return "fields %s required, package_json_request_data error" % str(request.data)
 
     return _decorator
 
@@ -204,11 +201,11 @@ def allow_cross_domain(method):
     def _decorator(*args, **kwargs):
         try:
             response = method(*args, **kwargs)
-            if not isinstance(response, flask.make_response("")):
-                response = flask.make_response(response)
+            if not isinstance(response, make_response("")):
+                response = make_response(response)
             return add_cross_headers(response)
         except Exception:
             logger.error(repr(traceback.format_exc()))
-            return flask.jsonify({'code': ED.err_sys})
+            return jsonify({'code': ED.err_sys})
 
     return _decorator

@@ -70,13 +70,13 @@ class RegistCenter(object):
         self.db = orm
         self.logger = LogCenter.instance().get_logger("UserCenter", "register-center")
 
-    def Regist(self, name, password, email, level=None):
+    def Regist(self, name, password, phone, level=None):
         if name is None \
                 or password is None \
                 or User.query.filter_by(name=name).first() is not None:
             return False
 
-        user = User(name=name, email=email, level=level)
+        user = User(name=name, phone=phone, level=level)
         user.hash_password(password)
         self.db.session.add(user)
         self.db.session.flush()

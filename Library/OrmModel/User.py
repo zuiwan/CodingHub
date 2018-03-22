@@ -11,7 +11,6 @@ from itsdangerous import (TimedJSONWebSignatureSerializer
 SECRET_KEY = 'the quick brown fox jumps over the lazy dog'
 
 
-
 class UserSchema(BaseSchema):
     name = fields.Str()
     email = fields.Str()
@@ -27,16 +26,16 @@ class User(BaseModel):
     default_level = 0
 
     name = orm.Column(orm.String(32), index=True)
-    email = orm.Column(orm.String(64), default="")
+    phone = orm.Column(orm.String(32), default="")
     level = orm.Column(orm.Integer, default=default_level)
     password_hash = orm.Column(orm.String(500), default="")
 
     def __init__(self,
                  name,
-                 email=None,
+                 phone=None,
                  level=None):
         self.name = name
-        self.email = email
+        self.phone = phone
         self.level = level
 
     def hash_password(self, password):
@@ -72,5 +71,3 @@ class User(BaseModel):
             raise  # invalid token
         user = User.query.get(data['id'])
         return user
-
-

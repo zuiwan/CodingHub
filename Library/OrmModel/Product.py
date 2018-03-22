@@ -23,8 +23,6 @@ from marshmallow import Schema, fields, post_load
 from Library.OrmModel import BaseModel, BaseSchema
 from Library.extensions import orm
 
-from .User import UserSchema
-
 
 class ProductSchema(BaseSchema):
     name = fields.Str()  # 名称

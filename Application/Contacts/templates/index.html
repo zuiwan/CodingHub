@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name=”viewport” content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Contacts</title>
+    <link rel="stylesheet" href="/static/Contacts/static/css/contacts.css">
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/static/Contacts/static/js/contacts.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .page {
+            height: 10000px;
+        }
+    </style>
+</head>
+<body>
+<div class="page"></div>
+<script>
+    jQuery.getJSON("/api/v1/contacts/216",
+        {},
+        function (resp) {
+            contacts_list = resp.data;
+            console.info("CodingHub returned: ", contacts_list);
+            Contacts({
+                appendTo: '.page',
+                generateListItem: null,
+                data: contacts_list
+            });
+        });
+
+</script>
+</body>
+</html>
