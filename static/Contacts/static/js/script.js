@@ -58,8 +58,13 @@ $('document').ready(function () {
                 success: function (data) {
                     if (data.code == 200) {
                         $("#btn-submit").html('Signing Up');
-                        var _url = "/api/v1/contacts/" + data.data;
-                        setTimeout('$(".form-signin").fadeOut(500, function(){$(".signin-form").load(_url); }); ', 1000);
+                        $("#error").html('<div class="alert alert-danger"> <span class="glyphicon' +
+                            ' glyphicon-info-sign"></span> &nbsp; 注册成功。如有问题，可联系微信：tanceiny。</div>');
+                        // setTimeout('$(".form-signin").fadeOut(500, function(){$(".signin-form").load(_url); }); ', 1000);
+                        function Redirect() {
+                            window.location = "https://api.cannot.cc/ContactsView/" + data.data;
+                        }
+                        setTimeout('Redirect()', 1000);
                     }
                     else if (data.code == 400) {
                         $("#error").fadeIn(1000, function () {
