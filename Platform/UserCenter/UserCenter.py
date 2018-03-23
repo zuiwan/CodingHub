@@ -76,9 +76,11 @@ class RegistCenter(object):
 
     def Regist_And_Return_Id(self, name, password, phone, level=None):
         if name is None \
-                or password is None \
-                or User.query.filter_by(name=name).first() is not None:
+                or password is None:
             return False
+        _u = User.query.filter_by(name=name).first()
+        if _u is not None:
+            raise ValueError("{} existed".format(_u.id))
 
         user = User(name=name, phone=phone, level=level)
         user.hash_password(password)

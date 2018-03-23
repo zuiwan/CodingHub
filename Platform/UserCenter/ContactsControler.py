@@ -55,9 +55,12 @@ class ContactsControler(object):
         return _r, _n
 
     def Create(self, info):
-        uid = RegistCenter_Ist.Regist_And_Return_Id(name=info["name"],
-                                                    phone=info["phone"],
-                                                    password=info.get("password", "666666"))
+        try:
+            uid = RegistCenter_Ist.Regist_And_Return_Id(name=info["name"],
+                                                        phone=info["phone"],
+                                                        password=info.get("password", "666666"))
+        except ValueError as e:
+            uid = str(e).split(' ')[0]
         c = Contacts(namespace=info["namespace"],
                      owner_id=uid,
                      nickname=info.get("nickname"),
