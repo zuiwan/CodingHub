@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="91b646db-fea0-40ee-861b-d4b6001e9e3b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/static/Contacts/static/js/contacts.js" afterPath="$PROJECT_DIR$/static/Contacts/static/js/contacts.js" />
-      <change beforePath="$PROJECT_DIR$/static/Contacts/static/js/script.js" afterPath="$PROJECT_DIR$/static/Contacts/static/js/script.js" />
+      <change beforePath="$PROJECT_DIR$/Library/OrmModel/Contacts.py" afterPath="$PROJECT_DIR$/Library/OrmModel/Contacts.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,16 +17,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="db_configs.conf" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Config/db_configs.conf">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="nginx.conf" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Config/nginx.conf">
           <provider selected="true" editor-type-id="text-editor">
@@ -74,7 +63,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="contacts.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="contacts.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/Contacts/static/js/contacts.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="276">
@@ -84,6 +73,36 @@
                 <marker date="1521793509035" expanded="true" signature="4628:4634" ph=" " />
                 <marker date="1521793509035" expanded="true" signature="4634:4640" ph=" " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Contacts.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Contacts/Contacts.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="415">
+              <caret line="118" column="22" lean-forward="false" selection-start-line="118" selection-start-column="22" selection-end-line="118" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ContactsControler.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Platform/UserCenter/ContactsControler.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="283">
+              <caret line="60" column="17" lean-forward="true" selection-start-line="60" selection-start-column="17" selection-end-line="60" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Contacts.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Library/OrmModel/Contacts.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="431">
+              <caret line="82" column="0" lean-forward="true" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -105,26 +124,6 @@
       </file>
       <file leaf-file-name="logger.conf" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Config/logger.conf">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="supervisord.conf" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Config/supervisord.conf">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Dockerfile" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Config/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -218,13 +217,13 @@
         <option value="$PROJECT_DIR$/Application/Contacts/templates/register.html" />
         <option value="$PROJECT_DIR$/Application/Contacts/templates/index.html" />
         <option value="$PROJECT_DIR$/Platform/UserCenter/ContactsControler.py" />
-        <option value="$PROJECT_DIR$/Library/OrmModel/Contacts.py" />
         <option value="$PROJECT_DIR$/tool/dbhelper.py" />
         <option value="$PROJECT_DIR$/Application/Contacts/Contacts.py" />
         <option value="$PROJECT_DIR$/Config/nginx.conf" />
         <option value="$PROJECT_DIR$/Config/supervisor_uwsgi.conf" />
         <option value="$PROJECT_DIR$/static/Contacts/static/js/contacts.js" />
         <option value="$PROJECT_DIR$/static/Contacts/static/js/script.js" />
+        <option value="$PROJECT_DIR$/Library/OrmModel/Contacts.py" />
       </list>
     </option>
   </component>
@@ -784,7 +783,14 @@
       <option name="project" value="LOCAL" />
       <updated>1521793192006</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="[DEV] contact register">
+      <created>1521794644659</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1521794644659</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1152,26 +1158,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Library/OrmModel/Contacts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="63" column="26" lean-forward="true" selection-start-line="63" selection-start-column="26" selection-end-line="63" selection-end-column="26" />
-          <folding>
-            <element signature="e#385#434#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/UserCenter/ContactsControler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="54" column="21" lean-forward="true" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
-          <folding>
-            <element signature="e#394#421#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tool/dbhelper.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
@@ -1180,14 +1166,6 @@
             <marker date="1521792647217" expanded="true" signature="732:817" ph="SELECT DISTI... columns" />
             <marker date="1521792647217" expanded="true" signature="922:987" ph="ALTER TABLE `missing_value`... " />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Contacts/Contacts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="117" column="45" lean-forward="false" selection-start-line="117" selection-start-column="45" selection-end-line="117" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1323,6 +1301,30 @@
             <marker date="1521793509035" expanded="true" signature="4628:4634" ph=" " />
             <marker date="1521793509035" expanded="true" signature="4634:4640" ph=" " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Contacts/Contacts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="118" column="22" lean-forward="false" selection-start-line="118" selection-start-column="22" selection-end-line="118" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/UserCenter/ContactsControler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="60" column="17" lean-forward="true" selection-start-line="60" selection-start-column="17" selection-end-line="60" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/OrmModel/Contacts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="82" column="0" lean-forward="true" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

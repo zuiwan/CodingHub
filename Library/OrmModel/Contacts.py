@@ -29,6 +29,7 @@ class ContactsSchema(BaseSchema):
     city = fields.Str()
     addresses = fields.Str()  # 详细地址,多个
     profile_id = fields.Str()
+    source_ip = fields.Str()
 
     @post_load
     def make_contacts(self, data):
