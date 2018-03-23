@@ -6,7 +6,7 @@
     <meta name=”viewport” content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <title>联系人</title>
     <link rel="stylesheet" href="/static/Contacts/static/css/contacts.css">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
     <script src="/static/Contacts/static/js/contacts.js"></script>
     <style>
         body {
@@ -25,14 +25,14 @@
     $.ajax({
             type: 'GET',
             url: '/api/v1/contacts/' + '{{ namespace }}',
-            data: data,
+            data: null,
             beforeSend: function () {
                 $("#error").fadeOut();
                 $("#btn-submit").html('<span class="glyphicon glyphicon-transfer"></span> &nbsp; sending ...');
             },
             success: function (data) {
                 if (data.code == 200) {
-                    contacts_list = data.data;
+                    contacts_list = data.data.list;
                     console.log("#####", contacts_list, "#####");
                     Contacts({
                         appendTo: '.page',

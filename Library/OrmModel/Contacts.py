@@ -16,6 +16,7 @@ __author__ = 'huangzhen'
 from marshmallow import Schema, fields, post_load
 from Library.extensions import orm
 from Library.OrmModel import BaseModel, BaseSchema
+from Library.Utils.net_util import get_ip_info
 
 
 class ContactsSchema(BaseSchema):
@@ -44,23 +45,37 @@ class Contacts(BaseModel):
     city = orm.Column(orm.String(32), default="")
     addresses = orm.Column(orm.String(512), default="")
     profile_id = orm.Column(orm.String(32), default="")
+    source_ip = orm.Column(orm.String(32), default="")
 
     def __init__(self,
                  owner_id,
+                 name,
                  namespace,
                  nickname=None,
                  org=None,
                  phone=None,
                  city=None,
-                 addresses=None):
+                 addresses=None,
+                 source_ip=None):
         self.owner_id = owner_id
+        self.name = name
         self.nickname = nickname
         self.org = org
         self.phone = phone
         self.city = city
         self.addresses = addresses
         self.namespace = namespace
+        self.source_ip = source_ip
 
     @property
     def address_list(self):
-        return list(eval(str(self.addresses))) if self.addresses else []
+        if self.addresses:
+            if ',' in self.addresses:
+                return list(eval(str(self.addresses)))
+            else:
+                return [self.addresses]
+        return []
+
+    @property
+    def source_position(self):
+        return get_ip_info(self.source_ip)

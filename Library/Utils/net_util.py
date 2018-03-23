@@ -142,6 +142,7 @@ def auth_field_in_data(*required_keys, **equals):
     :param method:
     :return:
     '''
+
     def decorator(method):
         @wraps(method)
         def _decorator(*args, **kwargs):
@@ -185,7 +186,8 @@ def package_json_request_data(method):
             return ret
         except Exception as e:
             logger.error(repr(traceback.format_exc()))
-            return "package_json_request_data error: {}".format(str(request.data))
+            return ED.Respond_Err(ED.err_bad_request, "err: {}, package_json_request_data error: {}"
+                                  .format(str(e), str(request.data)))
 
     return _decorator
 
@@ -213,3 +215,17 @@ def allow_cross_domain(method):
             return jsonify({'code': ED.err_sys})
 
     return _decorator
+
+
+def get_ip_info(ip):
+    # 淘宝IP地址库接口
+    r = requests.get('http://ip.taobao.com/service/getIpInfo.php?ip=%s' % ip)
+    if r.json()['code'] == 0:
+        i = r.json()['data']
+        country = i['country']  # 国家
+        area = i['area']  # 区域
+        region = i['region']  # 地区
+        city = i['city']  # 城市
+        isp = i['isp']  # 运营商
+
+        return u'国家: %s\n区域: %s\n省份: %s\n城市: %s\n运营商: %s\n' % (country, area, region, city, isp)

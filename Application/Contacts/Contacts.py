@@ -59,7 +59,7 @@ def contactsView(namespace):
     return render_template("index.html", namespace=namespace)
 
 
-@ContactsView.route("ContactsView/registerView", methods=["GET"])
+@ContactsView.route("ContactsView/entry/registerView", methods=["GET"])
 def contactsRegisterView():
     return render_template("register.html")
 
@@ -80,11 +80,14 @@ class ContactsAPI(Resource):
         '''
         result = ED.Respond_Err(ED.no_err)
         cc = ContactsControler(namespace)
-        _ls = cc.Get_All()
+        _ls, _n = cc.Get_Namespace(namespace)
+        res = []
         for l in _ls:
             l = l.to_dict()
             l.update({"badge": 'http://www.freeiconspng.com/uploads/pikachu-png-icon-7.png'})
-        result["data"] = _ls
+            res.append(l)
+
+        result["data"] = {"list": res, "num": _n}
 
         return result
 
@@ -97,7 +100,6 @@ class ContactsAPI(Resource):
         result = ED.Respond_Err(ED.no_err)
         data = request.data
         uc = UserController(T_G.user)
-        uc.add_many_to_shopping_cart(data["products"])
         return result
 
     def post(self, namespace):
@@ -110,6 +112,10 @@ class ContactsAPI(Resource):
         cc = ContactsControler(namespace)
         if data.get("address2"):
             data["addresses"] = data["address"] + ',' + data["address2"]
+        else:
+            data["addresses"] = data["address"]
+        if data.get("phone2"):
+            data["phone"] = data["phone"] + ',' + data["phone2"]
         if not cc.Create(data):
             return ED.Respond_Err(ED.unknown_err)
         result["data"] = namespace

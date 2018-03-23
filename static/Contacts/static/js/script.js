@@ -3,32 +3,37 @@ $('document').ready(function () {
     $("#register-form").validate({
         rules:
             {
-                user_name: {
-                    required: true,
-                    minlength: 3
+                name: {
+                    required: true
                 },
                 password: {
                     required: true,
-                    minlength: 8,
+                    minlength: 6,
                     maxlength: 15
                 },
                 cpassword: {
                     required: true,
                     equalTo: '#password'
                 },
-                user_email: {
-                    required: true,
+                email: {
+                    required: false,
                     email: true
                 },
+                phone: {
+                    required: true,
+                    minlength: 11
+                },
+                city: {
+                    required: true
+                }
             },
         messages:
             {
-                user_name: "Enter a Valid Username",
                 password: {
                     required: "Provide a Password",
-                    minlength: "Password Needs To Be Minimum of 8 Characters"
+                    minlength: "Password Needs To Be Minimum of 6 Characters"
                 },
-                user_email: "Enter a Valid Email",
+                email: "Enter a Valid Email",
                 cpassword: {
                     required: "Retype Your Password",
                     equalTo: "Password Mismatch! Retype"
@@ -41,10 +46,10 @@ $('document').ready(function () {
     /* form submit */
     function submitForm() {
         var data = $("#register-form").serialize();
-
+        console.log(data);
         $.ajax({
                 type: 'POST',
-                url: '/api/v1/contacts/' + data.namespace,
+                url: '/api/v1/contacts/' + $("#namespace").val(),
                 data: data,
                 beforeSend: function () {
                     $("#error").fadeOut();
@@ -53,7 +58,8 @@ $('document').ready(function () {
                 success: function (data) {
                     if (data.code == 200) {
                         $("#btn-submit").html('Signing Up');
-                        setTimeout('$(".form-signin").fadeOut(500, function(){ $(".signin-form").load("/api/v1/contacts/"+data.data); }); ', 5000);
+                        var _url = "/api/v1/contacts/" + data.data;
+                        setTimeout('$(".form-signin").fadeOut(500, function(){$(".signin-form").load(_url); }); ', 1000);
                     }
                     else if (data.code == 400) {
                         $("#error").fadeIn(1000, function () {

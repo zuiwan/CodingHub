@@ -60,10 +60,12 @@ class ContactsControler(object):
                                                     password=info.get("password", "666666"))
         c = Contacts(namespace=info["namespace"],
                      owner_id=uid,
-                     nickname=info["nickname"],
-                     org=info["org"],
+                     nickname=info.get("nickname"),
+                     org=info.get("org"),
                      addresses=info["addresses"],
                      phone=info["phone"],
-                     city=info["city"])
+                     city=info["city"],
+                     source_ip=info["ip"],
+                     name=info["name"])
         self.db.session.add(c)
         return True
