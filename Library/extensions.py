@@ -10,3 +10,6 @@ orm = SQLAlchemy(flask_app)
 
 from flask_pymongo import PyMongo
 mongo = PyMongo(flask_app)
+
+from flask_redis import FlaskRedis
+rdb = FlaskRedis(flask_app)

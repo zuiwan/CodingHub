@@ -1,6 +1,8 @@
+# coding=utf-8
 import os
-##################     文件相关      ##################
-def concat_dirs(is_abs=False,*dirs):
+
+
+def concat_dirs(is_abs=False, *dirs):
     '''
     将多级目录连接起来，os.path.join()的迭代版本, 可用..表示上层目录
     :param dirs:
@@ -9,18 +11,12 @@ def concat_dirs(is_abs=False,*dirs):
     joined_path = ''
     for dir in dirs:
         if dir != '..':
-            joined_path = os.path.join(joined_path,dir)
+            joined_path = os.path.join(joined_path, dir)
         elif dir == '..':
             joined_path = os.path.dirname(joined_path)
-    if joined_path.endswith(('/','\\')):
+    if joined_path.endswith(('/', '\\')):
         joined_path = joined_path[:-1]
     return os.path.abspath(joined_path) if is_abs else joined_path
-##################     文件相关      ##################
-
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-import shutil
-import os
 
 
 def copy_dir(source, target):
@@ -31,7 +27,7 @@ def copy_dir(source, target):
         return False
 
 
-def save_dir(file_list,target):
+def save_dir(file_list, target):
     os.mkdir(target)
     for file in file_list:
         if allowed_file(file.filename):
@@ -44,6 +40,7 @@ def save_dir(file_list,target):
             file.save(file_path)
     return
 
+
 def read_file(file_path):
     if os.path.isfile(file_path):
         with open(file_path, "r") as myfile:
@@ -51,11 +48,13 @@ def read_file(file_path):
         return data
     return None
 
-def write_file(log_str, file_path):
-    if not os.path.exists(os.path.dirname(file_path)):
+
+def write_file(log_str, file_path, mode="a"):
+    if not os.path.isdir(os.path.dirname(file_path)):
         os.mkdir(os.path.dirname(file_path))
-    with open(file_path, "a") as myfile:
+    with open(file_path, mode) as myfile:
         myfile.write(log_str)
+
 
 def allowed_file(filename):
     return True
@@ -70,7 +69,7 @@ def estimate_copy_time(path, default_speed=100):
     :return:
     '''
     if os.path.isdir(path):
-        size = 0    # BYTES
+        size = 0  # BYTES
         for root, dirs, files in os.walk(path):
             size += sum([os.path.getsize(os.path.join(root, name)) for name in files])
 
@@ -78,7 +77,8 @@ def estimate_copy_time(path, default_speed=100):
         size = os.path.getsize(path)
     else:
         size = 0
-    return size / default_speed / (1<<20)
+    return size / default_speed / (1 << 20)
+
 
 def Get_Dir_Filelist_Deeply(dir_path, ignores=None, only=None):
     if not os.path.isdir(dir_path):
@@ -123,10 +123,99 @@ def Get_Dir_Filelist(dir_path, ignores=None, only=None):
     return filtered_files
 
 
+# !/usr/bin/env python
 # -*- coding: utf-8 -*-
+import shutil
 import os
 import zipfile
-from io import BytesIO
+from io import BytesIO, StringIO
+
+
+def get_dir_total_size(path, unit='B'):
+    size = 0  # BYTES
+    if os.path.isdir(path):
+        for root, dirs, files in os.walk(path):
+            size += sum([os.path.getsize(os.path.join(root, name)) for name in files])
+    if unit == 'B':
+        ret = size
+    elif unit == 'KB':
+        ret = size / float(1024)
+    elif unit == 'MB':
+        ret = size / float(1 << 20)
+    elif unit == 'GB':
+        ret = size / float(1 << 30)
+    else:
+        ret = size
+    return ret
+
+
+def Is_Blank_Dir(path):
+    if path is not None and len(path) > 0 and len(os.listdir(path)) > 0:
+        return False
+    else:
+        return True
+
+
+def estimate_copy_time(path, default_speed=100):
+    '''
+
+    :param path:
+    :param default_speed: copy speed MB/s
+    :return:
+    '''
+    if os.path.isdir(path):
+        size = 0  # BYTES
+        for root, dirs, files in os.walk(path):
+            size += sum([os.path.getsize(os.path.join(root, name)) for name in files])
+
+    elif os.path.isfile(path):
+        size = os.path.getsize(path)
+    else:
+        size = 0
+    return size / default_speed / (1 << 20)
+
+
+def Get_Dir_Filelist_Deeply(dir_path, ignores=None, only=None):
+    if not os.path.isdir(dir_path):
+        return None
+    filenames = os.listdir(dir_path)
+    os.chdir(dir_path)
+    filtered_files = []
+    for filename in filenames:
+        if os.path.isdir(filename):
+            subdir_filenames = Get_Dir_Filelist(filename, ignores, only)
+            for subdir_filename in subdir_filenames:
+                filtered_files.append(os.path.join(filename, subdir_filename))
+        elif os.path.isfile(filename):
+            filtered_files += Get_Dir_Filelist(filename, ignores, only)
+    return filtered_files
+
+
+def Get_Dir_Filelist(dir_path, ignores=None, only=None):
+    '''
+
+    :param dir_path: file is elso ok
+    :param ignore: []
+    :param only: {'endswith','in','startswith'...}
+    :return:
+    '''
+    if not os.path.isdir(dir_path):
+        filenames = [dir_path] if os.path.isfile(dir_path) else []
+    else:
+        filenames = os.listdir(dir_path)
+    filtered_files = []
+    if only is not None and isinstance(only, dict) and ignores is None:
+        # TODO
+        filtered_files = [filename for filename in filenames if filename.endswith(only.get('endswith', ''))]
+    elif ignores is not None:
+        for filename in filenames:
+            for ignore in ignores:
+                # TODO 正则
+                if ignore not in filename:
+                    filtered_files.append(filename)
+    else:
+        filtered_files = filenames
+    return filtered_files
 
 
 class InMemoryZip(object):
@@ -172,20 +261,41 @@ class InMemoryZip(object):
 
         return self.in_memory_zip.read()
 
-    def read_stream(self):
-        ''''''
-        self.in_memory_zip.seek(0)
-        while True:
-            tmp = self.in_memory_zip.read1(1024)
-            if tmp and tmp != '':
-                yield tmp
-            else:
-                break
-
     def writetofile(self, filename):
         """Writes the in-memory zip to a file."""
-
         f = open(filename, "wb")
         f.write(self.read())
         f.close()
 
+
+class InMemoryFile(object):
+    def __init__(self):
+        # Create the in-memory file-like object
+        self.in_memory_file = StringIO()
+
+    def read(self):
+        """Returns a string with the contents of the in-memory zip."""
+        self.in_memory_file.seek(0)
+        return self.in_memory_file.getvalue()
+
+    def writeline(self, line):
+        self.in_memory_file.write((line + "\n").decode('utf-8'))
+
+    def writetofile(self, filename):
+        """Writes the in-memory zip to a file."""
+        f = open(filename, "wb")
+        f.write(self.read())
+        f.close()
+
+
+def search_key_file(path, keyword):
+    file_list = os.listdir(path)
+    key_file = []
+    for f in file_list:
+        file_path = os.path.join(path, f)
+        # 判断是不是文件夹
+        if os.path.isdir(file_path):
+            key_file.extend(search_key_file(file_path, keyword))
+        elif keyword in f:
+            key_file.append(f)
+    return key_file

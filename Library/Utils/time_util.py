@@ -187,3 +187,7 @@ def local_strtime_now_mil():
     # 当前时间：字符串格式
     local_strtime_now = datetime_to_strtime(local_datetime_now)
     return local_strtime_now
+
+
+def get_datetime_utcnow():
+    return datetime.datetime.utcnow()
