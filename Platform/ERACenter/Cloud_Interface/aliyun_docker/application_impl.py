@@ -373,7 +373,6 @@ class Application(Application_Center):
                     if current_state in ["stopped", "finished"]:
                         self.Write_Log('#' * 20)
                         # self.Do_Before_Remove()
-                        self.instance.state = current_state
                         self.job.state = "finished"
                         self.db.session.commit()
                         break
@@ -444,18 +443,20 @@ class Application(Application_Center):
         return True
 
     def Mk_Output_Dir(self):
-        self.Write_Log("mkdir output")
-        try:
-            Mkdir_Output(self.job_id)
-        except Exception as e:
-            self.Write_Log(repr(e), "VERBOSE")
-            return False
-        try:
-            return self.Generator_Run()
-        except Exception as e:
-            self.Write_Log('\n'.join((repr(e), str(traceback.format_exc()))), "VERBOSE")
-            self.Write_Log("Generate run script failed", "ERROR")
-            return False
+        return True
+        # TODO: 在nas上写文件
+        # self.Write_Log("mkdir output")
+        # try:
+        #     Mkdir_Output(self.job_id)
+        # except Exception as e:
+        #     self.Write_Log(repr(e), "VERBOSE")
+        #     return False
+        # try:
+        #     return self.Generator_Run()
+        # except Exception as e:
+        #     self.Write_Log('\n'.join((repr(e), str(traceback.format_exc()))), "VERBOSE")
+        #     self.Write_Log("Generate run script failed", "ERROR")
+        #     return False
 
     def Create_Work_Volume(self):
         '''
@@ -715,8 +716,12 @@ class Application(Application_Center):
                     "mode": "",
                     "mount_dir": mount_dir  # not for aliyun
                 })
-        self.docker_image_str = self.Get_Docker_Image_Str(str(self.job.environment),
-                                                          self.job.instance_type)
+        try:
+            self.docker_image_str = self.Get_Docker_Image_Str(str(self.job.environment),
+                                                              self.job.instance_type)
+        except Exception as e:
+            self.Write_Log("get docker image env name failed, reason:{}, {}".format(str(e), traceback.format_exc()),
+                           "ERROR")
         if not self.docker_image_str:
             self.Write_Log("No environment:%s " % self.job.environment, "ERROR")
             return False
@@ -751,7 +756,7 @@ class Application(Application_Center):
             self.WORKING_DIR + '/' + self.task_script_fn
 
         self.content = content(
-            service_name="{}user-application".format("test-" if self.is_test_env else ""),
+            service_name="{}user-era-application".format("test-" if self.is_test_env else ""),
             nb_port=8888,
             tb_port=6006,
             id=self.job_id,
@@ -773,10 +778,10 @@ class Application(Application_Center):
         return True
 
     def Init_Aliyun(self):
-        ok = self.Ensure_Cluster_Resource()
-        if not ok:
-            self.Write_Log("Getting machine resource failed")
-            return False
+        # ok = self.Ensure_Cluster_Resource()
+        # if not ok:
+        #     self.Write_Log("Getting machine resource failed")
+        #     return False
         ok = self.Get_Configs()
         if not ok:
             self.Write_Log("Get Configurations failed", "ERROR")
@@ -799,26 +804,29 @@ class Application(Application_Center):
 
     @active_dbmodel(("experiment"))
     def Init_Task(self):
-        module = Get_Code_Module(id=self.job.code_id)
-        if not module:
-            self.Write_Log("Module not found", "ERROR")
-            return False
-        #### Copy files from archive to experiment environment ###
-        if not Is_Existed_Experiment(self.job_id):
-            if not Import_Module_To_Experiment(experiment_id=self.job_id, module_id=module.id):
-                self.Write_Log("import module to experiment failed", "ERROR")
-                return False
-        else:
-            self.Write_Log("Existed experiment, dir: /root/workspace/experiment/{}".format(self.job_id),
-                           "VERBOSE")
+        # TODO: 通过nas操作文件
+        # module = Get_Code_Module(id=self.job.code_id)
+        # if not module:
+        #     self.Write_Log("Module not found", "ERROR")
+        #     return False
+        # #### Copy files from archive to experiment environment ###
+        # if not Is_Existed_Experiment(self.job_id):
+        #     if not Import_Module_To_Experiment(experiment_id=self.job_id, module_id=module.id):
+        #         self.Write_Log("import module to experiment failed", "ERROR")
+        #         return False
+        # else:
+        #     self.Write_Log("Existed experiment, dir: /root/workspace/experiment/{}".format(self.job_id),
+        #                    "VERBOSE")
         return True
 
     @staticmethod
     def Get_Docker_Image_Str(env, instance_type):
         if not env or not isinstance(env, str):
             return False
+        DOCKER_IMAGE_CONFIG.refresh()
+        print("debug", "dockerimage", DOCKER_IMAGE_CONFIG.get("cpu").get("caffe"))
         gpu_cpu = "gpu" if instance_type == GPU_INSTANCE_TYPE else "cpu"
-        image_tag = DOCKER_IMAGE_CONFIG.refresh().get(gpu_cpu).get(env)
+        image_tag = DOCKER_IMAGE_CONFIG.get(gpu_cpu).get(env)
         return DOCKER_PRE + image_tag if image_tag else None
 
     @active_dbmodel(("experiment",))
@@ -829,17 +837,17 @@ class Application(Application_Center):
                        dosage=self.job.duration)
 
 
-data_dir = 'UPLOAD_DATA_FOLDER'
-experiment_dir = 'UPLOAD_EXPERIMENT_FOLDER'
-module_dir = 'UPLOAD_MODULE_FOLDER'
+DATA_DIR = '/root/workspace/data'
+EXPERIMENT_DIR = '/root/workspace/data/experiment'
+MODULE_DIR = '/root/workspace/module'
 
 
 def Billing(owner_id, category, from_id, dosage):
-    pass
+    return True
 
 
 def Is_Existed_Experiment(experiment_id):
-    path = experiment_dir + str(experiment_id)
+    path = os.path.join(EXPERIMENT_DIR, str(experiment_id))
     if os.path.isdir(path):
         return True
     else:
@@ -847,18 +855,18 @@ def Is_Existed_Experiment(experiment_id):
 
 
 def Import_Data_To_Experiment(experiment_id, data_id):
-    source = data_dir + str(data_id)
-    target = experiment_dir + str(experiment_id) + "/input/"
+    source = DATA_DIR + str(data_id)
+    target = EXPERIMENT_DIR + str(experiment_id) + "/input/"
     return file_util.copy_dir(source, target)
 
 
 def Import_Module_To_Experiment(experiment_id, module_id):
-    source = module_dir + str(module_id)
-    target = experiment_dir + str(experiment_id)
+    source = os.path.join(MODULE_DIR, str(module_id))
+    target = os.path.join(EXPERIMENT_DIR, str(experiment_id))
     return file_util.copy_dir(source, target)
 
 
 def Mkdir_Output(experiment_id):
-    dirname = os.path.join(experiment_dir, str(experiment_id), "output")
+    dirname = os.path.join(EXPERIMENT_DIR, str(experiment_id), "output")
     if not os.path.exists(dirname):
         os.mkdir(dirname)

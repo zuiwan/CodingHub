@@ -13,7 +13,7 @@
 """
 __author__ = 'huangzhen'
 import requests
-from Platform.ERACenter.Core.model import Job
+from Platform.ERACenter.Core.model import Job, Module
 from sqlalchemy import and_
 from Library.Utils.log_util import LogCenter
 import json
@@ -51,7 +51,13 @@ def Get_User(**find_by):
 
 
 def Get_Code_Module(**find_by):
-    pass
+    _id = find_by.get('id')
+    try:
+        module = json.loads(rdb.get("code${}".format(_id)))
+    except Exception as e:
+        print("error", str(e), traceback.format_exc())
+        return None
+    return Module.from_dict(module)
 
 
 def Get_Job(**find_by):

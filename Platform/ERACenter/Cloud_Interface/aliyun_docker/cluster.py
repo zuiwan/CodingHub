@@ -38,7 +38,7 @@ from aliyunsdkecs.request.v20140526 import (
     DeleteInstanceRequest
 )
 
-import Platform.ERACenter.Cloud_Interface.aliyun_docker.constants
+import constants
 import setting
 from application import AbstractApplication
 
@@ -74,9 +74,9 @@ class Cluster_Center(object):
     注意：各个请求接口均返回dict或者list等python对象而非字符串，不需要json.loads
     '''
 
-    client = AcsClient(Platform.ERACenter.Cloud_Interface.aliyun_docker.constants.ACCESSKEY_ID,
-                       Platform.ERACenter.Cloud_Interface.aliyun_docker.constants.ACCESSKEY_SECRET,
-                       Platform.ERACenter.Cloud_Interface.aliyun_docker.constants.REGION_ID)
+    client = AcsClient(constants.ACCESSKEY_ID,
+                       constants.ACCESSKEY_SECRET,
+                       constants.REGION_ID)
 
     error_handler = cluster_http_exception_decorator(server_exception_handler)
 
@@ -253,7 +253,7 @@ class Cluster_Center(object):
         req.set_ClusterId(cluster_id)
 
         body = {
-            "password": password or Platform.ERACenter.Cloud_Interface.aliyun_docker.constants.SSH_PASSWORD,
+            "password": password or constants.SSH_PASSWORD,
             "instance_type": instance_type,
             "size": size,
             "data_disk_category": data_disk_category,
@@ -291,7 +291,7 @@ class Cluster_Center(object):
         step = 1 if size == -1 else size - current_size
         params = '&type=scale_out&step={}'.format(step)
         resp = requests.get(
-            Platform.ERACenter.Cloud_Interface.aliyun_docker.constants.SCALE_TRIGGER_URL[cluster_type] + params)
+            constants.SCALE_TRIGGER_URL[cluster_type] + params)
         return resp.content
 
     # 触发器缩容
@@ -302,7 +302,7 @@ class Cluster_Center(object):
         for _ in range(step):
             params = '&type=scale_in'
             resp = requests.get(
-                Platform.ERACenter.Cloud_Interface.aliyun_docker.constants.SCALE_TRIGGER_URL[cluster_type] + params)
+                constants.SCALE_TRIGGER_URL[cluster_type] + params)
             if resp.status_code != 200:
                 return False
         return True
@@ -347,7 +347,7 @@ class Cluster(Cluster_Center):
     def __init__(self, cluster_id=None, cpu_or_gpu="cpu"):
         super(Cluster, self).__init__(cpu_or_gpu=cpu_or_gpu)
         if cluster_id is None or not isinstance(cluster_id, basestring):
-            cluster_id = Platform.ERACenter.Cloud_Interface.aliyun_docker.constants.CLUSTER_ID_MAP.get(cpu_or_gpu)
+            cluster_id = constants.CLUSTER_ID_MAP.get(cpu_or_gpu)
         self.cluster_id = cluster_id
         self.cluster_info = self.info(cluster_id)
 

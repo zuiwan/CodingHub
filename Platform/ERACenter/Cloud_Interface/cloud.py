@@ -17,14 +17,14 @@ import sys
 sys.path.append(".")
 import time
 import json
+import traceback
 from Library.extensions import (
     rdb as redisClient,
 )
+from Library.Utils import time_util
 from aliyun_docker.utils import Get_Job, Write_Job_Log
 from aliyun_docker.application_impl import Application
 from celery import Celery
-
-Accepted_Queue = redisClient.pubsub()
 
 
 def make_celery_app():
@@ -34,11 +34,28 @@ def make_celery_app():
 
 celery_app = make_celery_app()
 
+CHANNEL = "era_accepted_queue"
+LOOP_INTERVAL = 3
+normalization_coefficient = (9 - 0) / (4294967295 - 0)  # uint32值到[0,9]的归一化系数
+Accepted_Queue = redisClient.pubsub()
+
 
 def initSubscribe():
-    CHANNEL = "era_accepted_queue"
-    # Accepted_Queue =   # bind listen instance
     Accepted_Queue.subscribe(CHANNEL)
+
+
+def getCurrentAllocation():
+    # 支持更多的celery调用参数：持续优化
+    for item in Accepted_Queue.listen():
+        resp = item["data"]  # get channel message
+        if resp == 1L:
+            continue  # blank message
+        else:
+            data = json.loads(resp)  # transfer data type
+            Do_Job.delay(args=[data["job_id"]],
+                         eta=time_util.string_toDatetime(data["arrival_time"]),
+                         priority=0 + normalization_coefficient * (data["accepted_value"] - 0))
+            time.sleep(LOOP_INTERVAL)
 
 
 def Get_Current_Allocation():
@@ -53,38 +70,27 @@ def Get_Current_Allocation():
             except Exception as e:
                 print("error", str(e), "resp is: {}".format(resp))
                 continue
-            '''
-            type Allocation struct {
-                JobId     ID             `json:"job_id"`
-                Resources *Resource_List `json:"resources"`
-                TStart    time.Time      `json:"t_start"`
-                TEnd      time.Time      `json:"t_end"`
-            }
-            '''
-            # task = Do_Job.apply_async(args=[data["job_id"], ])
             task = Do_Job.delay(data["job_id"])
             print("Apply job, apply id: %s, state: %s\n++++++++++++++++++++++++++++++++++" %
-                  (task.id, getattr(task, "state", "FAILURE")))
+                  (task.id, getattr(task, "state")))
         else:
             print("unexpected resp type: {}".format(resp))
-        time.sleep(10)
+        time.sleep(LOOP_INTERVAL)
 
-import traceback
+
 @celery_app.task
 def Do_Job(job_id):
-    # 对于未到调度时间的作业，在此处休眠
-    print("+++++++++++++++++++++++++++")
     try:
-        aliyun_app = Application(job_id=job_id,
-                                 time_limit=172800)
+        aliyun_app = Application(job_id=job_id)
     except Exception as e:
         Write_Job_Log(job_id, traceback.format_exc(), "DEBUG")
-        Write_Job_Log(job_id, str(e), "ERROR")
+        Write_Job_Log(job_id, "Init aliyun application failed, reason: %s" % str(e), "ERROR")
         return False
     try:
         ok = aliyun_app.Run()
     except Exception as e:
-        Write_Job_Log(job_id, str(e), "ERROR")
+        Write_Job_Log(job_id, "Run aliyun application failed, reason: %s" % str(e), "ERROR")
+        Write_Job_Log(job_id, traceback.format_exc(), "DEBUG")
         return False
     else:
         return ok

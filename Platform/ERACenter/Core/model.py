@@ -208,6 +208,18 @@ class Job(BaseModel):
         else:
             return json.loads(self.env)
 
+    @property
+    def instance_type(self):
+        return self.machine_type
+
+    @property
+    def environment(self):
+        return self.env_dict["dl_fr_name"]
+
+    @property
+    def data_id_list(self):
+        return list(eval(str(self.data_ids))) if self.data_ids else []
+
 
 class JobReqSchema(BaseSchema):
     job_id = fields.Str()
@@ -297,3 +309,79 @@ class JobResp:
         self.accepted = accepted
         self.arrival_time = arrival_time
         self.accepted_price = accepted_price
+
+
+class ModuleSchema(BaseSchema):
+    name = fields.Str()
+    description = fields.Str()
+
+    module_type = fields.Str()
+    family_id = fields.Str(allow_none=True)
+    entity_id = fields.Str(allow_none=True)
+    version = fields.Int()
+
+    owner_id = fields.Str()
+    tags = fields.Str(allow_none=True)
+    codehash = fields.Str()
+    state = fields.Str()
+    size = fields.Int()
+
+    @post_load
+    def make_module(self, data):
+        return Module(**data)
+
+
+class Module(BaseModel):
+    schema = ModuleSchema(strict=True)
+    entity_id = orm.Column(orm.String(32), index=True)
+    module_type = orm.Column(orm.String(32))
+    version = orm.Column(orm.INT, nullable=False, default=0)
+    owner_id = orm.Column(orm.String(32), index=True)
+    codehash = orm.Column(orm.String(256))
+    state = orm.Column(orm.String(16))
+    size = orm.Column(orm.INT, default=0, doc="MB")
+
+    def __init__(self,
+                 id,
+                 name,
+                 description,
+                 owner_id,
+                 version=None,
+                 module_type="code",
+                 entity_id=None,
+                 codehash=None,
+                 state='pending',
+                 size=None,
+                 is_deleted=False,
+                 t_created=None,
+                 t_modified=None):
+        """
+
+        :rtype: object
+        """
+        self.name = name
+        self.description = description
+        self.module_type = module_type
+        self.version = version
+        self.owner_id = owner_id
+        self.codehash = codehash
+        self.entity_id = entity_id
+        self.state = state
+        self.size = size
+        if id is not None:
+            self.id = id
+        # 临时
+        if is_deleted is not None:
+            self.is_deleted = is_deleted
+        else:
+            self.is_deleted = False
+        if t_created is not None:
+            self.t_created = t_created
+        else:
+            self.t_created = datetime.datetime.utcnow()
+
+        if t_modified is not None:
+            self.t_modified = t_modified
+        else:
+
+            self.t_modified = datetime.datetime.utcnow()

@@ -7,8 +7,8 @@ from enum import Enum
 
 PST_TIMEZONE = timezone("America/Los_Angeles")
 
-CPU_INSTANCE_TYPE = "cpu_high"
-GPU_INSTANCE_TYPE = "gpu_high"
+CPU_INSTANCE_TYPE = "cpu"
+GPU_INSTANCE_TYPE = "gpu"
 
 # numerical value
 SQL_LIMIT_HIGH = 18446744073709551615L

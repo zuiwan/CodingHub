@@ -22,7 +22,8 @@ class Application_Center(object):
     def __init__(self, cluster):
         self.cluster = cluster
         self.verify = 'Platform/ERACenter/Cloud_Interface/aliyun_docker/pem/%s/ca.pem' % self.cluster['cluster_id']
-        self.cert = ('Platform/ERACenter/Cloud_Interface/aliyun_docker/pem/%s/cert.pem' % self.cluster['cluster_id'], 'pem/%s/key.pem' % self.cluster['cluster_id'])
+        self.cert = ('Platform/ERACenter/Cloud_Interface/aliyun_docker/pem/%s/cert.pem' % self.cluster['cluster_id'],
+                     'Platform/ERACenter/Cloud_Interface/aliyun_docker/pem/%s/key.pem' % self.cluster['cluster_id'])
 
     # 查看应用实例列表
     def app_list(self):

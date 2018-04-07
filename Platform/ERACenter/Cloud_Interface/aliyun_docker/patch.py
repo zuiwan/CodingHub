@@ -19,6 +19,7 @@ import httplib
 from aliyunsdkcore.acs_exception.exceptions import ServerException
 from aliyunsdkcore.client import AcsClient
 
+
 def AcsClient_Patch():
     # cause of aliyun's bug: https://github.com/aliyun/aliyun-openapi-python-sdk/issues/53
     # DO SOME TRICKS to fix aliyun's bug
@@ -52,7 +53,4 @@ def AcsClient_Patch():
     AcsClient.do_action_with_exception = fixed_do_action_with_exception
 
 
-if __name__ == 'App.aliyun_docker.patch':
-    AcsClient_Patch()
-
-
+AcsClient_Patch()
