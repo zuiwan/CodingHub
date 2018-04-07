@@ -1,6 +1,10 @@
+aliyun-python-sdk-ecs
+aliyun-python-sdk-core==2.3.1
+aliyun-python-sdk-cs==2.2.1
+celery
 sqlalchemy
 redis
-dateutil
+#dateutil
 flask_redis
 flask_restful
 Flask-Security==1.5.0

@@ -2,21 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91b646db-fea0-40ee-861b-d4b6001e9e3b" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/pem/c13208a667ad14e048ec10b3818a60470/ca.pem" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/pem/c13208a667ad14e048ec10b3818a60470/cert.pem" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/pem/c13208a667ad14e048ec10b3818a60470/key.pem" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/pem/c4e9436b8530e4d739970e94943b18d9f/ca.pem" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/pem/c4e9436b8530e4d739970e94943b18d9f/cert.pem" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/pem/c4e9436b8530e4d739970e94943b18d9f/key.pem" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/yaml/example.sh" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/yaml/tensorflow.yaml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/celery_config.py" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Application/Task/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Application/celery_tasks.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Application/templates/Contacts/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Application/DLTask/DlTask.py" afterPath="$PROJECT_DIR$/Application/DLTask/DlTask.py" />
+      <change beforePath="$PROJECT_DIR$/Application/app.py" afterPath="$PROJECT_DIR$/Application/app.py" />
       <change beforePath="$PROJECT_DIR$/Config/requirements.txt" afterPath="$PROJECT_DIR$/Config/requirements.txt" />
-      <change beforePath="$PROJECT_DIR$/Library/Utils/file_util.py" afterPath="$PROJECT_DIR$/Library/Utils/file_util.py" />
+      <change beforePath="$PROJECT_DIR$/Config/supervisor_celery.conf" afterPath="$PROJECT_DIR$/Config/supervisor_celery.conf" />
       <change beforePath="$PROJECT_DIR$/Library/Utils/time_util.py" afterPath="$PROJECT_DIR$/Library/Utils/time_util.py" />
-      <change beforePath="$PROJECT_DIR$/Library/extensions.py" afterPath="$PROJECT_DIR$/Library/extensions.py" />
+      <change beforePath="$PROJECT_DIR$/Library/celery_util.py" afterPath="$PROJECT_DIR$/Library/celery_util.py" />
+      <change beforePath="$PROJECT_DIR$/Library/singleton.py" afterPath="$PROJECT_DIR$/Library/singleton.py" />
+      <change beforePath="$PROJECT_DIR$/Platform/ConfCenter/manager.py" afterPath="$PROJECT_DIR$/Platform/ConfCenter/manager.py" />
+      <change beforePath="$PROJECT_DIR$/Platform/ConfCenter/models.py" afterPath="$PROJECT_DIR$/Platform/ConfCenter/models.py" />
+      <change beforePath="$PROJECT_DIR$/Platform/ConfCenter/redis_config_store.py" afterPath="$PROJECT_DIR$/Platform/ConfCenter/redis_config_store.py" />
       <change beforePath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/__init__.py" afterPath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/application.py" afterPath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/application.py" />
+      <change beforePath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/application_impl.py" afterPath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/application_impl.py" />
+      <change beforePath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/utils.py" afterPath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/utils.py" />
       <change beforePath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/cloud.py" afterPath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/cloud.py" />
-      <change beforePath="$PROJECT_DIR$/Platform/ERACenter/Models/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Platform/ERACenter/Models/cloud.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Platform/ERACenter/Models/request.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Platform/ERACenter/Models/response.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Platform/ERACenter/Core/model.py" afterPath="$PROJECT_DIR$/Platform/ERACenter/Core/model.py" />
       <change beforePath="$PROJECT_DIR$/Platform/ERACenter/User_Interface/user.py" afterPath="$PROJECT_DIR$/Platform/ERACenter/User_Interface/user.py" />
+      <change beforePath="$PROJECT_DIR$/Platform/TaskCenter/TaskDBM.py" afterPath="$PROJECT_DIR$/Platform/TaskCenter/TaskDBM.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,30 +44,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="exceptions.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/exceptions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-278">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="model.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Core/model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="492">
-              <caret line="194" column="27" lean-forward="true" selection-start-line="194" selection-start-column="27" selection-end-line="194" selection-end-column="27" />
-              <folding>
-                <element signature="e#382#393#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="300">
+              <caret line="206" column="27" lean-forward="false" selection-start-line="206" selection-start-column="27" selection-end-line="206" selection-end-column="27" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="predictor.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Core/predictor.py">
+      <file leaf-file-name="application_impl.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/application_impl.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="725" column="68" lean-forward="false" selection-start-line="725" selection-start-column="68" selection-end-line="725" selection-end-column="68" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="example.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/yaml/example.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tensorflow.yaml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/yaml/tensorflow.yaml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -62,51 +84,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pricing.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Core/pricing.py">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="scheduling.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Core/scheduling.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Platform/ERACenter/User_Interface/user.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="42" column="40" lean-forward="false" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__builtin__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Library/Caches/PyCharm2017.3/python_stubs/883852549/__builtin__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="2047" column="8" lean-forward="false" selection-start-line="2047" selection-start-column="8" selection-end-line="2047" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_socket.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Library/Caches/PyCharm2017.3/python_stubs/883852549/_socket.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="482" column="8" lean-forward="false" selection-start-line="482" selection-start-column="8" selection-end-line="482" selection-end-column="8" />
+            <state relative-caret-position="66">
+              <caret line="3" column="5" lean-forward="true" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -115,20 +97,28 @@
       <file leaf-file-name="cloud.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/cloud.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="21" column="11" lean-forward="false" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
-              <folding>
-                <element signature="e#381#392#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1191">
+              <caret line="77" column="31" lean-forward="false" selection-start-line="77" selection-start-column="31" selection-end-line="77" selection-end-column="31" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DlTask.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Application/DLTask/DlTask.py">
+      <file leaf-file-name="reservation_test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Platform/ERACenter/User_Interface/reservation_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="62" column="8" lean-forward="true" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="8" />
+            <state relative-caret-position="458">
+              <caret line="75" column="37" lean-forward="false" selection-start-line="75" selection-start-column="37" selection-end-line="75" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/application.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="319">
+              <caret line="24" column="38" lean-forward="false" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -159,6 +149,8 @@
       <find>bootstrap</find>
       <find>toUpperCase</find>
       <find>wx-contacts-badge</find>
+      <find>rdb</find>
+      <find>Get_</find>
     </findStrings>
     <replaceStrings>
       <replace>CodingHub</replace>
@@ -175,19 +167,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Platform/UserCenter/UserDBM.py" />
-        <option value="$PROJECT_DIR$/Platform/UserCenter/UserControler.py" />
-        <option value="$PROJECT_DIR$/Library/OrmModel/User.py" />
-        <option value="$PROJECT_DIR$/Application/User/templates/base_layout.html" />
-        <option value="$PROJECT_DIR$/Application/User/templates/login_user.html" />
-        <option value="$PROJECT_DIR$/Application/api.py" />
-        <option value="$PROJECT_DIR$/static/User/js/script.js" />
-        <option value="$PROJECT_DIR$/static/User/static/css/style.css" />
-        <option value="$PROJECT_DIR$/Config/uwsgi.ini" />
-        <option value="$PROJECT_DIR$/Application/wsgi.py" />
-        <option value="$PROJECT_DIR$/tool/database_manager.py" />
-        <option value="$PROJECT_DIR$/Library/ErrorDefine.py" />
-        <option value="$PROJECT_DIR$/static/User/static/js/script.js" />
         <option value="$PROJECT_DIR$/Application/User/templates/register.html" />
         <option value="$PROJECT_DIR$/Application/User/User.py" />
         <option value="$PROJECT_DIR$/Application/User/templates/login.html" />
@@ -209,23 +188,36 @@
         <option value="$PROJECT_DIR$/Application/DlTask/DlTask.py" />
         <option value="$PROJECT_DIR$/Platform/ERACenter/Models/__init__.py" />
         <option value="$PROJECT_DIR$/Platform/ERACenter/Models/cloud.py" />
-        <option value="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/__init__.py" />
         <option value="$PROJECT_DIR$/Platform/ERACenter/Models/request.py" />
         <option value="$PROJECT_DIR$/Platform/ERACenter/Models/response.py" />
-        <option value="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/application.py" />
-        <option value="$PROJECT_DIR$/Config/requirements.txt" />
         <option value="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/patch.py" />
         <option value="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/cluster.py" />
-        <option value="$PROJECT_DIR$/Platform/ERACenter/Core/model.py" />
-        <option value="$PROJECT_DIR$/Library/Utils/time_util.py" />
         <option value="$PROJECT_DIR$/Library/Utils/file_util.py" />
-        <option value="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/utils.py" />
         <option value="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/setting.py" />
         <option value="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/constants.py" />
-        <option value="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/application_impl.py" />
-        <option value="$PROJECT_DIR$/Platform/ERACenter/User_Interface/user.py" />
-        <option value="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/cloud.py" />
         <option value="$PROJECT_DIR$/Application/DLTask/DlTask.py" />
+        <option value="$PROJECT_DIR$/Library/Utils/time_util.py" />
+        <option value="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/__init__.py" />
+        <option value="$PROJECT_DIR$/Config/requirements.txt" />
+        <option value="$PROJECT_DIR$/Platform/ConfCenter/redis_config_store.py" />
+        <option value="$PROJECT_DIR$/Platform/ConfCenter/manager.py" />
+        <option value="$PROJECT_DIR$/Platform/ConfCenter/models.py" />
+        <option value="$PROJECT_DIR$/Library/singleton.py" />
+        <option value="$PROJECT_DIR$/Platform/ERACenter/User_Interface/user.py" />
+        <option value="$PROJECT_DIR$/Platform/ERACenter/test.py" />
+        <option value="$PROJECT_DIR$/Platform/ERACenter/User_Interface/test.py" />
+        <option value="$PROJECT_DIR$/Platform/TaskCenter/TaskDBM.py" />
+        <option value="$PROJECT_DIR$/Library/celery_util.py" />
+        <option value="$PROJECT_DIR$/Config/supervisor_celery.conf" />
+        <option value="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/celery_config.py" />
+        <option value="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/utils.py" />
+        <option value="$PROJECT_DIR$/Application/app.py" />
+        <option value="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/cloud.py" />
+        <option value="$PROJECT_DIR$/Platform/ERACenter/User_Interface/reservation_test.py" />
+        <option value="$PROJECT_DIR$/Platform/ERACenter/Core/model.py" />
+        <option value="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/application.py" />
+        <option value="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/application_impl.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -236,10 +228,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="12" />
-    <option name="y" value="23" />
-    <option name="width" value="1224" />
-    <option name="height" value="830" />
+    <option name="x" value="-6" />
+    <option name="y" value="108" />
+    <option name="width" value="1440" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -259,6 +251,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -275,19 +268,7 @@
               <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
               <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
               <item name="Application" type="462c0819:PsiDirectoryNode" />
-              <item name="Contacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
-              <item name="Application" type="462c0819:PsiDirectoryNode" />
               <item name="DLTask" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
-              <item name="Application" type="462c0819:PsiDirectoryNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
@@ -302,25 +283,7 @@
             <path>
               <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
               <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
-              <item name="Library" type="462c0819:PsiDirectoryNode" />
-              <item name="OrmModel" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
-              <item name="Library" type="462c0819:PsiDirectoryNode" />
-              <item name="Utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
               <item name="Platform" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
-              <item name="Platform" type="462c0819:PsiDirectoryNode" />
-              <item name="ConfCenter" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
@@ -348,6 +311,15 @@
               <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
               <item name="Platform" type="462c0819:PsiDirectoryNode" />
               <item name="ERACenter" type="462c0819:PsiDirectoryNode" />
+              <item name="Cloud_Interface" type="462c0819:PsiDirectoryNode" />
+              <item name="aliyun_docker" type="462c0819:PsiDirectoryNode" />
+              <item name="yaml" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
+              <item name="Platform" type="462c0819:PsiDirectoryNode" />
+              <item name="ERACenter" type="462c0819:PsiDirectoryNode" />
               <item name="Core" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -360,6 +332,12 @@
             <path>
               <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
               <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
+              <item name="Platform" type="462c0819:PsiDirectoryNode" />
+              <item name="TaskCenter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CodingHub" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CodingHub" type="462c0819:PsiDirectoryNode" />
               <item name="tool" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -367,7 +345,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -378,19 +355,19 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Platform/ERACenter/User_Interface" />
+      <recent name="$PROJECT_DIR$/static/User/static" />
+      <recent name="$PROJECT_DIR$/Application/templates/Contacts" />
+      <recent name="$PROJECT_DIR$/Application/Contacts/static/js" />
+      <recent name="$PROJECT_DIR$/Application/templates" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker" />
       <recent name="$PROJECT_DIR$/Platform" />
       <recent name="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface" />
       <recent name="$PROJECT_DIR$/static/Contacts/static/js" />
       <recent name="$PROJECT_DIR$/assets" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/static/User/static" />
-      <recent name="$PROJECT_DIR$/Application/templates/Contacts" />
-      <recent name="$PROJECT_DIR$/Application/Contacts/static/js" />
-      <recent name="$PROJECT_DIR$/Application/templates" />
-      <recent name="$PROJECT_DIR$/Application" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -751,7 +728,14 @@
       <option name="project" value="LOCAL" />
       <updated>1521795543400</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="[DEV] era application and model">
+      <created>1522573191514</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1522573191514</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -768,7 +752,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18611111" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.237" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2364706" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -839,7 +823,8 @@
     <MESSAGE value="[DEV] templates folder" />
     <MESSAGE value="[DEV] contact register" />
     <MESSAGE value="[DEV] repeat register fix." />
-    <option name="LAST_COMMIT_MESSAGE" value="[DEV] repeat register fix." />
+    <MESSAGE value="[DEV] era application and model" />
+    <option name="LAST_COMMIT_MESSAGE" value="[DEV] era application and model" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -848,234 +833,11 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Config/logger.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Config/nginx.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Contacts/templates/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="26" column="36" lean-forward="false" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Contacts/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="836">
-          <caret line="38" column="24" lean-forward="false" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/templates/Contacts/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="25" column="6" lean-forward="false" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/Contacts/static/js/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1408">
-          <caret line="64" column="82" lean-forward="false" selection-start-line="64" selection-start-column="82" selection-end-line="64" selection-end-column="82" />
-          <folding>
-            <marker date="1521794502380" expanded="true" signature="1733:1739" ph=" " />
-            <marker date="1521794502380" expanded="true" signature="2077:2083" ph=" " />
-            <marker date="1521794502380" expanded="true" signature="2771:2777" ph=" " />
-            <marker date="1521794502380" expanded="true" signature="2911:2917" ph=" " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/Contacts/static/js/contacts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2728">
-          <caret line="124" column="31" lean-forward="false" selection-start-line="124" selection-start-column="31" selection-end-line="124" selection-end-column="31" />
-          <folding>
-            <marker date="1521793509035" expanded="true" signature="4622:4628" ph=" " />
-            <marker date="1521793509035" expanded="true" signature="4628:4634" ph=" " />
-            <marker date="1521793509035" expanded="true" signature="4634:4640" ph=" " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/OrmModel/Contacts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1738">
-          <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/UserCenter/ContactsControler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1166">
-          <caret line="58" column="42" lean-forward="false" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/UserCenter/UserCenter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="20" column="46" lean-forward="false" selection-start-line="20" selection-start-column="46" selection-end-line="20" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/celery_tasks.py" />
-    <entry file="file://$PROJECT_DIR$/Library/extensions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <element signature="e#46#89#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Project/Project.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="5" lean-forward="false" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Contacts/Contacts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/OrmModel/Product.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="17" column="10" lean-forward="false" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/OrmModel/Module.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="49" column="8" lean-forward="true" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/OrmModel/Dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/OrmModel/Project.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="17" column="23" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/OrmModel/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-125">
-          <caret line="16" column="6" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/dev/miniconda3/envs/py27/lib/python2.7/plat-mac/aetypes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="368" column="13" lean-forward="false" selection-start-line="368" selection-start-column="13" selection-end-line="368" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/dev/miniconda3/envs/py27/lib/python2.7/site-packages/redis/client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="677" column="8" lean-forward="false" selection-start-line="677" selection-start-column="8" selection-end-line="677" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Models/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-103">
-          <caret line="28" column="6" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="53" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Models/request.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Models/response.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Models/cloud.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2344">
-          <caret line="123" column="17" lean-forward="true" selection-start-line="123" selection-start-column="17" selection-end-line="123" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Models/cloud.py" />
     <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Core/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Config/supervisor_celery.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Config/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="8" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1087,31 +849,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/application.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="207" column="0" lean-forward="false" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
-          <folding>
-            <element signature="e#164#206#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Platform/ConfCenter/host.conf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/Utils/time_util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="191" column="9" lean-forward="false" selection-start-line="191" selection-start-column="9" selection-end-line="191" selection-end-column="9" />
-          <folding>
-            <element signature="e#46#56#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1123,83 +864,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="45" column="8" lean-forward="false" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
-          <folding>
-            <element signature="e#374#396#0" expanded="true" />
-            <marker date="1522571151971" expanded="true" signature="4012:4027" ph="SELECT missi... missing_value" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/cluster.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="946">
-          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding>
-            <element signature="e#275#289#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/patch.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/setting.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7648">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="72" column="43" lean-forward="false" selection-start-line="72" selection-start-column="43" selection-end-line="72" selection-end-column="43" />
-          <folding>
-            <element signature="e#46#72#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/application_impl.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1385">
-          <caret line="248" column="8" lean-forward="false" selection-start-line="248" selection-start-column="8" selection-end-line="248" selection-end-column="8" />
-          <folding>
-            <element signature="e#441#452#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/scheduler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/exceptions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-278">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Core/predictor.py">
+    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/scheduler.py" />
+    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Core/scheduling.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharm2017.3/python_stubs/883852549/__builtin__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="2047" column="8" lean-forward="false" selection-start-line="2047" selection-start-column="8" selection-end-line="2047" selection-end-column="8" />
           <folding />
         </state>
       </provider>
@@ -1212,7 +888,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Core/scheduling.py">
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharm2017.3/python_stubs/883852549/_socket.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10604">
+          <caret line="482" column="8" lean-forward="false" selection-start-line="482" selection-start-column="8" selection-end-line="482" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharm2017.3/python_stubs/883852549/datetime.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10824">
+          <caret line="492" column="8" lean-forward="false" selection-start-line="492" selection-start-column="8" selection-end-line="492" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/Utils/time_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="9" lean-forward="false" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/dev/miniconda3/envs/py27/lib/python2.7/site-packages/marshmallow/schema.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9834">
+          <caret line="467" column="24" lean-forward="false" selection-start-line="467" selection-start-column="24" selection-end-line="467" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Config/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/setting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/patch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="18" column="17" lean-forward="false" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/exceptions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1220,54 +952,278 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Library/Caches/PyCharm2017.3/python_stubs/883852549/_socket.py">
+    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/constants.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="482" column="8" lean-forward="false" selection-start-line="482" selection-start-column="8" selection-end-line="482" selection-end-column="8" />
+        <state relative-caret-position="44">
+          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding>
+            <element signature="e#46#72#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/cluster.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6856">
+          <caret line="27" column="7" lean-forward="false" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Library/Caches/PyCharm2017.3/python_stubs/883852549/__builtin__.py">
+    <entry file="file://$PROJECT_DIR$/Platform/ConfCenter/constants.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="2047" column="8" lean-forward="false" selection-start-line="2047" selection-start-column="8" selection-end-line="2047" selection-end-column="8" />
+        <state relative-caret-position="-410">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/ConfCenter/redis_config_store.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/ConfCenter/manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" column="33" lean-forward="false" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/ConfCenter/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="38" column="32" lean-forward="true" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/singleton.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="116" column="22" lean-forward="true" selection-start-line="116" selection-start-column="22" selection-end-line="116" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/dev/miniconda3/envs/py27/lib/python2.7/site-packages/redis/client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="2429" column="23" lean-forward="false" selection-start-line="2429" selection-start-column="23" selection-end-line="2429" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/DLTask/DlTask.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="67" column="46" lean-forward="true" selection-start-line="67" selection-start-column="46" selection-end-line="67" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Core/predictor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/TaskCenter/TaskCenter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/TaskCenter/TaskDBM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="12" column="30" lean-forward="false" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Platform/ERACenter/User_Interface/user.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="42" column="40" lean-forward="false" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
+        <state relative-caret-position="-424">
+          <caret line="61" column="11" lean-forward="false" selection-start-line="61" selection-start-column="11" selection-end-line="61" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Config/nginx_flower.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="5" lean-forward="false" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/extensions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="31" lean-forward="false" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/celery_config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1205">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/celery_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="68" lean-forward="false" selection-start-line="3" selection-start-column="68" selection-end-line="3" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Config/supervisor_celery.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="25" lean-forward="false" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/dev/miniconda3/envs/py27/lib/python2.7/site-packages/celery/app/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="231" column="8" lean-forward="false" selection-start-line="231" selection-start-column="8" selection-end-line="231" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/dev/miniconda3/envs/py27/lib/python2.7/site-packages/billiard/pool.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="1432" column="8" lean-forward="false" selection-start-line="1432" selection-start-column="8" selection-end-line="1432" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/dev/miniconda3/envs/py27/lib/python2.7/site-packages/celery/canvas.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="179" column="8" lean-forward="false" selection-start-line="179" selection-start-column="8" selection-end-line="179" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="70" column="23" lean-forward="true" selection-start-line="70" selection-start-column="23" selection-end-line="70" selection-end-column="23" />
+          <folding>
+            <marker date="1522986665580" expanded="true" signature="4687:4702" ph="SELECT missi... missing_value" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-105">
+          <caret line="13" column="72" lean-forward="false" selection-start-line="13" selection-start-column="72" selection-end-line="13" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/cloud.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1191">
+          <caret line="77" column="31" lean-forward="false" selection-start-line="77" selection-start-column="31" selection-end-line="77" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Core/model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="194" column="27" lean-forward="true" selection-start-line="194" selection-start-column="27" selection-end-line="194" selection-end-column="27" />
-          <folding>
-            <element signature="e#382#393#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="300">
+          <caret line="206" column="27" lean-forward="false" selection-start-line="206" selection-start-column="27" selection-end-line="206" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/cloud.py">
+    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/User_Interface/reservation_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="21" column="11" lean-forward="false" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
-          <folding>
-            <element signature="e#381#392#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="458">
+          <caret line="75" column="37" lean-forward="false" selection-start-line="75" selection-start-column="37" selection-end-line="75" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/DLTask/DlTask.py">
+    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/pem/c13208a667ad14e048ec10b3818a60470/ca.pem">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="62" column="8" lean-forward="true" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="8" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/application.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="24" column="38" lean-forward="false" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/application_impl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="725" column="68" lean-forward="false" selection-start-line="725" selection-start-column="68" selection-end-line="725" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/yaml/example.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/yaml/tensorflow.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="5" lean-forward="true" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
           <folding />
         </state>
       </provider>

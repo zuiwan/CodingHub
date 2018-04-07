@@ -25,6 +25,12 @@ import socket
 import json
 
 import struct
+from Library.extensions import orm as db
+
+from Platform.ERACenter.Core.model import Job
+import os
+
+import traceback
 
 
 class Reservation_Center(object):
@@ -32,16 +38,23 @@ class Reservation_Center(object):
     REQ_EOF_CONFIRM = '\n'
 
     def __init__(self):
-        endpoint = "127.0.0.1:5555"
+        endpoint = ("127.0.0.1", 5555)
+
         # 创建一个socket:
         self.conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         # 建立连接:
-        self.conn.connect(endpoint.split(':'))
+        self.conn.connect(endpoint)
 
     def makeReservation(self, request):
         # 组装符合格式要求的请求，向Go提供的接口发起预定请求
-        self.conn.send(json.dumps(request))
-        # 接收数据:
+        # TODO: check request and reformat it
+        # 发送
+        try:
+            msg2send = json.dumps(request.to_dict())
+            self.conn.send(msg2send + self.REQ_EOF_HEADER + self.REQ_EOF_CONFIRM)
+        except os.error as e:
+            print("error", str(e), traceback.format_exc())
+        # 接收
         buffer = []
         first = True
         while True:
@@ -51,8 +64,9 @@ class Reservation_Center(object):
                 if first is True:
                     # 这里的长度是具体的消息长度，不包括终结符
                     # 长度为uint32，占了4个字节，加上2个字节的终结符
-                    content_length = struct.unpack("I", bytes_readed[:4])  # I == unsigned int, 4bytes
-                    if content_length > 1024 - 6:
+                    content_length, = struct.unpack("i", bytes_readed[:4])  # I == unsigned int, 4bytes
+                    print("debug", "received content-length: %d bytes" % content_length)
+                    if content_length > (1024 - 6):
                         # 消息超过1024字节
                         first = False
                         continue
@@ -63,10 +77,33 @@ class Reservation_Center(object):
                     buffer.append(bytes_readed)
             else:
                 break
+        # self.conn.close()
         data = ''.join(buffer)
-        data = json.loads(data.strip().rstrip(self.REQ_EOF_HEADER + self.REQ_EOF_CONFIRM))
+        try:
+            s = data.strip().rstrip(self.REQ_EOF_HEADER + self.REQ_EOF_CONFIRM)
+            data = json.loads(s)
+        except ValueError as e:
+            print("error", str(e), traceback.format_exc())
+        # print("debug", data)
         return data
 
     def finish(self):
         # 关闭连接:
         self.conn.close()
+
+
+@Singleton
+class User_Interface(object):
+    def __init__(self):
+        self.db = db
+
+    def Create_Job(self, env, uid, gid, doc, duration, project_id, code_id, data_ids, entry_cmd, start_cmd,
+                   b_tensorboard, b_jupyter, perm):
+        job = Job(env=env, uid=uid, gid=gid, doc=doc, duration=duration, project_id=project_id, code_id=code_id,
+                  data_ids=data_ids,
+                  entry_cmd=entry_cmd,
+                  start_cmd=start_cmd,
+                  b_tensorboard=b_tensorboard, b_jupyter=b_jupyter, perm=perm)
+        self.db.session.add(job)
+        self.db.session.commit()
+        return job

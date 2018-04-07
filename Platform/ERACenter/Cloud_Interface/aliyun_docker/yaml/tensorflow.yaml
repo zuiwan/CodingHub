@@ -1,0 +1,30 @@
+{service_name}:
+  restart: {is_always_restart}
+  ports:
+    - {nb_port}/tcp
+    - {tb_port}/tcp
+  entrypoint:
+    - {run_sh}
+  environment:
+    - LANG=C.UTF-8
+    - GPG_KEY=97FC712E4C024BBEA48A61ED3A5CA953F73C700D
+    - constraint:payType==~monthly
+    - PREPARE={cleanup_cmd}
+  labels:
+    aliyun.scale: {scale_num}
+    aliyun.routing.port_{nb_port}: {nb_url}
+    aliyun.routing.port_{tb_port}: {tb_url}
+    aliyun.gpu: {gpu_num}
+    aliyun.logs.russell: stdout
+    aliyun.logs.russell.tags: target={id},testEnv={testEnv}
+    aliyun.monitoring.addon.influxdb: "http://{influxdb_api_uri}"
+    aliyun.monitoring.addon.influxdb_retention_policy: "default"
+  mem_limit: {mem_limit}
+  shm_size: 0
+  image: {image}
+  working_dir: /workspace
+  volumes:
+    - {work_volumes_name}:/workspace:nocopy
+    {dataset_volumes}
+
+

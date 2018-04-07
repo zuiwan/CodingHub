@@ -12,7 +12,6 @@
 -------------------------------------------------
 """
 __author__ = 'huangzhen'
-import dateutil.parser
 import requests
 from Platform.ERACenter.Core.model import Job
 from sqlalchemy import and_
@@ -27,15 +26,24 @@ from constants import (
     INFLUXDB_INTERFACE,
 
 )
+from Library.Utils import file_util
 from Platform.ERACenter.Cloud_Interface.aliyun_docker.constants import CLUSTER_ID_MAP
+from Application.app import flask_app
+import time
+
+
+def Celery_Log_Line(log_str, level="INFO"):
+    ISOTIMEFORMAT = '%Y-%m-%d %X'
+    current_time = time.strftime(ISOTIMEFORMAT, time.localtime(time.time()))
+    line = "[{}] [{}] | {}\n".format(current_time, level, log_str)
+    return line
 
 
 def Write_Job_Log(job_id, log_str, level='INFO'):
+    log_path = ''.join((flask_app.config['UPLOAD_LOG_FOLDER'], job_id, "/worker.log"))
+    line = Celery_Log_Line(log_str, level)
+    file_util.write_file(line, log_path)
     pass
-
-
-def string_toDatetime(string):
-    return dateutil.parser.parse(string)
 
 
 def Get_User(**find_by):
@@ -47,10 +55,21 @@ def Get_Code_Module(**find_by):
 
 
 def Get_Job(**find_by):
+    '''
+    临时：使用redis
+    :param find_by:
+    :return:
+    '''
     _id = find_by.get("id")
-    # db.engine.excute("")
-    job = Job.query.filter(and_(Job.id == _id)).one()
-    return job
+    # job = Job.query.filter(and_(Job.id == _id)).one()
+    try:
+        job = json.loads(rdb.get(str(_id)))
+    except Exception as e:
+        print("error", str(e))
+        experiment_controler_logger.error(traceback.format_exc())
+        return None
+    print("debug", job)
+    return Job.from_dict(job)
 
 
 G_InfluxDB_Session = requests.session()

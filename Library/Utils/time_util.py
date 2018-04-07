@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import sys
+import dateutil.parser
 
-from flask import request, make_response, jsonify
 from functools import wraps
 import datetime
 import time
@@ -191,3 +191,7 @@ def local_strtime_now_mil():
 
 def get_datetime_utcnow():
     return datetime.datetime.utcnow()
+
+
+def string_toDatetime(string):
+    return dateutil.parser.parse(string)

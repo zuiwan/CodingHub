@@ -36,8 +36,8 @@ import json
 import sys
 import traceback
 
-from App.common.singleton import ThreadSafeSingleton
-from App.extension import rdb
+from Library.singleton import ThreadSafeSingleton
+from Library.extensions import rdb
 
 __author__ = 'huangzhen'
 

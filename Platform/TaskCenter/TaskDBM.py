@@ -7,8 +7,9 @@ from Library.singleton import Singleton
 import datetime
 import time
 import Library.ErrorDefine as _ED
-
-from Library.Utils import *
+from Library.OrmModel.Task import Task
+from Library.OrmModel.Project import Project
+from Library.OrmModel.TaskInstance import TaskInstance
 from Library.db_model import *
 
 from Platform.UserCenter.UserDBM import UserDBM
@@ -16,9 +17,7 @@ from Platform.UserCenter.UserDBM import UserDBM
 
 @Singleton
 class TaskDBM():
-    from Library.OrmModel.Task import Task
-    from Library.OrmModel.Project import Project
-    from Library.OrmModel.TaskInstance import TaskInstance
+
     def __init__(self):
         self.logger = LogCenter.instance().get_logger('CerCenterLog')
         self.db_model = DBModelFactory.instance().get_db_model()
@@ -38,4 +37,3 @@ class TaskDBM():
 
     def insert_task_instance(self):
         pass
-

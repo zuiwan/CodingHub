@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 
 # https://github.com/reyoung/singleton
 __author__ = 'reyoung'
@@ -108,3 +108,14 @@ class ThreadSafeSingleton(object):
         Helper for isinstance check
         """
         return isinstance(inst, self.__cls)
+
+    def get_cls(self):
+        # Helper for inheriting class
+        # Only tested in python2, usage like this:
+        # class A(object):
+        #     def __init__(self):
+        #         pass
+        # @ThreadSafeSingleton
+        # class B(A):
+        #     super(B.get_cls(), self).__init__()
+        return self.__cls

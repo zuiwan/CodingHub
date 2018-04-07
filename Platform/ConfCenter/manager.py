@@ -14,12 +14,11 @@
 import json
 import traceback
 
-from App.app import flask_app
-from App.extension import db, rdb
-from App.common.logs_util import LogCenter
-from App.common.singleton import Singleton, ThreadSafeSingleton
-from App.conf.models import Config_Model
-from App.conf.constants import (
+from Library.extensions import orm as db, rdb
+from Library.Utils.log_util import LogCenter
+from Library.singleton import Singleton, ThreadSafeSingleton
+from models import Config_Model
+from constants import (
     DOCKER_IMAGE_CONFIG,
     PLAN_PRICE_CONFIG,
     BILL_CONFIG,

@@ -11,7 +11,7 @@ def create_app(debug=True):
     flask_app.config['KAFKA_BROKER_URI'] = ['']
     flask_app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
     flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-    flask_app.config['UPLOAD_WORK_FOLDER'] = "/root/workspace/"
+    flask_app.config['UPLOAD_WORK_FOLDER'] = "/root/CodingHub/workspace/"
     flask_app.config['UPLOAD_DATA_FOLDER'] = flask_app.config['UPLOAD_WORK_FOLDER'] + "data/"
     flask_app.config['UPLOAD_EXPERIMENT_FOLDER'] = flask_app.config['UPLOAD_WORK_FOLDER'] + "experiment/"
     flask_app.config['UPLOAD_MODULE_FOLDER'] = flask_app.config['UPLOAD_WORK_FOLDER'] + "module/"
@@ -25,6 +25,9 @@ def create_app(debug=True):
         # MONGO_PASSWORD='zuiwan',
         MONGO_DBNAME='CodingHub'
     )
+    flask_app.config['REDIS_HOST'] = 'localhost'
+    flask_app.config['REDIS_PORT'] = 6379
+    flask_app.config['REDIS_DB'] = 0
     flask_app.config.update(
         CELERY_BROKER_URL='redis://localhost:6379',
         CELERY_RESULT_BACKEND='redis://localhost:6379',

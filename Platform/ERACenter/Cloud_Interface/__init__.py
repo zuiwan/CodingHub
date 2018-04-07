@@ -2,15 +2,13 @@
 # -*- coding: utf-8 -*-
 """
 -------------------------------------------------
-   File Name:       __init__.py
+   File Name:       __init__
    Description:
    Author:          huangzhen
-   date:            2018/3/13
+   date:            2018/4/5
 -------------------------------------------------
    Change Activity:
-                   2018/3/13:
+                   2018/4/5:
 -------------------------------------------------
 """
 __author__ = 'huangzhen'
-import redis
-redisClient = redis.Redis(host="127.0.0.1", port=6379, db=0)

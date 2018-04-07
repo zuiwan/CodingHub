@@ -46,7 +46,8 @@ from Platform.ConfCenter.constants import (
     PACKAGE_PRICE_CONFIG,
     BILL_CONFIG
 )
-from utils import Write_Job_Log, string_toDatetime, Get_Code_Module, Influxdb_Controler
+from utils import Write_Job_Log, Get_Code_Module, Influxdb_Controler
+from Library.Utils.time_util import string_toDatetime
 from application import Application_Center
 from cluster import Cluster
 from setting import (
@@ -722,7 +723,7 @@ class Application(Application_Center):
         self.Write_Log("experiment env: {}".format(self.job.environment))
 
         # step 4 获取容器等配置
-        with open('yaml/tensorflow.yaml', 'r') as f:
+        with open('Platform/ERACenter/Cloud_Interface/aliyun_docker/yaml/tensorflow.yaml', 'r') as f:
             content = f.read().format
 
         data_volume_num = len(self.data_nfs_opts)

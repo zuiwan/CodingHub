@@ -11,19 +11,18 @@ from aliyunsdkcore.client import AcsClient
 import requests
 import json
 
-import Platform.ERACenter.Cloud_Interface.aliyun_docker.constants
-import setting
+import constants
 
 
 class Application_Center(object):
-    client = AcsClient(Platform.ERACenter.Cloud_Interface.aliyun_docker.constants.ACCESSKEY_ID,
-                       Platform.ERACenter.Cloud_Interface.aliyun_docker.constants.ACCESSKEY_SECRET,
-                       Platform.ERACenter.Cloud_Interface.aliyun_docker.constants.REGION_ID)
+    client = AcsClient(constants.ACCESSKEY_ID,
+                       constants.ACCESSKEY_SECRET,
+                       constants.REGION_ID)
 
     def __init__(self, cluster):
         self.cluster = cluster
-        self.verify = 'pem/%s/ca.pem' % self.cluster['cluster_id']
-        self.cert = ('pem/%s/cert.pem' % self.cluster['cluster_id'], 'pem/%s/key.pem' % self.cluster['cluster_id'])
+        self.verify = 'Platform/ERACenter/Cloud_Interface/aliyun_docker/pem/%s/ca.pem' % self.cluster['cluster_id']
+        self.cert = ('Platform/ERACenter/Cloud_Interface/aliyun_docker/pem/%s/cert.pem' % self.cluster['cluster_id'], 'pem/%s/key.pem' % self.cluster['cluster_id'])
 
     # 查看应用实例列表
     def app_list(self):
@@ -202,14 +201,14 @@ class Application_Center(object):
 from abc import ABCMeta, abstractmethod
 
 
-# class AbstractApplication(object):
-#     '''
-#     单个应用
-#     '''
-#     # for python3: class AbstractApplication(metaclass=ABCMeta)
-#     __metaclass__ = ABCMeta
+class AbstractApplication(object):
+    '''
+    单个应用
+    '''
+    # for python3: class AbstractApplication(metaclass=ABCMeta)
+    __metaclass__ = ABCMeta
 
-class AbstractApplication(metaclass=ABCMeta):
+    # class AbstractApplication(metaclass=ABCMeta):
     @abstractmethod
     def Init_Task(self):
         pass
