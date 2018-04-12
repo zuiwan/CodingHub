@@ -231,6 +231,19 @@ class Job(BaseModel):
         else:
             return "cli"
 
+    @property
+    def command(self):
+        return self.entry_cmd
+
+    @property
+    def project_name(self):
+        # TODO
+        return self.project_id
+
+    @property
+    def started(self):
+        return self.t_started
+
 
 class JobReqSchema(BaseSchema):
     job_id = fields.Str()

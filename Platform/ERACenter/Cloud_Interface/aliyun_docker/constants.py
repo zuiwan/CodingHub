@@ -28,27 +28,52 @@ k_log_output_6 = "data_volume create successfully, data_id: {}, mount dir: {}"
 k_log_output_9 = "Waiting for Task to complete ~"
 k_log_output_10 = "Export output dir to create new dataset : ************"
 
+# SERVER_CONFIG_MAP = dict(
+#     master=dict(
+#         jupyter_url_g="http://gpu.russellcloud.com/notebook/",
+#         jupyter_url_c="http://cpu.russellcloud.com/notebook/",
+#         tensorboard_url_c="http://cpu.russellcloud.com/tensorboard/",
+#         tensorboard_url_g="http://gpu.russellcloud.com/tensorboard/",
+#         nfs_host_g="387794b016-gep85.cn-shanghai.nas.aliyuncs.com",
+#         nfs_host_c="387794b016-tnq38.cn-shanghai.nas.aliyuncs.com",
+#         disk_id="387794b016",
+#     ),
+#     test=dict(
+#         jupyter_url_g="http://gpu.russellcloud.com/notebook/",
+#         jupyter_url_c="http://cpu.russellcloud.com/notebook/",
+#         tensorboard_url_c="http://cpu.russellcloud.com/tensorboard/",
+#         tensorboard_url_g="http://gpu.russellcloud.com/tensorboard/",
+#         nfs_host_g="369e84a816-qtg85.cn-shanghai.nas.aliyuncs.com",
+#         nfs_host_c="369e84a816-qka26.cn-shanghai.nas.aliyuncs.com",
+#         disk_id="369e84a816",
+#     )
+# )
 SERVER_CONFIG_MAP = dict(
     master=dict(
         jupyter_url_g="http://gpu.russellcloud.com/notebook/",
         jupyter_url_c="http://cpu.russellcloud.com/notebook/",
         tensorboard_url_c="http://cpu.russellcloud.com/tensorboard/",
         tensorboard_url_g="http://gpu.russellcloud.com/tensorboard/",
-        nfs_host_g="387794b016-gep85.cn-shanghai.nas.aliyuncs.com",
-        nfs_host_c="387794b016-tnq38.cn-shanghai.nas.aliyuncs.com",
-        disk_id="387794b016",
+        r_nfs_host_g="387794b016-gep85.cn-shanghai.nas.aliyuncs.com",
+        r_nfs_host_c="387794b016-tnq38.cn-shanghai.nas.aliyuncs.com",
+        rw_nfs_host_g="3d9934935b-yyr73.cn-shanghai.nas.aliyuncs.com",
+        rw_nfs_host_c="3d9934935b-jxm82.cn-shanghai.nas.aliyuncs.com",
+        r_disk_id="387794b016",
+        rw_disk_id="3d9934935b",
     ),
     test=dict(
         jupyter_url_g="http://gpu.russellcloud.com/notebook/",
         jupyter_url_c="http://cpu.russellcloud.com/notebook/",
         tensorboard_url_c="http://cpu.russellcloud.com/tensorboard/",
         tensorboard_url_g="http://gpu.russellcloud.com/tensorboard/",
-        nfs_host_g="369e84a816-qtg85.cn-shanghai.nas.aliyuncs.com",
-        nfs_host_c="369e84a816-qka26.cn-shanghai.nas.aliyuncs.com",
-        disk_id="369e84a816",
+        r_nfs_host_g="369e84a816-qtg85.cn-shanghai.nas.aliyuncs.com",
+        r_nfs_host_c="369e84a816-qka26.cn-shanghai.nas.aliyuncs.com",
+        rw_nfs_host_g="318334978e-eap26.cn-shanghai.nas.aliyuncs.com",
+        rw_nfs_host_c="318334978e-phh35.cn-shanghai.nas.aliyuncs.com",
+        r_disk_id="369e84a816",
+        rw_disk_id="318334978e",
     )
 )
-
 CPU_CLUSTER_EXPECT_SIZE = "cpu_cluster_expect_size"
 GPU_CLUSTER_EXPECT_SIZE = "gpu_cluster_expect_size"
 MACHINE_LIST = "machine_list"

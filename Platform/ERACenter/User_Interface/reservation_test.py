@@ -91,7 +91,7 @@ def createJob():
     '''
     for jobid in range(10):
         env = {
-            "dl_fr_name": "tensorflow-1.5:py2",
+            "dl_fr_name": "tensorflow",
             "os": "ubuntu16",
             "with_gpu": False
         }
@@ -99,7 +99,7 @@ def createJob():
         Create_Job(id=str(jobid), env=env, duration=10000, uid="e2500321e4f2411890cd6bbd1ce7b45c", gid="1",
                    doc="test{}".format(jobid),
                    project_id="1", code_id="5e2cd0464abb4e96aa7405e39f703654",
-                   data_ids=["1,"],
+                   data_ids=["1:data,"],
                    entry_cmd="python main.py",
                    start_cmd="", b_tensorboard=False, b_jupyter=True, perm=0)
 

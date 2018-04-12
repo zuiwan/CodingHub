@@ -74,3 +74,7 @@ class User(BaseModel):
             raise  # invalid token
         user = User.query.get(data['id'])
         return user
+
+    @property
+    def username(self):
+        return self.name

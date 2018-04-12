@@ -66,27 +66,26 @@ FAIL_RETRY_INTERVAL = 5  # 重试最小间隔
 INIT_SLEEP_TIME = 3  # 开始轮询为3s
 RUNNING_SLEEP_TIME = 10  # 在任务进入运行状态后，轮询间隔改为10s
 
-
-def active_dbmodel(models=()):
-    '''
-    Application类的db_model补丁，确保实例所持有的db.model类型的属性是绑定在数据库会话上的
-    依赖于 Applicaiton类中@property 所装饰的几个函数（实际的绑定会话执行者）
-    '''
-
-    def decorate(f):
-        @wraps(f)
-        def wrapper(*args, **kwargs):
-            try:
-                [args[0].__setattr__(model, args[0].__getattribute__(model + "_model"))
-                 for model in models if hasattr(args[0], model)]
-                res = f(*args, **kwargs)
-            except Exception as e:
-                raise e
-            return res
-
-        return wrapper
-
-    return decorate
+# def active_dbmodel(models=()):
+#     '''
+#     Application类的db_model补丁，确保实例所持有的db.model类型的属性是绑定在数据库会话上的
+#     依赖于 Applicaiton类中@property 所装饰的几个函数（实际的绑定会话执行者）
+#     '''
+#
+#     def decorate(f):
+#         @wraps(f)
+#         def wrapper(*args, **kwargs):
+#             try:
+#                 [args[0].__setattr__(model, args[0].__getattribute__(model + "_model"))
+#                  for model in models if hasattr(args[0], model)]
+#                 res = f(*args, **kwargs)
+#             except Exception as e:
+#                 raise e
+#             return res
+#
+#         return wrapper
+#
+#     return decorate
 
 
 from .utils import Get_User, Get_Job
@@ -113,7 +112,7 @@ class Application(Application_Center):
         self.job = Get_Job(id=job_id)
         self.user = Get_User(id=self.job.uid)
         self.time_limit = time_limit
-        self.workdir = os.path.join("/root/workspace", job_id)
+        self.workdir = os.path.join("/root/workspace/experiment", job_id)
         self.is_test_env = True
         self.is_run_as_root = run_as_root
         self.db = db
@@ -144,15 +143,6 @@ class Application(Application_Center):
             return ok
         return True
 
-    @property
-    def experiment_model(self):
-        return self.db.session.merge(self.job)
-
-    @property
-    def user_model(self):
-        return self.db.session.merge(self.user)
-
-    @active_dbmodel(("experiment"))
     def Create_App(self):
         self.Write_Log("Pulling image from remote, maybe take a while...")
         application_result = False
@@ -239,7 +229,7 @@ class Application(Application_Center):
     def Write_Log(self, msg, level="INFO"):
         Write_Job_Log(self.job_id, msg, level)
 
-    def append_terminal_symbol(self, file_path="/root/workspace/log", file_name="container.log"):
+    def append_terminal_symbol(self, file_path="/root/CodingHub/workspace/log", file_name="container.log"):
         try:
             with open(os.path.join(file_path, self.job_id, file_name), 'a') as f:
                 f.write(self.TERMINAL_SYMBOL_RAW.format(self.job_id))
@@ -272,11 +262,11 @@ class Application(Application_Center):
                 current_state, created, updated = self.get_application_info(self.app_name)
             else:
                 self.Write_Log("Task stop failed, reason: %s" % stop_content, "ERROR")
-        if not self.job.started:
+        if not self.job.t_started:
             # in case started not set
-            self.job.started = string_toDatetime(created)
-        self.job.ended = string_toDatetime(updated)
-        self.job.duration = int((self.job.ended.replace(tzinfo=None) - self.job.started.replace(
+            self.job.t_started = string_toDatetime(created)
+        self.job.t_ended = string_toDatetime(updated)
+        self.job.duration = int((self.job.t_ended.replace(tzinfo=None) - self.job.t_started.replace(
             tzinfo=None)).total_seconds())
         self.db.session.commit()
 
@@ -343,7 +333,6 @@ class Application(Application_Center):
                     self.Write_Log("Task retry too much times, closed!", 'WARNING')
                     self.job.state = "failed"
                     self.db.session.commit()
-                    # Do_Before_Remove()
                     break
             else:
                 if self.job.state == "stopped":
@@ -352,8 +341,6 @@ class Application(Application_Center):
                     else:
                         self.Write_Log('#' * 20)
                     self.Write_Log("Task shutdown...")
-                    # self.Do_Before_Remove()
-                    # _application.app_kill(name)
                     break
                 if not current_state:
                     self.Write_Log("Status refresh failed, retrying...", "WARNING")
@@ -369,7 +356,6 @@ class Application(Application_Center):
                     current_state, created, updated = self.get_application_info(self.app_name)
                     if current_state in ["stopped", "finished"]:
                         self.Write_Log('#' * 20)
-                        # self.Do_Before_Remove()
                         self.job.state = "finished"
                         self.db.session.commit()
                         break
@@ -402,7 +388,6 @@ class Application(Application_Center):
                         time.sleep((FAIL_RETRY_MAX_CNT - self.retry_cnt) * FAIL_RETRY_INTERVAL)  # 直接睡眠重试时间
                         self.retry_cnt += 1
                         continue  # 继续循环，不进入失败流程
-                    # self.Do_Before_Remove()
                     # 进入最终失败流程
                     self.Write_Log("Task is failed. Please try to rerun the task later", "ERROR")
                     self.job.state = current_state
@@ -433,7 +418,7 @@ class Application(Application_Center):
             if not data_volume_result:
                 self.Write_Log("data_volume create failed\n{}".format(data_volume_content),
                                "ERROR")
-                return False
+                continue
             else:
                 self.Write_Log("data_volume create successfully, mount dir: /input/%s" % str(data_nfs_opt["mount_dir"]))
         return True
@@ -465,7 +450,9 @@ class Application(Application_Center):
             self.Write_Log("Request to create Volume failed", "ERROR")
             return False
         if not work_volume_result:
-            self.Write_Log("work_volume create failed\n{}".format(work_volume_content), "ERROR")
+            self.Write_Log("work_volume create failed\n{}, request params: name({}), opts({})".format(
+                work_volume_content, self.work_name, self.work_nfs_opts),
+                "ERROR")
             return False
 
         self.Write_Log("work_volume create successfully, mount dir: {}".format(self.WORKING_DIR))  # /workspace
@@ -505,8 +492,7 @@ class Application(Application_Center):
         :return: True or raise exception
         '''
         # fetch necessary info from database
-        mode = self.job.mode
-        enable_tensorboard = self.job.enable_tensorboard
+        enable_tensorboard = self.job.b_tensorboard
         auto_command = self.job.command
 
         # init command list with header
@@ -550,7 +536,7 @@ class Application(Application_Center):
 
         # support auto pip install
         if os.path.isfile(os.path.join(self.workdir, "russell_requirements.txt")):
-            if mode == "jupyter":
+            if self.job.b_jupyter:
                 # install by daemon, and discard stdout and stderr
                 pre_command = "pip --default-timeout=1000 install -r russell_requirements.txt > /dev/null 2>&1 &"
             else:
@@ -569,7 +555,7 @@ class Application(Application_Center):
         if auto_command:
             task_cmd.append(auto_command)
 
-        if mode == "jupyter":
+        if self.job.b_jupyter:
             # set entry working directory and customize prompt for bash
             config_cmd.append("echo \"{set_default_terminal_dir}\n"
                               "export PS1='\033[1;34m\u@{expname}:\W$ \[\033[0m\]'\" >> {home_dir}/.bashrc"
@@ -674,21 +660,22 @@ class Application(Application_Center):
         if self.is_test_env:
             testEnv = "True"
             server = "test"
-        self.work_name = "work-" + self.app_name
-
+        self.work_name = "erawork-" + self.app_name
         if self.job.instance_type == GPU_INSTANCE_TYPE:
             gpu_num = 1
             jupyter_url = SERVER_CONFIG_MAP.get(server).get("jupyter_url_g")
-            nfs_host = SERVER_CONFIG_MAP.get(server).get("nfs_host_g")
+            experiment_nfs_host = SERVER_CONFIG_MAP.get(server).get("rw_nfs_host_g")
+            data_nfs_host = SERVER_CONFIG_MAP.get(server).get("r_nfs_host_g")
             tb_base_url = SERVER_CONFIG_MAP.get(server).get("tensorboard_url_g")
         else:
             gpu_num = 0
             jupyter_url = SERVER_CONFIG_MAP.get(server).get("jupyter_url_c")
-            nfs_host = SERVER_CONFIG_MAP.get(server).get("nfs_host_c")
+            experiment_nfs_host = SERVER_CONFIG_MAP.get(server).get("rw_nfs_host_c")
+            data_nfs_host = SERVER_CONFIG_MAP.get(server).get("r_nfs_host_c")
             tb_base_url = SERVER_CONFIG_MAP.get(server).get("tensorboard_url_c")
         self.work_nfs_opts = {
-            "diskid": SERVER_CONFIG_MAP.get(server).get('disk_id'),
-            "host": nfs_host,
+            "diskid": SERVER_CONFIG_MAP.get(server).get('rw_disk_id'),
+            "host": experiment_nfs_host,
             "path": "/experiment/" + self.job_id + "/",
             "mode": ""
         }
@@ -701,11 +688,11 @@ class Application(Application_Center):
             for data_id in data_ids:
                 if ':' not in data_id:
                     self.Write_Log("Data config err:%s " % self.job.data_ids, "ERROR")
-                    return None, False
+                    return None
                 data_id, mount_dir = data_id.split(':')
                 self.data_nfs_opts.append({
-                    "diskid": SERVER_CONFIG_MAP.get(server).get('disk_id'),
-                    "host": nfs_host,
+                    "diskid": SERVER_CONFIG_MAP.get(server).get('r_disk_id'),
+                    "host": data_nfs_host,
                     "path": "/data/" + data_id + "/",
                     "mode": "",
                     "mount_dir": mount_dir  # not for aliyun
@@ -817,16 +804,14 @@ class Application(Application_Center):
         if not env or not isinstance(env, str):
             return False
         DOCKER_IMAGE_CONFIG.refresh()
-        print("debug", "dockerimage", DOCKER_IMAGE_CONFIG.get("cpu").get("caffe"))
         gpu_cpu = "gpu" if instance_type == GPU_INSTANCE_TYPE else "cpu"
         image_tag = DOCKER_IMAGE_CONFIG.get(gpu_cpu).get(env)
         return DOCKER_PRE + image_tag if image_tag else None
 
-    @active_dbmodel(("experiment",))
     def Pay_Bill(self):
         return Billing(owner_id=self.job.owner_id,
-                       category=self.job.instance_type_trimmed,
-                       from_id=self.job.module_id,
+                       category=self.job.instance_type,
+                       from_id=self.job.id,
                        dosage=self.job.duration)
 
 
