@@ -56,12 +56,11 @@ def Write_Job_Log(job_id, log_str, level='INFO'):
 def Get_User(**find_by):
     _id = find_by.get('id')
     try:
-        user = json.loads(rdb.get("user_{}".format(_id)))
-        return User.from_dict(user)
-    except Exception as e:
-        print("error", str(e), traceback.format_exc())
         fields = MysqlEngine.engine.execute("select id,username,level, from user where id={}".format(_id)).one()
         return User.from_dict(dict(id=fields[0], name=fields[1], level=fields[2], phone=""))
+    except Exception as e:
+        print("error", str(e), traceback.format_exc())
+        return None
 
 
 def Get_Code_Module(**find_by):
