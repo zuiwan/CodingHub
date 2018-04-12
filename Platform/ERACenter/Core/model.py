@@ -58,6 +58,7 @@ class BaseModel(orm.Model):
     def commit(self):
         orm.session.commit()
 
+
 class ERAProjectSchema(BaseSchema):
     uid = fields.Str()
     name = fields.Str()
@@ -219,6 +220,10 @@ class Job(BaseModel):
     def data_id_list(self):
         return list(eval(str(self.data_ids))) if self.data_ids else []
 
+    @property
+    def owner_id(self):
+        return self.uid
+
 
 class JobReqSchema(BaseSchema):
     job_id = fields.Str()
@@ -309,6 +314,7 @@ class JobResp:
         self.arrival_time = arrival_time
         self.accepted_price = accepted_price
 
+
 class ModuleSchema(BaseSchema):
     name = fields.Str()
     description = fields.Str()
@@ -334,7 +340,7 @@ class Module(BaseModel):
     entity_id = orm.Column(orm.String(32), index=True)
     module_type = orm.Column(orm.String(32))
     version = orm.Column(orm.INT, nullable=False, default=0)
-    owner_id = orm.Column(orm.String(32), index=True)
+    uid = orm.Column(orm.String(32), index=True)
     codehash = orm.Column(orm.String(256))
     state = orm.Column(orm.String(16))
     size = orm.Column(orm.INT, default=0, doc="MB")
