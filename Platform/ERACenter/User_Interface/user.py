@@ -38,7 +38,7 @@ class Reservation_Center(object):
     REQ_EOF_CONFIRM = '\n'
 
     def __init__(self):
-        endpoint = ("127.0.0.1", 5555)
+        endpoint = ("api.cannot.cc", 5555)
 
         # 创建一个socket:
         self.conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
