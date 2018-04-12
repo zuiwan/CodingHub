@@ -14,6 +14,7 @@
 __author__ = 'huangzhen'
 
 from kombu import Queue
+
 # from datetime import timedelta
 # from celery.schedules import crontab
 

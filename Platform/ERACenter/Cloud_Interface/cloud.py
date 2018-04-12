@@ -15,7 +15,6 @@ __author__ = 'huangzhen'
 import sys
 
 sys.path.append(".")
-import time
 import json
 import traceback
 from Library.extensions import (
@@ -28,7 +27,10 @@ from celery import Celery
 
 
 def make_celery_app():
-    app = Celery('Platform.ERACenter.Cloud_Interface.cloud', broker='redis://localhost:6380')
+    print("redis read test", redisClient.get("test"))
+    app = Celery(main='Platform.ERACenter.Cloud_Interface.cloud',
+                 backend="redis://test.dl.russellcloud.com:6380",
+                 broker='redis://test.dl.russellcloud.com:6380')
     return app
 
 
@@ -45,7 +47,7 @@ def initSubscribe():
 
 
 def getCurrentAllocation():
-    # 支持更多的celery调用参数：持续优化
+    # 支持更多的celery调用参数
     for item in Accepted_Queue.listen():
         resp = item["data"]  # get channel message
         if resp == 1L:
@@ -56,13 +58,14 @@ def getCurrentAllocation():
             except Exception as e:
                 print("get allocation detail failed, reason: {}".format(str(e)))
                 continue
+            # print("debug, dict loaded: {}".format(data))
             job_id, eta, priority = data["job_id"], time_util.string_toDatetime(
-                data["arrival_time"]), 0 + normalization_coefficient * (data["accepted_value"] - 0)
+                data["t_start"]), 0 + normalization_coefficient * (data["value"] - 0)
             print("job_id: {}, eta: {}, priority: {}".format(job_id, eta, priority))
-            Do_Job.delay(args=[job_id],
-                         eta=eta,
-                         priority=priority)
-            time.sleep(LOOP_INTERVAL)
+            Do_Job.apply_async(args=[job_id],
+                               eta=time_util.get_datetime_utcnow(),
+                               priority=priority)
+            # time.sleep(LOOP_INTERVAL)
 
 
 @celery_app.task

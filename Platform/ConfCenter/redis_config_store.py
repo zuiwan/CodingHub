@@ -19,7 +19,8 @@ DEFAULT_MACHINE_RESOURCE_LIMIT = {
     "gpu": {"memory": "28g", "concurrency": 1},  # 当前型号GPU机器最多运行1个任务
     "cpu": {"memory": "7g", "concurrency": 2}
 }
-machine_resource_limit = rdb.get(MACHINE_RESOURCE_LIMIT_REDIS_KEY)
+# machine_resource_limit = rdb.get(MACHINE_RESOURCE_LIMIT_REDIS_KEY)
+machine_resource_limit = None
 if not machine_resource_limit:
     machine_resource_limit = DEFAULT_MACHINE_RESOURCE_LIMIT
 else:

@@ -2,6 +2,10 @@
 # -*- coding: utf-8 -*-
 from flask import Flask
 
+HOST = "test.dl.russellcloud.com"
+RedisHost = HOST
+RedisPort = 6380
+
 
 def create_app(debug=True):
     flask_app = Flask(__name__, static_url_path='/assets',
@@ -25,12 +29,12 @@ def create_app(debug=True):
         # MONGO_PASSWORD='zuiwan',
         MONGO_DBNAME='CodingHub'
     )
-    flask_app.config['REDIS_HOST'] = 'localhost'
+    flask_app.config['REDIS_HOST'] = HOST
     flask_app.config['REDIS_PORT'] = 6380
     flask_app.config['REDIS_DB'] = 0
     flask_app.config.update(
-        CELERY_BROKER_URL='redis://localhost:6379',
-        CELERY_RESULT_BACKEND='redis://localhost:6379',
+        CELERY_BROKER_URL='redis://{}:{}'.format(RedisHost, RedisPort),
+        CELERY_RESULT_BACKEND='redis://{}:{}'.format(RedisHost, RedisPort),
     )
     flask_app.secret_key = 'i-like-python-nmba'
     return flask_app

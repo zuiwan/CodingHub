@@ -17,10 +17,15 @@ from Platform.ERACenter.Core.model import Job, Module
 from Library.OrmModel.User import User
 from Library.Utils.log_util import LogCenter
 import json
-from Library.extensions import rdb
 import traceback
+import time
 
-experiment_controler_logger = LogCenter.instance().get_logger('era', 'utils')
+from Library.extensions import (
+    rdb,
+    orm as db,
+    DBSession,
+    MysqlEngine
+)
 from Library import ErrorDefine as ED
 from constants import (
     INFLUXDB_INTERFACE,
@@ -29,7 +34,9 @@ from constants import (
 from Library.Utils import file_util
 from Platform.ERACenter.Cloud_Interface.aliyun_docker.constants import CLUSTER_ID_MAP
 from Application.app import flask_app
-import time
+
+experiment_controler_logger = LogCenter.instance().get_logger('era', 'utils')
+RUS_DBS = DBSession()
 
 
 def Celery_Log_Line(log_str, level="INFO"):
@@ -50,10 +57,11 @@ def Get_User(**find_by):
     _id = find_by.get('id')
     try:
         user = json.loads(rdb.get("user_{}".format(_id)))
+        return User.from_dict(user)
     except Exception as e:
         print("error", str(e), traceback.format_exc())
-        return None
-    return User.from_dict(user)
+        fields = MysqlEngine.engine.execute("select id,username,level, from user where id={}".format(_id)).one()
+        return User.from_dict(dict(id=fields[0], name=fields[1], level=fields[2], phone=""))
 
 
 def Get_Code_Module(**find_by):
