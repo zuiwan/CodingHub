@@ -246,7 +246,6 @@ class Application(Application_Center):
         except Exception as e:
             self.Write_Log("Append terminal symbol failed. The reason is %s" % str(e))
 
-    @active_dbmodel(("experiment", "instance", "user"))
     def Do_Before_Remove(self):
         '''
         :return:
@@ -320,7 +319,6 @@ class Application(Application_Center):
 
         return True
 
-    @active_dbmodel(("experiment", "instance", "user"))
     def Polling_State(self):
         '''
         :return:
@@ -362,7 +360,6 @@ class Application(Application_Center):
                     retry_times += 1
                     if retry_times >= 10:
                         self.Write_Log("Retry too much times, closed!", "WARNING")
-                        self.instance.state = "failed"
                         self.job.state = "failed"
                         db.session.commit()
                         break
@@ -420,7 +417,6 @@ class Application(Application_Center):
             time.sleep(sleep_time)
         return True
 
-    @active_dbmodel(("experiment", "instance"))
     def Mount_Dataset(self):
         '''
         :return:
@@ -475,7 +471,6 @@ class Application(Application_Center):
         self.Write_Log("work_volume create successfully, mount dir: {}".format(self.WORKING_DIR))  # /workspace
         return True
 
-    @active_dbmodel(("experiment", "user"))
     def Generator_Run(self, sleep_seconds=3):
         '''
         用户应用（任务作业）的entrypoint启动脚本相关。
@@ -674,7 +669,6 @@ class Application(Application_Center):
                  stat.S_IRWXU | stat.S_IRGRP | stat.S_IROTH)
         return True
 
-    @active_dbmodel(("experiment", "instance"))
     def Get_Configs(self, server='master'):
         testEnv = "False"
         if self.is_test_env:
@@ -802,7 +796,6 @@ class Application(Application_Center):
                 return False
         return True
 
-    @active_dbmodel(("experiment"))
     def Init_Task(self):
         # TODO: 通过nas操作文件
         module = Get_Code_Module(id=self.job.code_id)
