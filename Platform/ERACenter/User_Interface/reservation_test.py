@@ -95,27 +95,15 @@ def createJob():
             "os": "ubuntu16",
             "with_gpu": False
         }
+        # uid, code_id均指向Rus测试环境数据
         Create_Job(id=str(jobid), env=env, duration=10000, uid="e2500321e4f2411890cd6bbd1ce7b45c", gid="1",
                    doc="test{}".format(jobid),
-                   project_id="1", code_id="1", data_ids=["1,"], entry_cmd="python main.py",
+                   project_id="1", code_id="5e2cd0464abb4e96aa7405e39f703654",
+                   data_ids=["1,"],
+                   entry_cmd="python main.py",
                    start_cmd="", b_tensorboard=False, b_jupyter=True, perm=0)
-
-
-def createCode():
-    codemodule = Module("1",
-                        "test",
-                        "",
-                        "1",
-                        version=1,
-                        module_type="code",
-                        entity_id="1",
-                        codehash="",
-                        state='valid',
-                        size=1000)
-    rdb.set("code_1", json.dumps(codemodule.to_dict()))
 
 
 if __name__ == "__main__":
     createJob()
-    createCode()
     reserve_loooop()

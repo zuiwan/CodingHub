@@ -316,17 +316,12 @@ class JobResp:
 
 
 class ModuleSchema(BaseSchema):
-    name = fields.Str()
-    description = fields.Str()
-
     module_type = fields.Str()
-    family_id = fields.Str(allow_none=True)
     entity_id = fields.Str(allow_none=True)
     version = fields.Int()
 
-    owner_id = fields.Str()
-    tags = fields.Str(allow_none=True)
-    codehash = fields.Str()
+    uid = fields.Str()
+    codehash = fields.Str(allow_none=True)
     state = fields.Str()
     size = fields.Int()
 
@@ -346,9 +341,6 @@ class Module(BaseModel):
     size = orm.Column(orm.INT, default=0, doc="MB")
 
     def __init__(self,
-                 id,
-                 name,
-                 description,
                  uid,
                  version=None,
                  module_type="code",
@@ -356,6 +348,7 @@ class Module(BaseModel):
                  codehash=None,
                  state='pending',
                  size=None,
+                 id=None,
                  is_deleted=False,
                  t_created=None,
                  t_modified=None):
@@ -363,8 +356,6 @@ class Module(BaseModel):
 
         :rtype: object
         """
-        self.name = name
-        self.description = description
         self.module_type = module_type
         self.version = version
         self.uid = uid
@@ -389,3 +380,7 @@ class Module(BaseModel):
         else:
 
             self.t_modified = datetime.datetime.utcnow()
+
+    @property
+    def owner_id(self):
+        return self.uid
