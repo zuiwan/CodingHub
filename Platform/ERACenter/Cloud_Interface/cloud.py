@@ -22,13 +22,13 @@ from Library.extensions import (
     rdb as redisClient,
 )
 from Library.Utils import time_util
-from aliyun_docker.utils import Get_Job, Write_Job_Log
+from aliyun_docker.utils import Write_Job_Log
 from aliyun_docker.application_impl import Application
 from celery import Celery
 
 
 def make_celery_app():
-    app = Celery('Platform.ERACenter.Cloud_Interface.cloud', broker='redis://localhost:6379')
+    app = Celery('Platform.ERACenter.Cloud_Interface.cloud', broker='redis://localhost:6380')
     return app
 
 
@@ -51,7 +51,11 @@ def getCurrentAllocation():
         if resp == 1L:
             continue  # blank message
         else:
-            data = json.loads(resp)  # transfer data type
+            try:
+                data = json.loads(redisClient.get(str(resp)))  # transfer data type
+            except Exception as e:
+                print("get allocation detail failed, reason: {}".format(str(e)))
+                continue
             Do_Job.delay(args=[data["job_id"]],
                          eta=time_util.string_toDatetime(data["arrival_time"]),
                          priority=0 + normalization_coefficient * (data["accepted_value"] - 0))

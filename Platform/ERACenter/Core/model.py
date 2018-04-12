@@ -58,7 +58,6 @@ class BaseModel(orm.Model):
     def commit(self):
         orm.session.commit()
 
-
 class ERAProjectSchema(BaseSchema):
     uid = fields.Str()
     name = fields.Str()
@@ -310,7 +309,6 @@ class JobResp:
         self.arrival_time = arrival_time
         self.accepted_price = accepted_price
 
-
 class ModuleSchema(BaseSchema):
     name = fields.Str()
     description = fields.Str()
@@ -345,7 +343,7 @@ class Module(BaseModel):
                  id,
                  name,
                  description,
-                 owner_id,
+                 uid,
                  version=None,
                  module_type="code",
                  entity_id=None,
@@ -363,7 +361,7 @@ class Module(BaseModel):
         self.description = description
         self.module_type = module_type
         self.version = version
-        self.owner_id = owner_id
+        self.uid = uid
         self.codehash = codehash
         self.entity_id = entity_id
         self.state = state

@@ -26,7 +26,7 @@ def create_app(debug=True):
         MONGO_DBNAME='CodingHub'
     )
     flask_app.config['REDIS_HOST'] = 'localhost'
-    flask_app.config['REDIS_PORT'] = 6379
+    flask_app.config['REDIS_PORT'] = 6380
     flask_app.config['REDIS_DB'] = 0
     flask_app.config.update(
         CELERY_BROKER_URL='redis://localhost:6379',

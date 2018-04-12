@@ -113,7 +113,7 @@ class Application(Application_Center):
         self.job = Get_Job(id=job_id)
         self.user = Get_User(id=self.job.uid)
         self.time_limit = time_limit
-        self.workdir = os.path.join("/workspace", job_id)
+        self.workdir = os.path.join("/root/workspace", job_id)
         self.is_test_env = True
         self.is_run_as_root = run_as_root
         self.db = db
@@ -443,20 +443,20 @@ class Application(Application_Center):
         return True
 
     def Mk_Output_Dir(self):
-        return True
+        # return True
         # TODO: 在nas上写文件
-        # self.Write_Log("mkdir output")
-        # try:
-        #     Mkdir_Output(self.job_id)
-        # except Exception as e:
-        #     self.Write_Log(repr(e), "VERBOSE")
-        #     return False
-        # try:
-        #     return self.Generator_Run()
-        # except Exception as e:
-        #     self.Write_Log('\n'.join((repr(e), str(traceback.format_exc()))), "VERBOSE")
-        #     self.Write_Log("Generate run script failed", "ERROR")
-        #     return False
+        self.Write_Log("mkdir output")
+        try:
+            Mkdir_Output(self.job_id)
+        except Exception as e:
+            self.Write_Log(repr(e), "VERBOSE")
+            return False
+        try:
+            return self.Generator_Run()
+        except Exception as e:
+            self.Write_Log('\n'.join((repr(e), str(traceback.format_exc()))), "VERBOSE")
+            self.Write_Log("Generate run script failed", "ERROR")
+            return False
 
     def Create_Work_Volume(self):
         '''
@@ -778,10 +778,10 @@ class Application(Application_Center):
         return True
 
     def Init_Aliyun(self):
-        # ok = self.Ensure_Cluster_Resource()
-        # if not ok:
-        #     self.Write_Log("Getting machine resource failed")
-        #     return False
+        ok = self.Ensure_Cluster_Resource()
+        if not ok:
+            self.Write_Log("Getting machine resource failed")
+            return False
         ok = self.Get_Configs()
         if not ok:
             self.Write_Log("Get Configurations failed", "ERROR")
@@ -805,18 +805,18 @@ class Application(Application_Center):
     @active_dbmodel(("experiment"))
     def Init_Task(self):
         # TODO: 通过nas操作文件
-        # module = Get_Code_Module(id=self.job.code_id)
-        # if not module:
-        #     self.Write_Log("Module not found", "ERROR")
-        #     return False
-        # #### Copy files from archive to experiment environment ###
-        # if not Is_Existed_Experiment(self.job_id):
-        #     if not Import_Module_To_Experiment(experiment_id=self.job_id, module_id=module.id):
-        #         self.Write_Log("import module to experiment failed", "ERROR")
-        #         return False
-        # else:
-        #     self.Write_Log("Existed experiment, dir: /root/workspace/experiment/{}".format(self.job_id),
-        #                    "VERBOSE")
+        module = Get_Code_Module(id=self.job.code_id)
+        if not module:
+            self.Write_Log("Module not found", "ERROR")
+            return False
+        #### Copy files from archive to experiment environment ###
+        if not Is_Existed_Experiment(self.job_id):
+            if not Import_Module_To_Experiment(experiment_id=self.job_id, module_id=module.id):
+                self.Write_Log("import module to experiment failed", "ERROR")
+                return False
+        else:
+            self.Write_Log("Existed experiment, dir: /root/workspace/experiment/{}".format(self.job_id),
+                           "VERBOSE")
         return True
 
     @staticmethod
@@ -838,7 +838,7 @@ class Application(Application_Center):
 
 
 DATA_DIR = '/root/workspace/data'
-EXPERIMENT_DIR = '/root/workspace/data/experiment'
+EXPERIMENT_DIR = '/root/workspace/experiment'
 MODULE_DIR = '/root/workspace/module'
 
 

@@ -14,7 +14,7 @@
 __author__ = 'huangzhen'
 import requests
 from Platform.ERACenter.Core.model import Job, Module
-from sqlalchemy import and_
+from Library.OrmModel.User import User
 from Library.Utils.log_util import LogCenter
 import json
 from Library.extensions import rdb
@@ -47,13 +47,19 @@ def Write_Job_Log(job_id, log_str, level='INFO'):
 
 
 def Get_User(**find_by):
-    pass
+    _id = find_by.get('id')
+    try:
+        user = json.loads(rdb.get("user_{}".format(_id)))
+    except Exception as e:
+        print("error", str(e), traceback.format_exc())
+        return None
+    return User.from_dict(user)
 
 
 def Get_Code_Module(**find_by):
     _id = find_by.get('id')
     try:
-        module = json.loads(rdb.get("code${}".format(_id)))
+        module = json.loads(rdb.get("code_{}".format(_id)))
     except Exception as e:
         print("error", str(e), traceback.format_exc())
         return None
