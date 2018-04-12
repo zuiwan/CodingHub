@@ -34,7 +34,7 @@ def make_celery_app():
 
 celery_app = make_celery_app()
 
-CHANNEL = "era_accepted_queue"
+CHANNEL = "era_accepted_channel"
 LOOP_INTERVAL = 3
 normalization_coefficient = (9 - 0) / (4294967295 - 0)  # uint32值到[0,9]的归一化系数
 Accepted_Queue = redisClient.pubsub()
@@ -56,30 +56,13 @@ def getCurrentAllocation():
             except Exception as e:
                 print("get allocation detail failed, reason: {}".format(str(e)))
                 continue
-            Do_Job.delay(args=[data["job_id"]],
-                         eta=time_util.string_toDatetime(data["arrival_time"]),
-                         priority=0 + normalization_coefficient * (data["accepted_value"] - 0))
+            job_id, eta, priority = data["job_id"], time_util.string_toDatetime(
+                data["arrival_time"]), 0 + normalization_coefficient * (data["accepted_value"] - 0)
+            print("job_id: {}, eta: {}, priority: {}".format(job_id, eta, priority))
+            Do_Job.delay(args=[job_id],
+                         eta=eta,
+                         priority=priority)
             time.sleep(LOOP_INTERVAL)
-
-
-def Get_Current_Allocation():
-    for item in Accepted_Queue.listen():
-        resp = item["data"]  # default 1L
-        if resp == 1L:
-            continue
-        elif isinstance(resp, basestring):
-            try:
-                data = json.loads(resp)  # waiting for the publisher
-                assert "job_id" in data
-            except Exception as e:
-                print("error", str(e), "resp is: {}".format(resp))
-                continue
-            task = Do_Job.delay(data["job_id"])
-            print("Apply job, apply id: %s, state: %s\n++++++++++++++++++++++++++++++++++" %
-                  (task.id, getattr(task, "state")))
-        else:
-            print("unexpected resp type: {}".format(resp))
-        time.sleep(LOOP_INTERVAL)
 
 
 @celery_app.task
@@ -102,4 +85,5 @@ def Do_Job(job_id):
 
 if __name__ == "__main__":
     initSubscribe()
-    Get_Current_Allocation()
+    # Get_Current_Allocation()
+    getCurrentAllocation()
