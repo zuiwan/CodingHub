@@ -33,10 +33,13 @@ class User(BaseModel):
     def __init__(self,
                  name,
                  phone=None,
-                 level=None):
+                 level=None,
+                 id=None):
         self.name = name
         self.phone = phone
         self.level = level
+        if id is None:
+            self.id = id
 
     def hash_password(self, password):
         self.password_hash = pwd_context.encrypt(password)

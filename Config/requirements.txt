@@ -1,3 +1,4 @@
+mysql
 passlib
 aliyun-python-sdk-ecs
 aliyun-python-sdk-core==2.3.1
