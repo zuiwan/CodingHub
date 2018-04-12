@@ -20,6 +20,7 @@ from datetime import (
 import traceback
 import sys
 import json
+
 sys.path.append(".")
 sys.path.append("..")
 from Platform.ERACenter.Core.model import JobReq, Job
@@ -111,7 +112,7 @@ def createCode():
                         codehash="",
                         state='valid',
                         size=1000)
-    rdb.set("code$1", json.dumps(codemodule.to_dict()))
+    rdb.set("code_1", json.dumps(codemodule.to_dict()))
 
 
 if __name__ == "__main__":

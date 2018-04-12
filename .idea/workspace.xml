@@ -9,14 +9,8 @@
       <change beforePath="" afterPath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/pem/c4e9436b8530e4d739970e94943b18d9f/cert.pem" />
       <change beforePath="" afterPath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/pem/c4e9436b8530e4d739970e94943b18d9f/key.pem" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Application/app.py" afterPath="$PROJECT_DIR$/Application/app.py" />
-      <change beforePath="$PROJECT_DIR$/Config/requirements.txt" afterPath="$PROJECT_DIR$/Config/requirements.txt" />
-      <change beforePath="$PROJECT_DIR$/Library/celery_util.py" afterPath="$PROJECT_DIR$/Library/celery_util.py" />
-      <change beforePath="$PROJECT_DIR$/Library/extensions.py" afterPath="$PROJECT_DIR$/Library/extensions.py" />
-      <change beforePath="$PROJECT_DIR$/Platform/ConfCenter/redis_config_store.py" afterPath="$PROJECT_DIR$/Platform/ConfCenter/redis_config_store.py" />
       <change beforePath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/utils.py" afterPath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/utils.py" />
-      <change beforePath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/celery_config.py" afterPath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/celery_config.py" />
-      <change beforePath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/cloud.py" afterPath="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/cloud.py" />
+      <change beforePath="$PROJECT_DIR$/Platform/ERACenter/User_Interface/reservation_test.py" afterPath="$PROJECT_DIR$/Platform/ERACenter/User_Interface/reservation_test.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -45,12 +39,12 @@
       <file leaf-file-name="utils.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="63" column="44" lean-forward="false" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
+            <state relative-caret-position="189">
+              <caret line="61" column="34" lean-forward="true" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
               <folding>
                 <element signature="e#374#389#0" expanded="true" />
-                <marker date="1523548130499" expanded="true" signature="1767:1812" ph="select id,us... user" />
-                <marker date="1523548130499" expanded="true" signature="5420:5435" ph="SELECT missi... missing_value" />
+                <marker date="1523548384004" expanded="true" signature="1591:1640" ph="select id,us... user" />
+                <marker date="1523548384004" expanded="true" signature="5350:5365" ph="SELECT missi... missing_value" />
               </folding>
             </state>
           </provider>
@@ -99,8 +93,8 @@
       <file leaf-file-name="reservation_test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Platform/ERACenter/User_Interface/reservation_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="95" column="9" lean-forward="true" selection-start-line="95" selection-start-column="9" selection-end-line="95" selection-end-column="9" />
+            <state relative-caret-position="448">
+              <caret line="110" column="38" lean-forward="true" selection-start-line="110" selection-start-column="38" selection-end-line="110" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -230,7 +224,6 @@
         <option value="$PROJECT_DIR$/Platform/ConfCenter/models.py" />
         <option value="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/cluster.py" />
         <option value="$PROJECT_DIR$/Platform/ERACenter/Core/model.py" />
-        <option value="$PROJECT_DIR$/Platform/ERACenter/User_Interface/reservation_test.py" />
         <option value="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/application_impl.py" />
         <option value="$PROJECT_DIR$/Platform/ERACenter/User_Interface/user.py" />
         <option value="$PROJECT_DIR$/Config/requirements.txt" />
@@ -241,6 +234,7 @@
         <option value="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/cloud.py" />
         <option value="$PROJECT_DIR$/Library/extensions.py" />
         <option value="$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/utils.py" />
+        <option value="$PROJECT_DIR$/Platform/ERACenter/User_Interface/reservation_test.py" />
       </list>
     </option>
   </component>
@@ -778,7 +772,21 @@
       <option name="project" value="LOCAL" />
       <updated>1523538202068</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="[DEV] update go tcp server host">
+      <created>1523548143331</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1523548143331</updated>
+    </task>
+    <task id="LOCAL-00032" summary="[DEV] query user">
+      <created>1523548296109</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1523548296109</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -869,7 +877,8 @@
     <MESSAGE value="[DEV] era application and model" />
     <MESSAGE value="[DEV] debug" />
     <MESSAGE value="[DEV] update go tcp server host" />
-    <option name="LAST_COMMIT_MESSAGE" value="[DEV] update go tcp server host" />
+    <MESSAGE value="[DEV] query user" />
+    <option name="LAST_COMMIT_MESSAGE" value="[DEV] query user" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1205,14 +1214,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/User_Interface/reservation_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="95" column="9" lean-forward="true" selection-start-line="95" selection-start-column="9" selection-end-line="95" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/dev/miniconda3/envs/py27/lib/python2.7/site-packages/sqlalchemy/engine/base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
@@ -1263,14 +1264,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Platform/ERACenter/User_Interface/reservation_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="110" column="38" lean-forward="true" selection-start-line="110" selection-start-column="38" selection-end-line="110" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Platform/ERACenter/Cloud_Interface/aliyun_docker/utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="63" column="44" lean-forward="false" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
+        <state relative-caret-position="189">
+          <caret line="61" column="34" lean-forward="true" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
           <folding>
             <element signature="e#374#389#0" expanded="true" />
-            <marker date="1523548130499" expanded="true" signature="1767:1812" ph="select id,us... user" />
-            <marker date="1523548130499" expanded="true" signature="5420:5435" ph="SELECT missi... missing_value" />
+            <marker date="1523548384004" expanded="true" signature="1591:1640" ph="select id,us... user" />
+            <marker date="1523548384004" expanded="true" signature="5350:5365" ph="SELECT missi... missing_value" />
           </folding>
         </state>
       </provider>

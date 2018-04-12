@@ -56,7 +56,7 @@ def Write_Job_Log(job_id, log_str, level='INFO'):
 def Get_User(**find_by):
     _id = find_by.get('id')
     try:
-        fields = MysqlEngine.engine.execute("select id,username,level, from user where id={}".format(_id)).one()
+        fields = MysqlEngine.engine.execute("select `id`,`username`,`type` from user where id={}".format(_id)).one()
         return User.from_dict(dict(id=fields[0], name=fields[1], level=fields[2], phone=""))
     except Exception as e:
         print("error", str(e), traceback.format_exc())
