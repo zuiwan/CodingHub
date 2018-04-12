@@ -67,11 +67,18 @@ def Get_User(**find_by):
 def Get_Code_Module(**find_by):
     _id = find_by.get('id')
     try:
-        module = json.loads(rdb.get("code_{}".format(_id)))
+        fields = MysqlEngine.engine.execute("select `id`,`owner_id` from module where id='{}'".format(
+            _id)).fetchall()[0]
+        return Module.from_dict(dict(id=fields[0], uid=fields[1]))
     except Exception as e:
         print("error", str(e), traceback.format_exc())
         return None
-    return Module.from_dict(module)
+    # try:
+    #     module = json.loads(rdb.get("code_{}".format(_id)))
+    # except Exception as e:
+    #     print("error", str(e), traceback.format_exc())
+    #     return None
+    # return Module.from_dict(module)
 
 
 def Get_Job(**find_by):
