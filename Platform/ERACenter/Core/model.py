@@ -224,6 +224,13 @@ class Job(BaseModel):
     def owner_id(self):
         return self.uid
 
+    @property
+    def mode(self):
+        if self.b_jupyter is True:
+            return "jupyter"
+        else:
+            return "cli"
+
 
 class JobReqSchema(BaseSchema):
     job_id = fields.Str()
