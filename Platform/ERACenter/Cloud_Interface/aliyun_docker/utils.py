@@ -13,29 +13,30 @@
 """
 __author__ = 'huangzhen'
 import requests
-from Platform.ERACenter.Core.model import Job, Module
-from Library.OrmModel.User import User
-from Library.Utils.log_util import LogCenter
+
 import json
 import traceback
 import time
 
+from Application.app import flask_app
 from Library.extensions import (
-    rdb,
     orm as db,
-    DBSession,
-    MysqlEngine
+    GetRedisBrokerConnection,
+    GetMysqlEngineAndDBSession,
 )
 from Library import ErrorDefine as ED
+from Platform.ERACenter.Core.model import Job, Module
+from Library.OrmModel.User import User
+from Library.Utils import file_util
+from Library.Utils.log_util import LogCenter
 from constants import (
     INFLUXDB_INTERFACE,
-
+    CLUSTER_ID_MAP
 )
-from Library.Utils import file_util
-from Platform.ERACenter.Cloud_Interface.aliyun_docker.constants import CLUSTER_ID_MAP
-from Application.app import flask_app
 
 experiment_controler_logger = LogCenter.instance().get_logger('era', 'utils')
+rdb = GetRedisBrokerConnection()
+MysqlEngine, DBSession = GetMysqlEngineAndDBSession()
 RUS_DBS = DBSession()
 
 
