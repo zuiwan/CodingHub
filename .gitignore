@@ -1,4 +1,5 @@
 logs/
+workspace/
 tool/migrations
-*.pyc
-*.pem
+.pyc
+.pem

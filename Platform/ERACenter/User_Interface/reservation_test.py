@@ -26,8 +26,10 @@ sys.path.append("..")
 from Platform.ERACenter.Core.model import JobReq, Job
 from Platform.ERACenter.User_Interface.user import Reservation_Center
 from Platform.ERACenter.Core.model import Module
-from Library.extensions import rdb
+from Library.extensions import GetRedisBrokerConnection
 from Library.Utils import time_util
+
+rdb = GetRedisBrokerConnection()
 
 
 def reserve_loooop():
@@ -52,6 +54,9 @@ def reserve_loooop():
             # print("debug, model, jobReq.id: %s" % jobReq.id)
             minutes += 1
             resp = rc.makeReservation(jobReq)
+            if resp is None:
+                # continue
+                break
             # print("debug", resp)
             # "0001-01-01T00:00:00Z"
             if resp["accepted"] is True:

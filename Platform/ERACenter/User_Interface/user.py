@@ -20,17 +20,16 @@ The main effect of accepting a job request is that the user is guaranteed to be 
 from Library.singleton import Singleton, ThreadSafeSingleton
 
 __author__ = 'huangzhen'
-# 导入socket库:
 import socket
 import json
-
-import struct
-from Library.extensions import orm as db
-
-from Platform.ERACenter.Core.model import Job
 import os
-
 import traceback
+import struct
+
+from Library.extensions import orm as db
+from Platform.ERACenter.Core.model import Job
+
+ERA_PORT = 5555
 
 
 class Reservation_Center(object):
@@ -38,12 +37,17 @@ class Reservation_Center(object):
     REQ_EOF_CONFIRM = '\n'
 
     def __init__(self):
-        endpoint = ("api.cannot.cc", 5555)
+        # endpoint = ("api.cannot.cc", ERA_PORT)
+        endpoint = ("127.0.0.1", ERA_PORT)
 
         # 创建一个socket:
         self.conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         # 建立连接:
-        self.conn.connect(endpoint)
+        try:
+            self.conn.connect(endpoint)
+        except socket.error as e:
+            print("warning: %s" % str(e))
+            raise e
 
     def makeReservation(self, request):
         # 组装符合格式要求的请求，向Go提供的接口发起预定请求
@@ -54,6 +58,10 @@ class Reservation_Center(object):
             self.conn.send(msg2send + self.REQ_EOF_HEADER + self.REQ_EOF_CONFIRM)
         except os.error as e:
             print("error", str(e), traceback.format_exc())
+            return None
+        except socket.error as e:
+            print("error", str(e), traceback.format_exc())
+            return None
         # 接收
         buffer = []
         first = True
@@ -78,13 +86,16 @@ class Reservation_Center(object):
             else:
                 break
         # self.conn.close()
+        if not len(buffer) > 0:
+            print("warning: not received msg from era server")
+            return None
         data = ''.join(buffer)
         try:
             s = data.strip().rstrip(self.REQ_EOF_HEADER + self.REQ_EOF_CONFIRM)
             data = json.loads(s)
         except ValueError as e:
             print("error", str(e), traceback.format_exc())
-        # print("debug", data)
+        print("debug", data)
         return data
 
     def finish(self):

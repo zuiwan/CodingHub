@@ -19,12 +19,8 @@ from kombu import Queue
 # from celery.schedules import crontab
 
 celery_queues = (
-    # Queue('file', exchange='file', routing_key='task.user.file.#'),
-    # Queue('cpu', exchange='user', routing_key='task.user.compute.cpu'),
-    # Queue('gpu', exchange='user', routing_key='task.user.compute.gpu'),
-    # Queue('sys', exchange='sys', routing_key='task.sys.#'),
-    # Queue('notify', exchange='notify', routing_key='task.notify')
-    Queue('eagerjob', exchange='eagerjob', routing_key='task.eagerjob')
+    Queue('eracompute', exchange='eracompute', routing_key='task.eracompute'),
+    Queue('eagerjob', exchange='eagerjob', routing_key='task.eagerjob'),
 )
 
 timezone = 'Asia/Shanghai'

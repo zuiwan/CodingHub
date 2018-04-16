@@ -18,19 +18,21 @@ sys.path.append(".")
 import json
 import traceback
 from Library.extensions import (
-    rdb as redisClient,
+    GetRedisBrokerConnection
 )
 from Library.Utils import time_util
 from aliyun_docker.utils import Write_Job_Log
 from aliyun_docker.application_impl import Application
 from celery import Celery
 
+redisClient = GetRedisBrokerConnection()
+
 
 def make_celery_app():
-    print("redis read test", redisClient.get("test"))
     app = Celery(main='Platform.ERACenter.Cloud_Interface.cloud',
                  backend="redis://test.dl.russellcloud.com:6380",
                  broker='redis://test.dl.russellcloud.com:6380')
+    app.conf.update("Platform.ERACenter.Cloud_Interface.celery_config")
     return app
 
 
