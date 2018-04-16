@@ -21,7 +21,7 @@ import time
 from Application.app import flask_app
 from Library.extensions import (
     orm as db,
-    GetRedisBrokerConnection,
+    GetRedisConnection,
     GetMysqlEngineAndDBSession,
 )
 from Library import ErrorDefine as ED
@@ -35,7 +35,7 @@ from constants import (
 )
 
 experiment_controler_logger = LogCenter.instance().get_logger('era', 'utils')
-rdb = GetRedisBrokerConnection()
+rdb = GetRedisConnection()
 MysqlEngine, DBSession = GetMysqlEngineAndDBSession()
 RUS_DBS = DBSession()
 

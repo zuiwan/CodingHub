@@ -16,9 +16,9 @@ import traceback
 
 from Library.extensions import (
     orm as db,
-    GetRedisBrokerConnection
+    GetRedisConnection
 )
-rdb = GetRedisBrokerConnection()
+rdb = GetRedisConnection()
 from Library.Utils.log_util import LogCenter
 from Library.singleton import Singleton, ThreadSafeSingleton
 from models import Config_Model

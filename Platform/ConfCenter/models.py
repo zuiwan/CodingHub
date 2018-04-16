@@ -37,8 +37,8 @@ import sys
 import traceback
 
 from Library.singleton import ThreadSafeSingleton
-from Library.extensions import GetRedisBrokerConnection
-rdb = GetRedisBrokerConnection()
+from Library.extensions import GetRedisConnection
+rdb = GetRedisConnection()
 
 __author__ = 'huangzhen'
 

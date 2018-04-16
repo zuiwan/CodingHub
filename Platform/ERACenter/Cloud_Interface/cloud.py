@@ -18,14 +18,14 @@ sys.path.append(".")
 import json
 import traceback
 from Library.extensions import (
-    GetRedisBrokerConnection
+    GetRedisConnection
 )
 from Library.Utils import time_util
 from aliyun_docker.utils import Write_Job_Log
 from aliyun_docker.application_impl import Application
 from celery import Celery
 
-redisClient = GetRedisBrokerConnection()
+redisClient = GetRedisConnection()
 
 
 def make_celery_app():

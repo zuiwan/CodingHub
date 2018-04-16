@@ -26,10 +26,10 @@ sys.path.append("..")
 from Platform.ERACenter.Core.model import JobReq, Job
 from Platform.ERACenter.User_Interface.user import Reservation_Center
 from Platform.ERACenter.Core.model import Module
-from Library.extensions import GetRedisBrokerConnection
+from Library.extensions import GetRedisConnection
 from Library.Utils import time_util
 
-rdb = GetRedisBrokerConnection()
+rdb = GetRedisConnection()
 
 
 def reserve_loooop():

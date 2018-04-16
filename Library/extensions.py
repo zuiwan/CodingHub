@@ -19,11 +19,15 @@ def GetMongoConnection():
 
 # from flask_redis import FlaskRedis
 # rdb = FlaskRedis(flask_app, strict=True, config_prefix="redis")
-def GetRedisBrokerConnection():
+def GetRedisConnection(c="persis"):
     from redis import Redis
-    RedisBrokerHOST = "test.dl.russellcloud.com"
+    RedisBrokerHost = "test.dl.russellcloud.com"
     RedisBrokerPort = 6380
-    rdb = Redis(host=RedisBrokerHOST, port=RedisBrokerPort)
+    RedisPersisHost = "api.cannot.cc"
+    RedisPersisPort = 6380
+    RedisHostDict = dict(persis=RedisPersisHost, broker=RedisBrokerHost)
+    RedisPortDict = dict(persis=RedisPersisPort, broker=RedisBrokerPort)
+    rdb = Redis(host=RedisHostDict[c], port=RedisPortDict[c])
     return rdb
 
 
