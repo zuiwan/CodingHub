@@ -16,7 +16,6 @@ import json
 from functools import wraps
 from pprint import (
     pformat,
-    pprint
 )
 from aliyunsdkcore.client import (
     AcsClient,

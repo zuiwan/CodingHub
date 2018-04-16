@@ -6,7 +6,9 @@ import json
 
 sys.path.append("..")
 sys.path.append(".")
-from Library.extensions import rdb
+from Library.extensions import GetRedisBrokerConnection
+
+rdb = GetRedisBrokerConnection()
 
 # ######### 集群资源限制配置开始 ###########
 # 参数指标大小单位配置，参考https://docs.docker.com/engine/reference/run/#specify-an-init-process
