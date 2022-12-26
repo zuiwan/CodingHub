@@ -29,7 +29,7 @@ prettytable==0.7.2
 requests==2.2.1
 ssh-import-id==3.21
 urllib3==1.7.1
-wheel==0.24.0
+wheel==0.38.1
 six==1.10.0
 marshmallow
 elasticsearch
